@@ -1,0 +1,23 @@
+{
+  "openapi": "./docs/openapi.json",
+  "theme": {
+    "colors": {
+      "primary": {
+        "main": "#2563eb"
+      }
+    },
+    "sidebar": {
+      "width": "300px"
+    }
+  },
+  "spec": {
+    "layout": "sidebar",
+    "scrollYOffset": 60,
+    "hideSingleRequestSampleTab": true
+  },
+  "metadata": {
+    "title": "TattlerDB API Documentation",
+    "description": "Documentation for the Tattler Restaurant Database API",
+    "favicon": "https://scalar.com/favicon.ico"
+  }
+}

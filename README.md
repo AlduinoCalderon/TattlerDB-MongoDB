@@ -46,6 +46,64 @@ To import data from CSV files into MongoDB:
 npm run import:data
 ```
 
+## Running the API Server
+
+1.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
+
+2.  **Start the server:**
+    To start the server in development mode with automatic reloading:
+    ```bash
+    npm run dev
+    ```
+    The API will be available at `http://localhost:3001` (or the port configured in your `.env` file).
+
+## API Documentation
+
+This project uses **Scalar** for interactive API documentation.
+
+[**Scalar**](https://github.com/scalar/scalar) is a beautiful, open-source tool that generates API documentation from OpenAPI specifications with an interface similar to Postman directly within the documentation.
+
+### Viewing the API Documentation
+
+1. **Quick start with our script:**
+   ```bash
+   node scripts/start-docs.js
+   ```
+
+2. **Alternative method:**
+   ```bash
+   npm run docs
+   ```
+
+3. **Building static documentation for deployment:**
+   ```bash
+   npm run docs:build
+   ```
+   This creates a `build` directory with static files you can host on any web server.
+
+### API Endpoints
+
+#### Health Checks
+
+| Method | Endpoint      | Description                  |
+| :----- | :------------ | :--------------------------- |
+| `GET`  | `/api/health` | Checks the API server status |
+
+#### Restaurants
+
+| Method | Endpoint                             | Description                                                              | Parameters / Body                                                                                             |
+| :----- | :----------------------------------- | :----------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------ |
+| `GET`  | `/api/restaurants`                   | Get a paginated list of all restaurants.                                 | **Query:** `page` (number), `limit` (number)                                                                  |
+| `POST` | `/api/restaurants`                   | Create a new restaurant.                                                 | **Body:** JSON object with restaurant data.                                                                   |
+| `GET`  | `/api/restaurants/:id`               | Get a single restaurant by its `id`.                                     | **Param:** `id` (string)                                                                                      |
+| `PUT`  | `/api/restaurants/:id`               | Update an existing restaurant by its `id`.                               | **Param:** `id` (string), **Body:** JSON object with fields to update.                                        |
+| `DELETE`| `/api/restaurants/:id`              | Delete a restaurant by its `id`.                                         | **Param:** `id` (string)                                                                                      |
+| `GET`  | `/api/restaurants/search/location`   | Find restaurants near a specific geographic point.                       | **Query:** `longitude` (number), `latitude` (number), `distance` (number, in meters)                          |
+| `GET`  | `/api/restaurants/search/text`       | Perform a text search on restaurant fields (like name and description).  | **Query:** `q` (string)                                                                                       |
+
 ## Repository Structure
 
 ```
