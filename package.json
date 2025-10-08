@@ -8,8 +8,8 @@
     "dev": "nodemon server.js",
     "import": "node scripts/import.js",
     "restore": "node scripts/restore.js",
-    "docs": "npx @scalar/cli serve",
-    "docs:build": "npx @scalar/cli build"
+    "docs": "npx @scalar/cli document serve ./docs/openapi.json",
+    "docs:build": "npx @scalar/cli document build ./docs/openapi.json"
   },
   "dependencies": {
     "cors": "^2.8.5",

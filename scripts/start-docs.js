@@ -19,8 +19,8 @@ try {
 }
 
 // Verificar que tenemos los archivos necesarios
-const openApiPath = path.join(__dirname, 'docs', 'openapi.json');
-const scalarConfigPath = path.join(__dirname, 'scalar.json');
+const openApiPath = path.join(__dirname, '..', 'docs', 'openapi.json');
+const scalarConfigPath = path.join(__dirname, '..', 'scalar.json');
 
 if (!fs.existsSync(openApiPath)) {
   console.error('❌ Error: No se encontró el archivo openapi.json en la carpeta docs.');
@@ -34,11 +34,11 @@ if (!fs.existsSync(scalarConfigPath)) {
 
 // Todo está listo, ejecutamos Scalar
 console.log('\n🌐 Iniciando el servidor de documentación...');
-console.log('\n📝 La documentación estará disponible en http://localhost:8080\n');
+console.log('\n📝 La documentación estará disponible en http://localhost:3000\n');
 
 try {
-  // Iniciar el servidor de Scalar
-  execSync('npx @scalar/cli serve', { stdio: 'inherit' });
+  // Iniciar el servidor de Scalar con el comando correcto y especificando el archivo OpenAPI
+  execSync(`npx @scalar/cli document serve "./docs/openapi.json"`, { stdio: 'inherit' });
 } catch (error) {
   console.error(`\n❌ Error al iniciar Scalar: ${error.message}`);
   process.exit(1);
