@@ -5,8 +5,8 @@ const { MongoClient } = require('mongodb');
 const path = require('path');
 
 const uri = process.env.MONGODB_URI;
-const dbName = process.env.MONGODB_DATABASE;
-const collectionName = process.env.MONGODB_COLLECTION;
+const dbName = 'tattler';  // Database name for Atlas
+const collectionName = 'restaurants_inegi';
 
 async function importCSVToMongo() {
   const client = new MongoClient(uri);
@@ -21,31 +21,50 @@ async function importCSVToMongo() {
 
     // Read CSV and transform data
     await new Promise((resolve, reject) => {
-      fs.createReadStream(path.join(__dirname, '../data/INEGI_DENUE_07102025.csv'))
+      fs.createReadStream(path.join(__dirname, '../data/INEGI_DENUE_07102025.csv'), { encoding: 'latin1' })
         .pipe(csv())
         .on('data', (row) => {
+          // Base object with required fields
           const restaurant = {
-            id: row.id,
-            nombre: row.nombre,
-            razon_social: row.razon_social,
-            clase_actividad: row.clase_actividad,
-            tipo_vialidad: row.tipo_vialidad,
-            calle: row.calle,
-            numero_exterior: row.numero_exterior,
-            numero_interior: row.numero_interior || null,
-            colonia: row.colonia,
-            codigo_postal: row.codigo_postal,
+            id: row['ID'],
             ubicacion: {
               type: "Point",
-              coordinates: [parseFloat(row.longitud), parseFloat(row.latitud)]
-            },
-            telefono: row.telefono || null,
-            correo_electronico: row.correo_electronico || null,
-            sitio_internet: row.sitio_internet || null,
-            tipo: row.tipo,
-            longitud: parseFloat(row.longitud),
-            latitud: parseFloat(row.latitud)
+              coordinates: [parseFloat(row['Longitud']), parseFloat(row['Latitud'])]
+            }
           };
+
+          // Add optional fields only if they have values
+          const fieldsMap = {
+            'Nombre de la Unidad Económica': 'nombre',
+            'Razón social': 'razon_social',
+            'Nombre de clase de la actividad': 'clase_actividad',
+            'Tipo de vialidad': 'tipo_vialidad',
+            'Nombre de la vialidad': 'calle',
+            'Número exterior o kilómetro': 'numero_exterior',
+            'Número interior': 'numero_interior',
+            'Nombre de asentamiento humano': 'colonia',
+            'Código Postal': 'codigo_postal',
+            'Número de teléfono': 'telefono',
+            'Correo electrónico': 'correo_electronico',
+            'Sitio en Internet': 'sitio_internet',
+            'Tipo de establecimiento': 'tipo'
+          };
+
+          // Add each field only if it has a value
+          Object.entries(fieldsMap).forEach(([csvKey, mongoKey]) => {
+            if (row[csvKey] && row[csvKey].trim() !== '') {
+              restaurant[mongoKey] = row[csvKey].trim();
+            }
+          });
+
+          // Add coordinates only if they're valid numbers
+          const lat = parseFloat(row['Latitud']);
+          const lng = parseFloat(row['Longitud']);
+          if (!isNaN(lat) && !isNaN(lng)) {
+            restaurant.latitud = lat;
+            restaurant.longitud = lng;
+          }
+
           restaurants.push(restaurant);
         })
         .on('end', resolve)
@@ -65,21 +84,24 @@ async function importCSVToMongo() {
     // Insert into MongoDB
     if (restaurants.length > 0) {
       // Drop existing collection if exists
-      await collection.drop().catch(() => console.log('Collection does not exist yet'));
-
-      // Create collection with schema validation
-      const schema = require('../db/schema/restaurant.schema');
-      await db.createCollection(collectionName, schema);
-
-      // Create indexes
-      await collection.createIndex({ ubicacion: "2dsphere" });
-      await collection.createIndex({ nombre: "text" });
-      await collection.createIndex({ codigo_postal: 1 });
-      await collection.createIndex({ clase_actividad: 1 });
+      try {
+        await collection.drop();
+        console.log('Existing collection dropped');
+      } catch (e) {
+        console.log('Collection does not exist yet');
+      }
 
       // Insert documents
       const result = await collection.insertMany(restaurants);
       console.log(`${result.insertedCount} restaurants imported successfully`);
+
+      // Create indexes
+      console.log('Creating indexes...');
+      await collection.createIndex({ ubicacion: "2dsphere" });
+      await collection.createIndex({ nombre: "text" });
+      await collection.createIndex({ codigo_postal: 1 });
+      await collection.createIndex({ clase_actividad: 1 });
+      console.log('Indexes created successfully');
     }
 
   } catch (error) {
