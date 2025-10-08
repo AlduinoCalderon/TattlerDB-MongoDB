@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tattler Restaurant Database - Project Gantt Chart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            color: #333;
+        }
+        h1 {
+            color: #0066cc;
+            text-align: center;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow-x: auto;
+        }
+        .gantt-chart {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .gantt-chart th, .gantt-chart td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        .gantt-chart th {
+            background-color: #f2f2f2;
+            position: sticky;
+            top: 0;
+        }
+        .gantt-header {
+            background-color: #0066cc;
+            color: black;
+            text-align: center;
+        }
+        .task-name {
+            width: 250px;
+            font-weight: bold;
+        }
+        .day-cell {
+            width: 30px;
+            text-align: center;
+        }
+        .sprint1 {
+            background-color: #a8d08d;
+        }
+        .sprint2 {
+            background-color: #c6e0b4;
+        }
+        .sprint3 {
+            background-color: #f8cbad;
+        }
+        .final {
+            background-color: #bdd7ee;
+        }
+        .milestone {
+            background-color: #ffeb9c;
+            text-align: center;
+            font-weight: bold;
+        }
+        .legend {
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin: 5px 10px;
+        }
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+        }
+        .project-info {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Tattler Restaurant Database - Project Gantt Chart</h1>
+        
+        <div class="project-info">
+            <p><strong>Project:</strong> Tattler Restaurant Database with MongoDB and Express.js</p>
+            <p><strong>Period:</strong> October 7 - October 13, 2025</p>
+            <p><strong>Current Sprint:</strong> Planning Phase</p>
+            <p><strong>Status:</strong> Project planned, awaiting implementation</p>
+        </div>
+        
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: #a8d08d;"></div>
+                <span>Sprint 1: Database Setup</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: #c6e0b4;"></div>
+                <span>Sprint 2: API Development</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: #f8cbad;"></div>
+                <span>Sprint 3: Advanced Features</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: #bdd7ee;"></div>
+                <span>Final Delivery</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: #ffeb9c;"></div>
+                <span>Milestone</span>
+            </div>
+        </div>
+        
+        <table class="gantt-chart">
+            <thead>
+                <tr>
+                    <th class="gantt-header" rowspan="2">Task / Activity</th>
+                    <th class="gantt-header" colspan="1">Sprint 1</th>
+                    <th class="gantt-header" colspan="2">Sprint 2</th>
+                    <th class="gantt-header" colspan="3">Sprint 3</th>
+                    <th class="gantt-header" colspan="1">Final</th>
+                </tr>
+                <tr>
+                    <th class="day-cell">Oct 7</th>
+                    <th class="day-cell">Oct 8</th>
+                    <th class="day-cell">Oct 9</th>
+                    <th class="day-cell">Oct 10</th>
+                    <th class="day-cell">Oct 11</th>
+                    <th class="day-cell">Oct 12</th>
+                    <th class="day-cell">Oct 13</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Sprint 1 Tasks -->
+                <tr>
+                    <td class="task-name">GitHub repository setup</td>
+                    <td class="sprint1">→</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="task-name">MongoDB schema design</td>
+                    <td class="sprint1">→</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="task-name">Data import scripts</td>
+                    <td class="sprint1">→</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="task-name">Database backup</td>
+                    <td class="sprint1">→</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="milestone">Sprint 1 Review</td>
+                    <td class="milestone">→</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                
+                <!-- Sprint 2 Tasks -->
+                <tr>
+                    <td class="task-name">Basic CRUD operations</td>
+                    <td></td>
+                    <td class="sprint2">→</td>
+                    <td class="sprint2">→</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="task-name">User authentication system</td>
+                    <td></td>
+                    <td class="sprint2">→</td>
+                    <td class="sprint2">→</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="task-name">Basic search functionality</td>
+                    <td></td>
+                    <td></td>
+                    <td class="sprint2">→</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="task-name">API documentation</td>
+                    <td></td>
+                    <td class="sprint2">→</td>
+                    <td class="sprint2">→</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="milestone">Sprint 2 Review</td>
+                    <td></td>
+                    <td></td>
+                    <td class="milestone">→</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                
+                <!-- Sprint 3 Tasks -->
+                <tr>
+                    <td class="task-name">Advanced search and filtering</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="sprint3">→</td>
+                    <td class="sprint3">→</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="task-name">Comment and rating system</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="sprint3">→</td>
+                    <td class="sprint3">→</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="task-name">Restaurant registration endpoint</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="sprint3">→</td>
+                    <td class="sprint3">→</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="task-name">User preference handling</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="sprint3">→</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="task-name">Integration testing</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="sprint3">→</td>
+                    <td class="sprint3">→</td>
+                    <td class="sprint3">→</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="milestone">Sprint 3 Review</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="milestone">→</td>
+                    <td></td>
+                </tr>
+                
+                <!-- Final Delivery -->
+                <tr>
+                    <td class="task-name">Final Integration & Testing</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="final">→</td>
+                </tr>
+                <tr>
+                    <td class="task-name">Complete Documentation</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="final">→</td>
+                </tr>
+                <tr>
+                    <td class="task-name">Stakeholder Presentation</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="final">→</td>
+                </tr>
+                <tr>
+                    <td class="milestone">Project Completion</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="milestone">→</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div style="margin-top: 20px;">
+            <p><strong>Legend:</strong></p>
+            <p>✓ = Completed task</p>
+            <p>→ = Planned task</p>
+        </div>
+    </div>
+</body>
+</html>
