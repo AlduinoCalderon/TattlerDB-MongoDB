@@ -91,7 +91,6 @@ This project uses **Scalar** for interactive API documentation.
 | Method | Endpoint      | Description                  |
 | :----- | :------------ | :--------------------------- |
 | `GET`  | `/api/health` | Checks the API server status |
-| `GET`  | `/api/health/ping` | Simple ping-pong health check |
 
 #### Restaurants
 

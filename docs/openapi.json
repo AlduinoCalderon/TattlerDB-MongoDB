@@ -67,25 +67,7 @@
         }
       }
     },
-    "/health/ping": {
-      "get": {
-        "tags": ["health"],
-        "summary": "Simple ping check",
-        "description": "Simple endpoint to check if API is responsive",
-        "responses": {
-          "200": {
-            "description": "Ping successful",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PingResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
+
     "/restaurants": {
       "get": {
         "tags": ["restaurants"],
