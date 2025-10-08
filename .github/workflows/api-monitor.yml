@@ -1,0 +1,79 @@
+name: API Health Monitor
+
+on:
+  schedule:
+    # Ejecutar cada 10 minutos para monitoreo detallado
+    - cron: '*/10 * * * *'
+  workflow_dispatch:
+
+jobs:
+  monitor-api:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Health Check with Detailed Monitoring
+      run: |
+        echo "🔍 Starting comprehensive API health check..."
+        
+        # Variables
+        BASE_URL="https://tattlerdb-mongodb.onrender.com"
+        TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S UTC')
+        
+        echo "📅 Check started at: $TIMESTAMP"
+        echo "🌐 Target URL: $BASE_URL"
+        echo ""
+        
+        # Test 1: Root endpoint
+        echo "🏠 Testing root endpoint..."
+        root_status=$(curl -s -o /dev/null -w "%{http_code}" "$BASE_URL/")
+        root_time=$(curl -s -o /dev/null -w "%{time_total}" "$BASE_URL/")
+        
+        if [ $root_status -eq 200 ]; then
+          echo "✅ Root endpoint: OK (${root_time}s)"
+        else
+          echo "❌ Root endpoint: FAILED (HTTP $root_status)"
+        fi
+        
+        # Test 2: Health endpoint
+        echo "🏥 Testing health endpoint..."
+        health_status=$(curl -s -o /dev/null -w "%{http_code}" "$BASE_URL/api/health")
+        health_time=$(curl -s -o /dev/null -w "%{time_total}" "$BASE_URL/api/health")
+        
+        if [ $health_status -eq 200 ]; then
+          echo "✅ Health endpoint: OK (${health_time}s)"
+          echo "📊 Health response:"
+          curl -s "$BASE_URL/api/health" | jq '.' || echo "Invalid JSON response"
+        else
+          echo "❌ Health endpoint: FAILED (HTTP $health_status)"
+        fi
+        
+        # Test 3: Documentation endpoint
+        echo "📚 Testing documentation endpoint..."
+        docs_status=$(curl -s -o /dev/null -w "%{http_code}" "$BASE_URL/docs")
+        docs_time=$(curl -s -o /dev/null -w "%{time_total}" "$BASE_URL/docs")
+        
+        if [ $docs_status -eq 200 ]; then
+          echo "✅ Documentation endpoint: OK (${docs_time}s)"
+        else
+          echo "❌ Documentation endpoint: FAILED (HTTP $docs_status)"
+        fi
+        
+        # Test 4: OpenAPI spec
+        echo "📋 Testing OpenAPI spec endpoint..."
+        spec_status=$(curl -s -o /dev/null -w "%{http_code}" "$BASE_URL/docs/openapi.json")
+        
+        if [ $spec_status -eq 200 ]; then
+          echo "✅ OpenAPI spec: OK"
+        else
+          echo "❌ OpenAPI spec: FAILED (HTTP $spec_status)"
+        fi
+        
+        echo ""
+        echo "🏁 Health check completed at: $(date '+%Y-%m-%d %H:%M:%S UTC')"
+        
+        # Summary
+        echo "📈 SUMMARY:"
+        echo "  Root: HTTP $root_status (${root_time}s)"
+        echo "  Health: HTTP $health_status (${health_time}s)"
+        echo "  Docs: HTTP $docs_status (${docs_time}s)"
+        echo "  Spec: HTTP $spec_status"
