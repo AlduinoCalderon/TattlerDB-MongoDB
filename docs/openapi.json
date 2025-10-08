@@ -16,6 +16,10 @@
     {
       "url": "http://localhost:3001/api",
       "description": "Local development server"
+    },
+    {
+      "url": "https://tattlerdb-api.onrender.com/api",
+      "description": "Production server on Render"
     }
   ],
   "tags": [
@@ -67,7 +71,25 @@
         }
       }
     },
-
+    "/health/ping": {
+      "get": {
+        "tags": ["health"],
+        "summary": "Simple ping check",
+        "description": "Simple endpoint to check if API is responsive",
+        "responses": {
+          "200": {
+            "description": "Ping successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PingResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/restaurants": {
       "get": {
         "tags": ["restaurants"],
