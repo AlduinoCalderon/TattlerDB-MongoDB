@@ -3,12 +3,14 @@ const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
+const path = require('path');
+const { apiReference } = require('@scalar/express-api-reference');
 const { logger } = require('./utils/logger');
 const routes = require('./api/routes');
 
 // Create Express app
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || process.env.API_PORT || 3001;
 
 // Middleware
 app.use(helmet()); // Security headers
@@ -25,6 +27,37 @@ app.use(morgan(':method :url :status :res[content-length] - :response-time ms :b
     write: (message) => logger.http(message.trim())
   }
 }));
+
+// Load OpenAPI spec
+const openApiSpec = require('./docs/openapi.json');
+
+// Serve API documentation with Scalar
+app.use('/docs', apiReference({
+  spec: {
+    content: openApiSpec,
+  },
+  theme: 'purple',
+  layout: 'sidebar',
+}));
+
+// Serve OpenAPI spec as JSON endpoint
+app.get('/docs/openapi.json', (req, res) => {
+  res.json(openApiSpec);
+});
+
+// Root endpoint
+app.get('/', (req, res) => {
+  res.json({
+    success: true,
+    message: 'TattlerDB API is running',
+    version: '1.0.0',
+    documentation: '/docs',
+    endpoints: {
+      health: '/api/health',
+      restaurants: '/api/restaurants'
+    }
+  });
+});
 
 // API Routes
 app.use('/api', routes);

@@ -1,0 +1,42 @@
+name: Keep API Alive
+
+on:
+  schedule:
+    # Ejecutar cada 5 minutos
+    - cron: '*/5 * * * *'
+  workflow_dispatch: # Permite ejecutar manualmente
+
+jobs:
+  ping-api:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Ping API Health Endpoint
+      run: |
+        echo "🏥 Checking API health..."
+        response=$(curl -s -o /dev/null -w "%{http_code}" https://tattlerdb-mongodb.onrender.com/api/health)
+        
+        if [ $response -eq 200 ]; then
+          echo "✅ API is healthy (HTTP $response)"
+        else
+          echo "⚠️  API responded with HTTP $response"
+        fi
+        
+        echo "📊 Full response:"
+        curl -s https://tattlerdb-mongodb.onrender.com/api/health | jq '.' || echo "Response is not valid JSON"
+        
+    - name: Ping API Root Endpoint
+      run: |
+        echo "🏠 Checking API root endpoint..."
+        response=$(curl -s -o /dev/null -w "%{http_code}" https://tattlerdb-mongodb.onrender.com/)
+        
+        if [ $response -eq 200 ]; then
+          echo "✅ Root endpoint is healthy (HTTP $response)"
+        else
+          echo "⚠️  Root endpoint responded with HTTP $response"
+        fi
+        
+    - name: Log Timestamp
+      run: |
+        echo "⏰ Ping completed at: $(date)"
+        echo "🌍 Next ping in 5 minutes"

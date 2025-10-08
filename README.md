@@ -68,21 +68,23 @@ This project uses **Scalar** for interactive API documentation.
 
 ### Viewing the API Documentation
 
-1. **Quick start with our script:**
-   ```bash
-   node scripts/start-docs.js
-   ```
+#### Local Development:
 
-2. **Alternative method:**
+1. **Start the API server:**
+   ```bash
+   npm run dev
+   ```
+   The documentation will be available at `http://localhost:3001/docs`
+
+2. **Alternative - standalone documentation server:**
    ```bash
    npm run docs
    ```
+   This runs a separate documentation server at `http://localhost:3000`
 
-3. **Building static documentation for deployment:**
-   ```bash
-   npm run docs:build
-   ```
-   This creates a `build` directory with static files you can host on any web server.
+#### Production Deployment:
+
+When deployed to Render, the documentation is automatically integrated into the API server and available at `/docs`. No additional configuration needed!
 
 ### API Endpoints
 
@@ -91,6 +93,7 @@ This project uses **Scalar** for interactive API documentation.
 | Method | Endpoint      | Description                  |
 | :----- | :------------ | :--------------------------- |
 | `GET`  | `/api/health` | Checks the API server status |
+| `GET`  | `/api/health/ping` | Simple ping-pong health check |
 
 #### Restaurants
 

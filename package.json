@@ -9,9 +9,11 @@
     "import": "node scripts/import.js",
     "restore": "node scripts/restore.js",
     "docs": "npx @scalar/cli document serve ./docs/openapi.json",
-    "docs:build": "npx @scalar/cli document build ./docs/openapi.json"
+    "build": "echo 'Build completed - no additional build steps needed'",
+    "render:build": "npm ci"
   },
   "dependencies": {
+    "@scalar/express-api-reference": "^0.8.20",
     "cors": "^2.8.5",
     "csv-parser": "^3.0.0",
     "dotenv": "^16.3.1",
