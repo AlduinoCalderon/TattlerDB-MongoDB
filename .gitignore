@@ -1,0 +1,7 @@
+node_modules/
+.env
+.DS_Store
+coverage/
+.vscode/
+.idea/  
+Untitled (2).html
