@@ -1,10 +1,9 @@
 const restaurantSchema = {
+  name: "restaurants_inegi",
   validator: {
     $jsonSchema: {
       bsonType: "object",
-      required: ["id", "nombre", "razon_social", "clase_actividad", "tipo_vialidad", "calle", "numero_exterior", 
-                 "numero_interior", "colonia", "codigo_postal", "ubicacion", "telefono", "correo_electronico", 
-                 "sitio_internet", "tipo", "longitud", "latitud"],
+      required: ["id", "ubicacion"],
       properties: {
         id: {
           bsonType: "string",
