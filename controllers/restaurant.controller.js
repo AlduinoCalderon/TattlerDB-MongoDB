@@ -1,7 +1,8 @@
 const { ObjectId } = require('mongodb');
-const database = require('../../utils/database');
-const ApiError = require('../../utils/apiError');
-const { logger } = require('../../utils/logger');
+const path = require('path');
+const database = require(path.join(__dirname, '../utils/database.js'));
+const ApiError = require(path.join(__dirname, '../utils/apiError'));
+const { logger } = require(path.join(__dirname, '../utils/logger'));
 
 // Collection name
 const COLLECTION = 'restaurants_inegi';
