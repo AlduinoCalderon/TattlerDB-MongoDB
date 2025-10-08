@@ -4,8 +4,8 @@ const { MongoClient } = require('mongodb');
 const path = require('path');
 
 const uri = process.env.MONGODB_URI;
-const dbName = process.env.MONGODB_DATABASE;
-const collectionName = process.env.MONGODB_COLLECTION;
+const dbName = 'tattler';  // Database name for Atlas
+const collectionName = 'restaurants_inegi';
 
 async function restoreFromBackup() {
   const client = new MongoClient(uri);
@@ -24,15 +24,13 @@ async function restoreFromBackup() {
     // Drop existing collection if exists
     await collection.drop().catch(() => console.log('Collection does not exist yet'));
 
-    // Create collection with schema validation
-    const schema = require('../db/schema/restaurant.schema');
-    await db.createCollection(collectionName, schema);
-
-    // Create indexes
+        // Create indexes after insertion
+    console.log('Creating indexes...');
     await collection.createIndex({ ubicacion: "2dsphere" });
     await collection.createIndex({ nombre: "text" });
     await collection.createIndex({ codigo_postal: 1 });
     await collection.createIndex({ clase_actividad: 1 });
+    console.log('Indexes created successfully');
 
     // Insert documents
     const result = await collection.insertMany(restaurants);
