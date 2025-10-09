@@ -13,13 +13,14 @@
     }
   },
   "servers": [
+   
+    {
+      "url": "https://tattlerdb-mongodb.onrender.com/api",
+      "description": "Production server on Render"
+    },
     {
       "url": "http://localhost:3001/api",
       "description": "Local development server"
-    },
-    {
-      "url": "https://tattlerdb-api.onrender.com/api",
-      "description": "Production server on Render"
     }
   ],
   "tags": [
