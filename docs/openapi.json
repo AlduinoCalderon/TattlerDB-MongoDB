@@ -504,11 +504,11 @@
             "type": "string",
             "example": "1234"
           },
-          "name": {
+          "nombre": {
             "type": "string",
             "example": "La Buena Mesa"
           },
-          "address": {
+          "direccion": {
             "type": "string",
             "example": "123 Main St"
           },
@@ -532,7 +532,7 @@
             "type": "string",
             "example": "Mexicana"
           },
-          "rating": {
+          "calificacion": {
             "type": "number",
             "format": "float",
             "example": 4.5
