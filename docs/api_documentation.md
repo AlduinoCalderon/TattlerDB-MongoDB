@@ -161,6 +161,8 @@ GET /restaurants/:id
 |-----------|--------|----------------------------|
 | id        | string | Unique restaurant ID       |
 
+![alt text](./images/GET_ID.png)
+
 **Response**:
 
 ```json
@@ -240,7 +242,7 @@ PUT /restaurants/:id
   "rating": 4.8
 }
 ```
-
+![alt text](./images/PUT.png)
 **Response**:
 
 ```json
@@ -271,7 +273,7 @@ DELETE /restaurants/:id
 | id        | string | Unique restaurant ID       |
 
 **Response**:
-
+![alt text](images/DELETE.png)
 ```json
 {
   "success": true,
