@@ -1,0 +1,185 @@
+================================================================================
+                              TATTLERDB API TEST REPORT
+================================================================================
+
+Report generated: 2025-10-08 11:39:42
+API URL: http://localhost:3001/api/
+
+--------------------------------------------------------------------------------
+TEST SUMMARY
+--------------------------------------------------------------------------------
+Total Tests: 21
+Passed: 20
+Failed: 1
+Skipped: 0
+Success Rate: 95.24%
+Duration: 14.12 seconds
+
+RESPONSE TIME STATISTICS
+--------------------------------------------------------------------------------
+Min: 1.80ms
+Max: 5079.48ms
+Avg: 2399.41ms
+Median: 2592.80ms
+
+TESTED ENDPOINTS
+--------------------------------------------------------------------------------
+- 
+- health
+- health/ping
+- restaurants
+- restaurants/11689462
+
+DETAILED TEST RESULTS
+--------------------------------------------------------------------------------
+
+API info returns 200 OK:
+-----------------------:
+  1. [PASS] Endpoint: N/A
+     Response Time: 44.96ms
+     Details: Got status code: 200
+
+
+API info contains 'name' field:
+------------------------------:
+  1. [PASS] Endpoint: N/A
+     Response Time: 44.96ms
+     Details: Response keys: ['name', 'version', 'description', 'endpoints']
+
+
+API info contains 'endpoints' field:
+-----------------------------------:
+  1. [PASS] Endpoint: N/A
+     Response Time: 44.96ms
+     Details: Response keys: ['name', 'version', 'description', 'endpoints']
+
+
+Health endpoint health returns 200 OK:
+-------------------------------------:
+  1. [PASS] Endpoint: health
+     Response Time: 2014.16ms
+     Details: Got status code: 200
+
+
+Health data includes database information:
+-----------------------------------------:
+  1. [PASS] Endpoint: health
+     Response Time: 2014.16ms
+     Details: Data keys: ['status', 'timestamp', 'uptime', 'environment', 'database', 'responseTime', 'memory']
+
+
+Health endpoint health/ping returns 200 OK:
+------------------------------------------:
+  1. [PASS] Endpoint: health/ping
+     Response Time: 1.80ms
+     Details: Got status code: 200
+
+
+Ping returns 'pong' message:
+---------------------------:
+  1. [PASS] Endpoint: health/ping
+     Response Time: 1.80ms
+     Details: Message: pong
+
+
+GET restaurants with default returns 200 OK:
+-------------------------------------------:
+  1. [PASS] Endpoint: restaurants?
+     Response Time: 5079.48ms
+     Details: Got status code: 200
+
+
+Response contains 'data' field (default):
+----------------------------------------:
+  1. [PASS] Endpoint: restaurants?
+     Response Time: 5079.48ms
+     Details: Response keys: ['success', 'data']
+
+
+Restaurants data is a list (default):
+------------------------------------:
+  1. [PASS] Endpoint: restaurants?
+     Response Time: 5079.48ms
+     Details: Got type: list, length: 20
+
+
+Response includes pagination info (default):
+-------------------------------------------:
+  1. [PASS] Endpoint: restaurants?
+     Response Time: 5079.48ms
+     Details: Data keys: ['restaurants', 'pagination']
+
+
+GET restaurants with page=1, limit=5 returns 200 OK:
+---------------------------------------------------:
+  1. [PASS] Endpoint: restaurants?page=1&limit=5
+     Response Time: 2592.80ms
+     Details: Got status code: 200
+
+
+Response contains 'data' field (page=1, limit=5):
+------------------------------------------------:
+  1. [PASS] Endpoint: restaurants?page=1&limit=5
+     Response Time: 2592.80ms
+     Details: Response keys: ['success', 'data']
+
+
+Restaurants data is a list (page=1, limit=5):
+--------------------------------------------:
+  1. [PASS] Endpoint: restaurants?page=1&limit=5
+     Response Time: 2592.80ms
+     Details: Got type: list, length: 5
+
+
+Response includes pagination info (page=1, limit=5):
+---------------------------------------------------:
+  1. [PASS] Endpoint: restaurants?page=1&limit=5
+     Response Time: 2592.80ms
+     Details: Data keys: ['restaurants', 'pagination']
+
+
+GET restaurants with page=2, limit=10 returns 200 OK:
+----------------------------------------------------:
+  1. [PASS] Endpoint: restaurants?page=2&limit=10
+     Response Time: 2683.20ms
+     Details: Got status code: 200
+
+
+Response contains 'data' field (page=2, limit=10):
+-------------------------------------------------:
+  1. [PASS] Endpoint: restaurants?page=2&limit=10
+     Response Time: 2683.20ms
+     Details: Response keys: ['success', 'data']
+
+
+Restaurants data is a list (page=2, limit=10):
+---------------------------------------------:
+  1. [PASS] Endpoint: restaurants?page=2&limit=10
+     Response Time: 2683.20ms
+     Details: Got type: list, length: 10
+
+
+Response includes pagination info (page=2, limit=10):
+----------------------------------------------------:
+  1. [PASS] Endpoint: restaurants?page=2&limit=10
+     Response Time: 2683.20ms
+     Details: Data keys: ['restaurants', 'pagination']
+
+
+GET restaurant by ID returns 200 OK:
+-----------------------------------:
+  1. [PASS] Endpoint: N/A
+     Details: No additional details
+
+
+Response contains 'data' field:
+------------------------------:
+  1. [FAIL] Endpoint: N/A
+     Details: No additional details
+
+ENVIRONMENT INFORMATION
+--------------------------------------------------------------------------------
+Python Version: 3.13.5
+OS: Windows 10.0.26100
+Date/Time: 2025-10-08 11:39:42
+Log File: C:\Users\USER\Desktop\Tattler Database Project\logs\api_test_20251008_113928.log

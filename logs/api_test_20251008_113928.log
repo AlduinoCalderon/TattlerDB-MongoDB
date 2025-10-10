@@ -1,0 +1,313 @@
+2025-10-08 11:39:28,837 [INFO] [44m[37m STARTING API TESTS [0m
+2025-10-08 11:39:28,837 [INFO] [36mBase URL: http://localhost:3001/api/[0m
+2025-10-08 11:39:28,838 [INFO] [36mTimestamp: 2025-10-08 11:39:28[0m
+2025-10-08 11:39:28,838 [INFO] --------------------------------------------------------------------------------
+2025-10-08 11:39:28,838 [INFO] [45m[37m TESTING API INFO [0m
+2025-10-08 11:39:28,838 [INFO] [34mREQUEST: GET http://localhost:3001/api/[0m
+2025-10-08 11:39:28,893 [INFO] [32mTIME: 44.96ms[0m
+2025-10-08 11:39:28,894 [INFO] [32mHEADERS: {
+  "Content-Type": "application/json; charset=utf-8",
+  "Content-Length": "173",
+  "ETag": "W/\"ad-vbp1el80HVLS2nO0kSvBL4X5wyc\""
+}[0m
+2025-10-08 11:39:28,894 [INFO] [32mBODY: {
+  "name": "TattlerDB API",
+  "version": "1.0.0",
+  "description": "RESTful API for Tattler restaurant directory",
+  "endpoints": {
+    "restaurants": "/api/restaurants",
+    "health": "/api/health"
+  }
+}[0m
+2025-10-08 11:39:28,897 [INFO] [32m  Details: Got status code: 200[0m
+2025-10-08 11:39:28,897 [INFO] [32m  Response Time: 44.96ms[0m
+2025-10-08 11:39:28,898 [INFO] [32m  Details: Response keys: ['name', 'version', 'description', 'endpoints'][0m
+2025-10-08 11:39:28,898 [INFO] [32m  Response Time: 44.96ms[0m
+2025-10-08 11:39:28,900 [INFO] [32m  Details: Response keys: ['name', 'version', 'description', 'endpoints'][0m
+2025-10-08 11:39:28,900 [INFO] [32m  Response Time: 44.96ms[0m
+2025-10-08 11:39:28,900 [INFO] --------------------------------------------------------------------------------
+2025-10-08 11:39:28,900 [INFO] [45m[37m TESTING HEALTH ENDPOINTS [0m
+2025-10-08 11:39:28,901 [INFO] [34mREQUEST: GET http://localhost:3001/api/health[0m
+2025-10-08 11:39:30,917 [INFO] [32mTIME: 2014.16ms[0m
+2025-10-08 11:39:30,917 [INFO] [32mHEADERS: {
+  "Content-Type": "application/json; charset=utf-8",
+  "Content-Length": "353",
+  "ETag": "W/\"161-cX/5Gb0aIm7mIhtmfpLTdlkoldY\""
+}[0m
+2025-10-08 11:39:30,917 [INFO] [32mBODY: {
+  "success": true,
+  "data": {
+    "status": "ok",
+    "timestamp": "2025-10-08T17:39:30.914Z",
+    "uptime": 30.8384468,
+    "environment": "development",
+    "database": {
+      "status": "connected",
+      "version": "8.0.14",
+      "uptime": 168841,
+      "connections": {
+        "current": 6,
+        "available": 494,
+        "totalCreated": 181
+      },
+      "ok": 1
+    },
+    "responseTime": "2011.49ms",
+    "memory": {
+      "free": "2694 MB",
+      "total": "15588 MB",
+      "usage": "83%"
+    }
+  }
+}[0m
+2025-10-08 11:39:30,919 [INFO] [32m  Details: Got status code: 200[0m
+2025-10-08 11:39:30,919 [INFO] [32m  Response Time: 2014.16ms[0m
+2025-10-08 11:39:30,920 [INFO] [32m  Details: Data keys: ['status', 'timestamp', 'uptime', 'environment', 'database', 'responseTime', 'memory'][0m
+2025-10-08 11:39:30,920 [INFO] [32m  Response Time: 2014.16ms[0m
+2025-10-08 11:39:30,920 [INFO] [34mREQUEST: GET http://localhost:3001/api/health/ping[0m
+2025-10-08 11:39:30,924 [INFO] [32mTIME: 1.80ms[0m
+2025-10-08 11:39:30,924 [INFO] [32mHEADERS: {
+  "Content-Type": "application/json; charset=utf-8",
+  "Content-Length": "18",
+  "ETag": "W/\"12-6FyCUNJCdUkgXM8yXmM99u6fQw0\""
+}[0m
+2025-10-08 11:39:30,924 [INFO] [32mBODY: {
+  "message": "pong"
+}[0m
+2025-10-08 11:39:30,926 [INFO] [32m  Details: Got status code: 200[0m
+2025-10-08 11:39:30,926 [INFO] [32m  Response Time: 1.80ms[0m
+2025-10-08 11:39:30,928 [INFO] [32m  Details: Message: pong[0m
+2025-10-08 11:39:30,928 [INFO] [32m  Response Time: 1.80ms[0m
+2025-10-08 11:39:30,928 [INFO] --------------------------------------------------------------------------------
+2025-10-08 11:39:30,929 [INFO] [45m[37m TESTING GET RESTAURANTS [0m
+2025-10-08 11:39:30,929 [INFO] [34mREQUEST: GET http://localhost:3001/api/restaurants[0m
+2025-10-08 11:39:36,015 [INFO] [32mTIME: 5079.48ms[0m
+2025-10-08 11:39:36,015 [INFO] [32mHEADERS: {
+  "Content-Type": "application/json; charset=utf-8",
+  "Content-Length": "11442",
+  "ETag": "W/\"2cb2-6XCxMn6hPrKNuxmpN4pQVrn3A2U\""
+}[0m
+2025-10-08 11:39:36,016 [INFO] [32mBODY (truncated): {
+  "success": true,
+  "data": {
+    "restaurants": [
+      {
+        "_id": "68e5ebc365679b31649a8660",
+        "id": "11816542",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.26602108,
+            25.73596114
+          ]
+        },
+        "nombre": "RESTAURANT IHOP",
+        "razon_social": "FAMILY DINE FOODS SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "Atenea",
+        "numero_exterior": "700",
+        "colonia": "BOSQUES DEL PONIENTE",
+        "correo_electronico": "CONTADOR1.ALIMENTOS@GGALIMENTOS.COM",
+        "tipo": "Fijo",
+        "latitud": 25.73596114,
+        "longitud": -100.26602108
+      },
+      {
+        "_id": "68e5ebc365679b31649a8661",
+        "id": "6699522",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.28183074,
+            25.659570...
+(Response truncated, full data available in test results)[0m
+2025-10-08 11:39:36,018 [INFO] [32m  Details: Got status code: 200[0m
+2025-10-08 11:39:36,019 [INFO] [32m  Response Time: 5079.48ms[0m
+2025-10-08 11:39:36,020 [INFO] [32m  Details: Response keys: ['success', 'data'][0m
+2025-10-08 11:39:36,020 [INFO] [32m  Response Time: 5079.48ms[0m
+2025-10-08 11:39:36,021 [INFO] [32m  Details: Got type: list, length: 20[0m
+2025-10-08 11:39:36,021 [INFO] [32m  Response Time: 5079.48ms[0m
+2025-10-08 11:39:36,023 [INFO] [32m  Details: Data keys: ['restaurants', 'pagination'][0m
+2025-10-08 11:39:36,023 [INFO] [32m  Response Time: 5079.48ms[0m
+2025-10-08 11:39:36,023 [INFO] [34mSaved sample restaurant ID: 11816542[0m
+2025-10-08 11:39:36,023 [INFO] [34mREQUEST: GET http://localhost:3001/api/restaurants[0m
+2025-10-08 11:39:36,023 [INFO] [34mPARAMS: {
+  "page": 1,
+  "limit": 5
+}[0m
+2025-10-08 11:39:38,619 [INFO] [32mTIME: 2592.80ms[0m
+2025-10-08 11:39:38,619 [INFO] [32mHEADERS: {
+  "Content-Type": "application/json; charset=utf-8",
+  "Content-Length": "3033",
+  "ETag": "W/\"bd9-pZxW+bmbZ9gsyH5Vyrb+xRTwaHk\""
+}[0m
+2025-10-08 11:39:38,619 [INFO] [32mBODY (truncated): {
+  "success": true,
+  "data": {
+    "restaurants": [
+      {
+        "_id": "68e5ebc365679b31649a8660",
+        "id": "11816542",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.26602108,
+            25.73596114
+          ]
+        },
+        "nombre": "RESTAURANT IHOP",
+        "razon_social": "FAMILY DINE FOODS SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "Atenea",
+        "numero_exterior": "700",
+        "colonia": "BOSQUES DEL PONIENTE",
+        "correo_electronico": "CONTADOR1.ALIMENTOS@GGALIMENTOS.COM",
+        "tipo": "Fijo",
+        "latitud": 25.73596114,
+        "longitud": -100.26602108
+      },
+      {
+        "_id": "68e5ebc365679b31649a8661",
+        "id": "6699522",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.28183074,
+            25.659570...
+(Response truncated, full data available in test results)[0m
+2025-10-08 11:39:38,621 [INFO] [32m  Details: Got status code: 200[0m
+2025-10-08 11:39:38,621 [INFO] [32m  Response Time: 2592.80ms[0m
+2025-10-08 11:39:38,622 [INFO] [32m  Details: Response keys: ['success', 'data'][0m
+2025-10-08 11:39:38,622 [INFO] [32m  Response Time: 2592.80ms[0m
+2025-10-08 11:39:38,624 [INFO] [32m  Details: Got type: list, length: 5[0m
+2025-10-08 11:39:38,624 [INFO] [32m  Response Time: 2592.80ms[0m
+2025-10-08 11:39:38,626 [INFO] [32m  Details: Data keys: ['restaurants', 'pagination'][0m
+2025-10-08 11:39:38,626 [INFO] [32m  Response Time: 2592.80ms[0m
+2025-10-08 11:39:38,626 [INFO] [34mSaved sample restaurant ID: 11816542[0m
+2025-10-08 11:39:38,626 [INFO] [34mREQUEST: GET http://localhost:3001/api/restaurants[0m
+2025-10-08 11:39:38,626 [INFO] [34mPARAMS: {
+  "page": 2,
+  "limit": 10
+}[0m
+2025-10-08 11:39:41,313 [INFO] [32mTIME: 2683.20ms[0m
+2025-10-08 11:39:41,313 [INFO] [32mHEADERS: {
+  "Content-Type": "application/json; charset=utf-8",
+  "Content-Length": "5789",
+  "ETag": "W/\"169d-hbWohGEKqNzMDA7iV6B8rUZqII4\""
+}[0m
+2025-10-08 11:39:41,313 [INFO] [32mBODY (truncated): {
+  "success": true,
+  "data": {
+    "restaurants": [
+      {
+        "_id": "68e5ebc365679b31649a866a",
+        "id": "11689462",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.25666683,
+            25.67965045
+          ]
+        },
+        "nombre": "800K GOURMET",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "BENITO JUAREZ",
+        "numero_exterior": "0",
+        "numero_interior": "222",
+        "colonia": "CENTRO",
+        "codigo_postal": "67100",
+        "telefono": "8180209459",
+        "tipo": "Fijo",
+        "latitud": 25.67965045,
+        "longitud": -100.25666683
+      },
+      {
+        "_id": "68e5ebc365679b31649a866b",
+        "id": "6812369",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.39476164,
+            25.72812933
+          ]
+        },
+     ...
+(Response truncated, full data available in test results)[0m
+2025-10-08 11:39:41,315 [INFO] [32m  Details: Got status code: 200[0m
+2025-10-08 11:39:41,315 [INFO] [32m  Response Time: 2683.20ms[0m
+2025-10-08 11:39:41,317 [INFO] [32m  Details: Response keys: ['success', 'data'][0m
+2025-10-08 11:39:41,317 [INFO] [32m  Response Time: 2683.20ms[0m
+2025-10-08 11:39:41,318 [INFO] [32m  Details: Got type: list, length: 10[0m
+2025-10-08 11:39:41,319 [INFO] [32m  Response Time: 2683.20ms[0m
+2025-10-08 11:39:41,320 [INFO] [32m  Details: Data keys: ['restaurants', 'pagination'][0m
+2025-10-08 11:39:41,320 [INFO] [32m  Response Time: 2683.20ms[0m
+2025-10-08 11:39:41,320 [INFO] [34mSaved sample restaurant ID: 11689462[0m
+2025-10-08 11:39:41,320 [INFO] --------------------------------------------------------------------------------
+2025-10-08 11:39:41,320 [INFO] [45m[37m TESTING GET RESTAURANT BY ID [0m
+2025-10-08 11:39:41,320 [INFO] [34mREQUEST: GET http://localhost:3001/api/restaurants/11689462[0m
+2025-10-08 11:39:42,884 [INFO] [32mTIME: 1560.18ms[0m
+2025-10-08 11:39:42,884 [INFO] [32mHEADERS: {
+  "Content-Type": "application/json; charset=utf-8",
+  "Content-Length": "499",
+  "ETag": "W/\"1f3-djRlxdWyY6erU9HeQQKPAGmh8JY\""
+}[0m
+2025-10-08 11:39:42,884 [INFO] [32mBODY: {
+  "success": true,
+  "data": {
+    "_id": "68e5ebc365679b31649a866a",
+    "id": "11689462",
+    "ubicacion": {
+      "type": "Point",
+      "coordinates": [
+        -100.25666683,
+        25.67965045
+      ]
+    },
+    "nombre": "800K GOURMET",
+    "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+    "tipo_vialidad": "AVENIDA",
+    "calle": "BENITO JUAREZ",
+    "numero_exterior": "0",
+    "numero_interior": "222",
+    "colonia": "CENTRO",
+    "codigo_postal": "67100",
+    "telefono": "8180209459",
+    "tipo": "Fijo",
+    "latitud": 25.67965045,
+    "longitud": -100.25666683
+  }
+}[0m
+2025-10-08 11:39:42,888 [INFO] [44m[37m TEST SUMMARY [0m
+2025-10-08 11:39:42,888 [INFO] [36mDuration: 14.05 seconds[0m
+2025-10-08 11:39:42,888 [INFO] [36mTotal Tests: 21[0m
+2025-10-08 11:39:42,888 [INFO] [32mPassed: 20[0m
+2025-10-08 11:39:42,888 [INFO] [31mFailed: 1[0m
+2025-10-08 11:39:42,889 [INFO] [33mSkipped: 0[0m
+2025-10-08 11:39:42,890 [INFO] [36mResponse Time Stats:[0m
+2025-10-08 11:39:42,890 [INFO] [36m  Min: 1.80ms[0m
+2025-10-08 11:39:42,890 [INFO] [36m  Max: 5079.48ms[0m
+2025-10-08 11:39:42,890 [INFO] [36m  Avg: 2399.41ms[0m
+2025-10-08 11:39:42,890 [INFO] [36m  Median: 2592.80ms[0m
+2025-10-08 11:39:42,891 [INFO] [36mSuccess Rate: 95.24%[0m
+2025-10-08 11:39:42,891 [INFO] [36mEndpoints Tested: 5[0m
+2025-10-08 11:39:42,891 [INFO] [36m  - [0m
+2025-10-08 11:39:42,891 [INFO] [36m  - health[0m
+2025-10-08 11:39:42,891 [INFO] [36m  - health/ping[0m
+2025-10-08 11:39:42,891 [INFO] [36m  - restaurants[0m
+2025-10-08 11:39:42,892 [INFO] [36m  - restaurants/11689462[0m
+2025-10-08 11:39:42,892 [INFO] --------------------------------------------------------------------------------
+2025-10-08 11:39:42,892 [INFO] [41m[37m FAILED TESTS SUMMARY [0m
+2025-10-08 11:39:42,894 [ERROR] [31m  Endpoint: None[0m
+2025-10-08 11:39:42,895 [INFO] --------------------------------------------------------------------------------
+2025-10-08 11:39:42,895 [INFO] [44m[37m ENVIRONMENT INFORMATION [0m
+2025-10-08 11:39:42,895 [INFO] [36mPython Version: 3.13.5[0m
+2025-10-08 11:39:42,957 [INFO] [36mOS: Windows 10.0.26100[0m
+2025-10-08 11:39:42,958 [INFO] [36mAPI URL: http://localhost:3001/api/[0m
+2025-10-08 11:39:42,958 [INFO] [36mDate/Time: 2025-10-08 11:39:42[0m
+2025-10-08 11:39:42,958 [INFO] --------------------------------------------------------------------------------
+2025-10-08 11:39:42,958 [INFO] [41m[37m 1 TESTS FAILED [0m
+2025-10-08 11:39:42,958 [INFO] [36mLog file: C:\Users\USER\Desktop\Tattler Database Project\logs\api_test_20251008_113928.log[0m
+2025-10-08 11:39:42,960 [INFO] [32mDetailed text report generated: C:\Users\USER\Desktop\Tattler Database Project\reports\api_test_report_20251008_113942.txt[0m

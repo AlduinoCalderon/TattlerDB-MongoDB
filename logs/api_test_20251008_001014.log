@@ -1,0 +1,4179 @@
+2025-10-08 00:10:14,811 [INFO] [44m[37m STARTING API TESTS [0m
+2025-10-08 00:10:14,811 [INFO] [36mBase URL: http://localhost:3001/api/[0m
+2025-10-08 00:10:14,811 [INFO] [36mTimestamp: 2025-10-08 00:10:14[0m
+2025-10-08 00:10:14,811 [INFO] --------------------------------------------------------------------------------
+2025-10-08 00:10:14,811 [INFO] [45m[37m TESTING API INFO [0m
+2025-10-08 00:10:14,812 [INFO] [34mREQUEST: GET http://localhost:3001/api/[0m
+2025-10-08 00:10:14,824 [INFO] [32mRESPONSE: 200 OK[0m
+2025-10-08 00:10:14,825 [INFO] [32mTIME: 10.77ms[0m
+2025-10-08 00:10:14,825 [INFO] [32mBODY: {
+  "name": "TattlerDB API",
+  "version": "1.0.0",
+  "description": "RESTful API for Tattler restaurant directory",
+  "endpoints": {
+    "restaurants": "/api/restaurants",
+    "health": "/api/health"
+  }
+}[0m
+2025-10-08 00:10:14,830 [INFO] --------------------------------------------------------------------------------
+2025-10-08 00:10:14,830 [INFO] [45m[37m TESTING HEALTH ENDPOINTS [0m
+2025-10-08 00:10:14,830 [INFO] [34mREQUEST: GET http://localhost:3001/api/health[0m
+2025-10-08 00:10:24,843 [ERROR] [31mREQUEST ERROR: HTTPConnectionPool(host='localhost', port=3001): Read timed out. (read timeout=10)[0m
+2025-10-08 00:10:24,844 [INFO] [34mREQUEST: GET http://localhost:3001/api/health/ping[0m
+2025-10-08 00:10:24,861 [INFO] [32mRESPONSE: 200 OK[0m
+2025-10-08 00:10:24,861 [INFO] [32mTIME: 16.48ms[0m
+2025-10-08 00:10:24,861 [INFO] [32mBODY: {
+  "message": "pong"
+}[0m
+2025-10-08 00:10:24,864 [INFO] --------------------------------------------------------------------------------
+2025-10-08 00:10:24,864 [INFO] [45m[37m TESTING GET RESTAURANTS [0m
+2025-10-08 00:10:24,864 [INFO] [34mREQUEST: GET http://localhost:3001/api/restaurants[0m
+2025-10-08 00:10:27,804 [INFO] [31mRESPONSE: 500 Internal Server Error[0m
+2025-10-08 00:10:27,804 [INFO] [31mTIME: 2939.06ms[0m
+2025-10-08 00:10:27,804 [INFO] [31mBODY: {
+  "success": false,
+  "error": {
+    "message": "Attempted to check out a connection from closed connection pool",
+    "stack": "MongoPoolClosedError: Attempted to check out a connection from closed connection pool\n    at C:\\Users\\USER\\Desktop\\Tattler Database Project\\node_modules\\mongodb\\lib\\cmap\\connection_pool.js:366:40\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
+  }
+}[0m
+2025-10-08 00:10:27,806 [INFO] [34mREQUEST: GET http://localhost:3001/api/restaurants[0m
+2025-10-08 00:10:27,806 [INFO] [34mPARAMS: {
+  "page": 1,
+  "limit": 5
+}[0m
+2025-10-08 00:10:30,630 [INFO] [32mRESPONSE: 200 OK[0m
+2025-10-08 00:10:30,631 [INFO] [32mTIME: 2823.52ms[0m
+2025-10-08 00:10:30,631 [INFO] [32mBODY: {
+  "success": true,
+  "data": {
+    "restaurants": [
+      {
+        "_id": "68e5ebc365679b31649a8660",
+        "id": "11816542",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.26602108,
+            25.73596114
+          ]
+        },
+        "nombre": "RESTAURANT IHOP",
+        "razon_social": "FAMILY DINE FOODS SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "Atenea",
+        "numero_exterior": "700",
+        "colonia": "BOSQUES DEL PONIENTE",
+        "correo_electronico": "CONTADOR1.ALIMENTOS@GGALIMENTOS.COM",
+        "tipo": "Fijo",
+        "latitud": 25.73596114,
+        "longitud": -100.26602108
+      },
+      {
+        "_id": "68e5ebc365679b31649a8661",
+        "id": "6699522",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.28183074,
+            25.65957074
+          ]
+        },
+        "nombre": "1516 NUEVO SUR MTY",
+        "razon_social": "ESPECIALISTAS EN RESTAURANTES DE COMIDA ESTILO ASIATICA SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "REVOLUCI\u00d3N",
+        "numero_exterior": "2703",
+        "colonia": "LADRILLERA",
+        "codigo_postal": "64830",
+        "correo_electronico": "TUOPINIO@PFCHANGSMEXICO.COM.MX",
+        "sitio_internet": "WWW.PFCHANGSMEXICO.COM.MX",
+        "tipo": "Fijo",
+        "latitud": 25.65957074,
+        "longitud": -100.28183074
+      },
+      {
+        "_id": "68e5ebc365679b31649a8662",
+        "id": "6845984",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.35871346,
+            25.65250373
+          ]
+        },
+        "nombre": "1521 SAN PEDRO MTY",
+        "razon_social": "ESPECIALISTAS EN RESTAURANTES DE COMIDA ESTILO ASIATICA SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "JOS\u00c9 VASCONCELOS",
+        "numero_exterior": "402",
+        "colonia": "DEL VALLE",
+        "codigo_postal": "66220",
+        "correo_electronico": "TUOPINIO@PFCHANGSMEXICO.COM.MX",
+        "sitio_internet": "WWW.PFCHANGSMEXICO.COM.MX",
+        "tipo": "Fijo",
+        "latitud": 25.65250373,
+        "longitud": -100.35871346
+      },
+      {
+        "_id": "68e5ebc365679b31649a8663",
+        "id": "9455510",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.35513474,
+            25.68246835
+          ]
+        },
+        "nombre": "1529 GALERIAS MTY",
+        "razon_social": "ESPECIALISTAS EN RESTAURANTES DE COMIDA ESTILO ASIATICA SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "INSURGENTES",
+        "numero_exterior": "2500",
+        "colonia": "VISTA HERMOSA",
+        "codigo_postal": "64620",
+        "correo_electronico": "TUOPINION@PFCHANGSMEXICO.COM.MX",
+        "sitio_internet": "WWW.PFCHANGSMEXICO.COM.MX",
+        "tipo": "Fijo",
+        "latitud": 25.68246835,
+        "longitud": -100.35513474
+      },
+      {
+        "_id": "68e5ebc365679b31649a8664",
+        "id": "9895238",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.23207445,
+            25.67801709
+          ]
+        },
+        "nombre": "1LIKE PIZZA",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de pizzas, hamburguesas, hot dogs y pollos rostizados para llevar",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "BENITO JUAREZ",
+        "numero_exterior": "1851",
+        "numero_interior": "20",
+        "colonia": "EL SABINO",
+        "codigo_postal": "67150",
+        "telefono": "8122067224",
+        "correo_electronico": "PIZZA.DOCUMENTOS@GMAIL.COM",
+        "tipo": "Fijo",
+        "latitud": 25.67801709,
+        "longitud": -100.23207445
+      }
+    ],
+    "pagination": {
+      "total": 5308,
+      "page": 1,
+      "limit": 5,
+      "pages": 1062
+    }
+  }
+}[0m
+2025-10-08 00:10:30,635 [INFO] [34mSaved sample restaurant ID: 11816542[0m
+2025-10-08 00:10:30,636 [INFO] [34mREQUEST: GET http://localhost:3001/api/restaurants[0m
+2025-10-08 00:10:30,636 [INFO] [34mPARAMS: {
+  "page": 2,
+  "limit": 10
+}[0m
+2025-10-08 00:10:33,644 [INFO] [32mRESPONSE: 200 OK[0m
+2025-10-08 00:10:33,645 [INFO] [32mTIME: 3008.12ms[0m
+2025-10-08 00:10:33,645 [INFO] [32mBODY: {
+  "success": true,
+  "data": {
+    "restaurants": [
+      {
+        "_id": "68e5ebc365679b31649a866a",
+        "id": "11689462",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.25666683,
+            25.67965045
+          ]
+        },
+        "nombre": "800K GOURMET",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "BENITO JUAREZ",
+        "numero_exterior": "0",
+        "numero_interior": "222",
+        "colonia": "CENTRO",
+        "codigo_postal": "67100",
+        "telefono": "8180209459",
+        "tipo": "Fijo",
+        "latitud": 25.67965045,
+        "longitud": -100.25666683
+      },
+      {
+        "_id": "68e5ebc365679b31649a866b",
+        "id": "6812369",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.39476164,
+            25.72812933
+          ]
+        },
+        "nombre": "81093 VIPS PASEO DE LOS LEONES",
+        "razon_social": "OPERADORA VIPS S DE RL DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "PASEO DE LOS LEONES",
+        "numero_exterior": "610",
+        "colonia": "BOSQUES LAS CUMBRES",
+        "codigo_postal": "64610",
+        "correo_electronico": "DPD@ALSEA.NET",
+        "sitio_internet": "WWW.VIPS.COM.MX",
+        "tipo": "Fijo",
+        "latitud": 25.72812933,
+        "longitud": -100.39476164
+      },
+      {
+        "_id": "68e5ebc365679b31649a866c",
+        "id": "6366405",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.27128702,
+            25.61593988
+          ]
+        },
+        "nombre": "81099 VIPS MONTERREY LAS TORRES",
+        "razon_social": "OPERADORA VIPS S DE RL DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "EUGENIO GARZA SADA",
+        "numero_exterior": "6101",
+        "colonia": "PARQUE PUNTA LOMA",
+        "codigo_postal": "64870",
+        "correo_electronico": "DPD@ALSEA.NET",
+        "sitio_internet": "WWW.VIPS.COM.MX",
+        "tipo": "Fijo",
+        "latitud": 25.61593988,
+        "longitud": -100.27128702
+      },
+      {
+        "_id": "68e5ebc365679b31649a866d",
+        "id": "6364948",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.24078216,
+            25.69336145
+          ]
+        },
+        "nombre": "81114 VIPS MIGUEL ALEMAN",
+        "razon_social": "OPERADORA VIPS S DE RL DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "MIGUEL ALEM\u00c1N",
+        "numero_exterior": "7000",
+        "colonia": "TORRES LINDAVISTA G",
+        "codigo_postal": "67138",
+        "correo_electronico": "DPD@ALSEA.NET",
+        "sitio_internet": "WWW.VIPS.COM.MX",
+        "tipo": "Fijo",
+        "latitud": 25.69336145,
+        "longitud": -100.24078216
+      },
+      {
+        "_id": "68e5ebc365679b31649a866e",
+        "id": "6364950",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.35058385,
+            25.70830975
+          ]
+        },
+        "nombre": "81116 VIPS GONZALITOS",
+        "razon_social": "OPERADORA VIPS S DE RL DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "DOCTOR JOS\u00c9 ELEUTERIO GONZ\u00c1LEZ",
+        "numero_exterior": "400",
+        "colonia": "MITRAS DEL NORTE",
+        "codigo_postal": "64320",
+        "correo_electronico": "DPD@ALSEA.NET",
+        "sitio_internet": "WWW.VIPS.COM.MX",
+        "tipo": "Fijo",
+        "latitud": 25.70830975,
+        "longitud": -100.35058385
+      },
+      {
+        "_id": "68e5ebc365679b31649a866f",
+        "id": "6311750",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.30123203,
+            25.74427917
+          ]
+        },
+        "nombre": "81117 VIPS SAN NICOLAS DE LOS GARZA",
+        "razon_social": "OPERADORA VIPS S DE RL DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "UNIVERSIDAD",
+        "numero_exterior": "407",
+        "colonia": "ROBLE SAN NICOLAS",
+        "codigo_postal": "66414",
+        "correo_electronico": "DPD@ALSEA.NET",
+        "sitio_internet": "WWW.VIPS.COM.MX",
+        "tipo": "Fijo",
+        "latitud": 25.74427917,
+        "longitud": -100.30123203
+      },
+      {
+        "_id": "68e5ebc365679b31649a8670",
+        "id": "6371315",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.31310433,
+            25.66837877
+          ]
+        },
+        "nombre": "81154 VIPS PADRE MIER MTY",
+        "razon_social": "OPERADORA VIPS S DE RL DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "FRAY SERVANDO TERESA DE MIER",
+        "numero_exterior": "355",
+        "colonia": "CENTRO",
+        "codigo_postal": "64000",
+        "correo_electronico": "DPD@ALSEA.NET",
+        "sitio_internet": "WWW.VIPS.COM.MX",
+        "tipo": "Fijo",
+        "latitud": 25.66837877,
+        "longitud": -100.31310433
+      },
+      {
+        "_id": "68e5ebc365679b31649a8671",
+        "id": "6371306",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.33928246,
+            25.66899599
+          ]
+        },
+        "nombre": "81157 VIPS MONTERREY CONSTITUCION",
+        "razon_social": "OPERADORA VIPS S DE RL DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "CONSTITUCI\u00d3N",
+        "numero_exterior": "1804",
+        "colonia": "CENTRO",
+        "codigo_postal": "64040",
+        "correo_electronico": "DPD@ALSEA.NET",
+        "sitio_internet": "WWW.VIPS.COM.MX",
+        "tipo": "Fijo",
+        "latitud": 25.66899599,
+        "longitud": -100.33928246
+      },
+      {
+        "_id": "68e5ebc365679b31649a8672",
+        "id": "6370131",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.3688925,
+            25.72885969
+          ]
+        },
+        "nombre": "81191 VIPS MONTERREY LINCON",
+        "razon_social": "OPERADORA VIPS S DE RL DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "ABRAHAM LINCOLN (VILLA DE GARCIA)",
+        "numero_exterior": "5400",
+        "colonia": "SANTA CECILIA",
+        "codigo_postal": "64150",
+        "correo_electronico": "DPD@ALSEA.NET",
+        "sitio_internet": "WWW.VIPS.COM.MX",
+        "tipo": "Fijo",
+        "latitud": 25.72885969,
+        "longitud": -100.3688925
+      },
+      {
+        "_id": "68e5ebc365679b31649a8673",
+        "id": "6311747",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.36099206,
+            25.64404492
+          ]
+        },
+        "nombre": "81261 VIPS GOMEZ MORIN",
+        "razon_social": "OPERADORA VIPS S DE RL DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "MANUEL G\u00d3MEZ MOR\u00cdN",
+        "numero_exterior": "940",
+        "colonia": "SAN JERONIMO SILLER",
+        "codigo_postal": "66250",
+        "correo_electronico": "DPD@ALSEA.NET",
+        "sitio_internet": "WWW.VIPS.COM.MX",
+        "tipo": "Fijo",
+        "latitud": 25.64404492,
+        "longitud": -100.36099206
+      }
+    ],
+    "pagination": {
+      "total": 5308,
+      "page": 2,
+      "limit": 10,
+      "pages": 531
+    }
+  }
+}[0m
+2025-10-08 00:10:33,651 [INFO] [34mSaved sample restaurant ID: 11689462[0m
+2025-10-08 00:10:33,651 [INFO] --------------------------------------------------------------------------------
+2025-10-08 00:10:33,651 [INFO] [45m[37m TESTING GET RESTAURANT BY ID [0m
+2025-10-08 00:10:33,651 [INFO] [34mREQUEST: GET http://localhost:3001/api/restaurants/11689462[0m
+2025-10-08 00:10:35,320 [INFO] [32mRESPONSE: 200 OK[0m
+2025-10-08 00:10:35,320 [INFO] [32mTIME: 1667.62ms[0m
+2025-10-08 00:10:35,320 [INFO] [32mBODY: {
+  "success": true,
+  "data": {
+    "_id": "68e5ebc365679b31649a866a",
+    "id": "11689462",
+    "ubicacion": {
+      "type": "Point",
+      "coordinates": [
+        -100.25666683,
+        25.67965045
+      ]
+    },
+    "nombre": "800K GOURMET",
+    "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+    "tipo_vialidad": "AVENIDA",
+    "calle": "BENITO JUAREZ",
+    "numero_exterior": "0",
+    "numero_interior": "222",
+    "colonia": "CENTRO",
+    "codigo_postal": "67100",
+    "telefono": "8180209459",
+    "tipo": "Fijo",
+    "latitud": 25.67965045,
+    "longitud": -100.25666683
+  }
+}[0m
+2025-10-08 00:10:35,323 [INFO] [34mREQUEST: GET http://localhost:3001/api/restaurants/invalidid12345[0m
+2025-10-08 00:10:37,000 [INFO] [31mRESPONSE: 404 Not Found[0m
+2025-10-08 00:10:37,000 [INFO] [31mTIME: 1676.32ms[0m
+2025-10-08 00:10:37,000 [INFO] [31mBODY: {
+  "success": false,
+  "error": {
+    "message": "Restaurant with ID invalidid12345 not found",
+    "stack": "ApiError: Restaurant with ID invalidid12345 not found\n    at ApiError.notFound (C:\\Users\\USER\\Desktop\\Tattler Database Project\\utils\\apiError.js:13:12)\n    at getRestaurantById (C:\\Users\\USER\\Desktop\\Tattler Database Project\\controllers\\restaurant.controller.js:68:24)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
+  }
+}[0m
+2025-10-08 00:10:37,002 [INFO] --------------------------------------------------------------------------------
+2025-10-08 00:10:37,002 [INFO] [45m[37m TESTING CREATE RESTAURANT [0m
+2025-10-08 00:10:37,002 [INFO] [34mREQUEST: POST http://localhost:3001/api/restaurants[0m
+2025-10-08 00:10:37,002 [INFO] [34mDATA: {
+  "id": "test_1759903837",
+  "nombre": "Test Restaurant 1759903837",
+  "clase_actividad": "Restaurante de prueba automatizada",
+  "tipo_vialidad": "CALLE",
+  "calle": "Test Street",
+  "numero_exterior": "123",
+  "colonia": "Test Colony",
+  "codigo_postal": "12345",
+  "ubicacion": {
+    "type": "Point",
+    "coordinates": [
+      -99.1332,
+      19.4326
+    ]
+  },
+  "telefono": "555-123-4567",
+  "correo_electronico": "test@example.com",
+  "sitio_internet": "https://testrestaurant.example.com",
+  "tipo": "Fijo"
+}[0m
+2025-10-08 00:10:37,012 [INFO] [31mRESPONSE: 400 Bad Request[0m
+2025-10-08 00:10:37,013 [INFO] [31mTIME: 9.79ms[0m
+2025-10-08 00:10:37,013 [INFO] [31mBODY: {
+  "success": false,
+  "errors": [
+    {
+      "type": "field",
+      "value": -99.1332,
+      "msg": "Invalid value",
+      "path": "ubicacion.coordinates",
+      "location": "body"
+    },
+    {
+      "type": "field",
+      "value": 19.4326,
+      "msg": "Invalid value",
+      "path": "ubicacion.coordinates",
+      "location": "body"
+    }
+  ]
+}[0m
+2025-10-08 00:10:37,014 [INFO] --------------------------------------------------------------------------------
+2025-10-08 00:10:37,014 [INFO] [45m[37m TESTING UPDATE RESTAURANT [0m
+2025-10-08 00:10:37,014 [WARNING] [33mSkipping update test (no created restaurant)[0m
+2025-10-08 00:10:37,014 [INFO] --------------------------------------------------------------------------------
+2025-10-08 00:10:37,014 [INFO] [45m[37m TESTING SEARCH RESTAURANTS [0m
+2025-10-08 00:10:37,014 [INFO] [34mREQUEST: GET http://localhost:3001/api/restaurants/search/location[0m
+2025-10-08 00:10:37,014 [INFO] [34mPARAMS: {
+  "longitude": -99.1332,
+  "latitude": 19.4326,
+  "distance": 50000
+}[0m
+2025-10-08 00:10:38,649 [INFO] [32mRESPONSE: 200 OK[0m
+2025-10-08 00:10:38,649 [INFO] [32mTIME: 1633.90ms[0m
+2025-10-08 00:10:38,649 [INFO] [32mBODY: {
+  "success": true,
+  "data": {
+    "count": 0,
+    "restaurants": []
+  }
+}[0m
+2025-10-08 00:10:38,652 [INFO] [34mREQUEST: GET http://localhost:3001/api/restaurants/search/text[0m
+2025-10-08 00:10:38,652 [INFO] [34mPARAMS: {
+  "q": "Restaurant"
+}[0m
+2025-10-08 00:10:40,716 [INFO] [32mRESPONSE: 200 OK[0m
+2025-10-08 00:10:40,716 [INFO] [32mTIME: 2061.79ms[0m
+2025-10-08 00:10:40,717 [INFO] [32mBODY: {
+  "success": true,
+  "data": {
+    "count": 157,
+    "restaurants": [
+      {
+        "_id": "68e5ebc365679b31649a9b01",
+        "id": "11759583",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.33945227,
+            25.65420873
+          ]
+        },
+        "nombre": "YAMAL RESTAURANT",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "JOSE VASCONCELOS",
+        "numero_exterior": "415",
+        "numero_interior": "415",
+        "colonia": "SAN PEDRO GARZA GARCIA",
+        "codigo_postal": "66267",
+        "tipo": "Fijo",
+        "latitud": 25.65420873,
+        "longitud": -100.33945227
+      },
+      {
+        "_id": "68e5ebc365679b31649a9af0",
+        "id": "3040246",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.28491524,
+            25.64815812
+          ]
+        },
+        "nombre": "XILAKIL RESTAURANT",
+        "razon_social": "FOMENTO FINANCIERO DEL NORTE SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "JUNCO DE LA VEGA",
+        "numero_exterior": "3217",
+        "colonia": "VALLE PRIMAVERA",
+        "codigo_postal": "64830",
+        "telefono": "8211234054",
+        "correo_electronico": "XILAKILMEKICANISSIMO@GMAIL.COM",
+        "sitio_internet": "WWW.XILAKIL.COM",
+        "tipo": "Fijo",
+        "latitud": 25.64815812,
+        "longitud": -100.28491524
+      },
+      {
+        "_id": "68e5ebc365679b31649a9ac5",
+        "id": "2970272",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.31848947,
+            25.67363154
+          ]
+        },
+        "nombre": "VICTORIA RESTAURANT",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "CUAUHTEMOC",
+        "numero_exterior": "427",
+        "numero_interior": "12",
+        "colonia": "CENTRO",
+        "codigo_postal": "64000",
+        "telefono": "8123707906",
+        "tipo": "Fijo",
+        "latitud": 25.67363154,
+        "longitud": -100.31848947
+      },
+      {
+        "_id": "68e5ebc365679b31649a9682",
+        "id": "10218157",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.43782305,
+            25.67745237
+          ]
+        },
+        "nombre": "RESTAURANT ZAPATA",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "CUAUHTEMOC",
+        "numero_exterior": "105",
+        "colonia": "LOS PORTALES",
+        "codigo_postal": "66360",
+        "tipo": "Fijo",
+        "latitud": 25.67745237,
+        "longitud": -100.43782305
+      },
+      {
+        "_id": "68e5ebc365679b31649a9681",
+        "id": "3040215",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.28459056,
+            25.65142711
+          ]
+        },
+        "nombre": "RESTAURANT YAMATO",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "HAVRE",
+        "numero_exterior": "2903",
+        "numero_interior": "0",
+        "colonia": "NARVARTE",
+        "codigo_postal": "64830",
+        "telefono": "8183599013",
+        "correo_electronico": "FACTURAYAMATO@GMAIL.COM",
+        "tipo": "Fijo",
+        "latitud": 25.65142711,
+        "longitud": -100.28459056
+      },
+      {
+        "_id": "68e5ebc365679b31649a9680",
+        "id": "2930514",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.33261143,
+            25.69068794
+          ]
+        },
+        "nombre": "RESTAURANT VOCARE",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "THOMAS ALVA EDISON",
+        "numero_exterior": "1465",
+        "numero_interior": "0",
+        "colonia": "TALLERES",
+        "codigo_postal": "64480",
+        "telefono": "8196271999",
+        "correo_electronico": "ISRAELLOPEZ-LONGORIA@HOTMAIL.COM",
+        "tipo": "Fijo",
+        "latitud": 25.69068794,
+        "longitud": -100.33261143
+      },
+      {
+        "_id": "68e5ebc365679b31649a967f",
+        "id": "6805231",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.35189369,
+            25.6942919
+          ]
+        },
+        "nombre": "RESTAURANT VIVIANA",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "TERRANOVA",
+        "numero_exterior": "363",
+        "colonia": "LEONES",
+        "codigo_postal": "64600",
+        "telefono": "8126418435",
+        "correo_electronico": "1AHH63@HOTMAIL.COM",
+        "sitio_internet": "VIVIANACANTINAMARISCOS.COM",
+        "tipo": "Fijo",
+        "latitud": 25.6942919,
+        "longitud": -100.35189369
+      },
+      {
+        "_id": "68e5ebc365679b31649a967e",
+        "id": "2946779",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.2222807,
+            25.82702581
+          ]
+        },
+        "nombre": "RESTAURANT VILLARREAL",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "BENITO JUAREZ",
+        "numero_exterior": "101",
+        "numero_interior": "0",
+        "colonia": "SANTA ROSA",
+        "codigo_postal": "66604",
+        "tipo": "Fijo",
+        "latitud": 25.82702581,
+        "longitud": -100.2222807
+      },
+      {
+        "_id": "68e5ebc365679b31649a967d",
+        "id": "8734513",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.32211513,
+            25.68780299
+          ]
+        },
+        "nombre": "RESTAURANT VILLACE",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "LICENCIADO JOSE MIGUEL DOMINGUEZ",
+        "numero_exterior": "0",
+        "colonia": "INDUSTRIAL",
+        "codigo_postal": "64440",
+        "tipo": "Fijo",
+        "latitud": 25.68780299,
+        "longitud": -100.32211513
+      },
+      {
+        "_id": "68e5ebc365679b31649a967b",
+        "id": "10401767",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.35712784,
+            25.64848606
+          ]
+        },
+        "nombre": "RESTAURANT TIERRA",
+        "razon_social": "HOLDING SAPI SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "BOULEVARD",
+        "calle": "BOTANICA",
+        "numero_exterior": "405",
+        "numero_interior": "1",
+        "colonia": "PUNTO CENTRAL",
+        "codigo_postal": "66279",
+        "correo_electronico": "HOLA@OUM.MX",
+        "tipo": "Fijo",
+        "latitud": 25.64848606,
+        "longitud": -100.35712784
+      },
+      {
+        "_id": "68e5ebc365679b31649a9672",
+        "id": "8287806",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.32393713,
+            25.68353978
+          ]
+        },
+        "nombre": "RESTAURANT SERAFIN",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "SERAFIN PE\u00d1A",
+        "numero_exterior": "807",
+        "numero_interior": "0",
+        "colonia": "CENTRO",
+        "codigo_postal": "64000",
+        "correo_electronico": "CAFESNSERAFIN@GMAIL.COM",
+        "tipo": "Fijo",
+        "latitud": 25.68353978,
+        "longitud": -100.32393713
+      },
+      {
+        "_id": "68e5ebc365679b31649a966d",
+        "id": "2992263",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.36313908,
+            25.65488738
+          ]
+        },
+        "nombre": "RESTAURANT REINA",
+        "razon_social": "SERVICIOS RESTAURANTEROS REINA SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALZADA",
+        "calle": "CALZADA DEL VALLE",
+        "numero_exterior": "350",
+        "numero_interior": "23",
+        "colonia": "SAN PEDRO",
+        "codigo_postal": "66220",
+        "correo_electronico": "REINADMON@GMAIL.COM",
+        "sitio_internet": "REINADOMGMAIL.COM",
+        "tipo": "Fijo",
+        "latitud": 25.65488738,
+        "longitud": -100.36313908
+      },
+      {
+        "_id": "68e5ebc365679b31649a966c",
+        "id": "6365139",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.30019309,
+            25.74725494
+          ]
+        },
+        "nombre": "RESTAURANT REGIO",
+        "razon_social": "REGIO DEL ROBLE SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "UNIVERSIDAD",
+        "numero_exterior": "801",
+        "colonia": "ROBLE NORTE",
+        "telefono": "8182537407",
+        "correo_electronico": "EVENTOS@RESTAURANTREGIO.COM.MX",
+        "sitio_internet": "WWW.RESTAURANTREGIO.COM.MX",
+        "tipo": "Fijo",
+        "latitud": 25.74725494,
+        "longitud": -100.30019309
+      },
+      {
+        "_id": "68e5ebc365679b31649a9669",
+        "id": "2990137",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.40810395,
+            25.67987268
+          ]
+        },
+        "nombre": "RESTAURANT PEYUS",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "ANTONIO I VILLARREAL",
+        "numero_exterior": "0",
+        "numero_interior": "0",
+        "colonia": "UNIDAD REVOLUCION 2DO SECTOR",
+        "codigo_postal": "66210",
+        "tipo": "Fijo",
+        "latitud": 25.67987268,
+        "longitud": -100.40810395
+      },
+      {
+        "_id": "68e5ebc365679b31649a9667",
+        "id": "6366484",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.30680893,
+            25.68330647
+          ]
+        },
+        "nombre": "RESTAURANT PALAX",
+        "razon_social": "PALAX MADERO SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALZADA",
+        "calle": "FRANCISCO I. MADERO",
+        "numero_exterior": "717",
+        "colonia": "CENTRO",
+        "codigo_postal": "64000",
+        "correo_electronico": "ADMINISTRACION@PALAX.COM.MX",
+        "sitio_internet": "WWW.RESTAURANTPALAX.COM.MX",
+        "tipo": "Fijo",
+        "latitud": 25.68330647,
+        "longitud": -100.30680893
+      },
+      {
+        "_id": "68e5ebc365679b31649a9666",
+        "id": "6884164",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.35083693,
+            25.67313447
+          ]
+        },
+        "nombre": "RESTAURANT PALAX",
+        "razon_social": "PALAX HIDALGO SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "MIGUEL HIDALGO Y COSTILLA",
+        "numero_exterior": "2615",
+        "colonia": "JARDIN DEL OBISPADO",
+        "codigo_postal": "64050",
+        "correo_electronico": "ADMONPALAX@HOTMAIL.COM",
+        "sitio_internet": "WWW.RESTAURANTPALAX.COM",
+        "tipo": "Fijo",
+        "latitud": 25.67313447,
+        "longitud": -100.35083693
+      },
+      {
+        "_id": "68e5ebc365679b31649a9665",
+        "id": "6885568",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.35269391,
+            25.6530717
+          ]
+        },
+        "nombre": "RESTAURANT PALAX",
+        "razon_social": "PALAX MADERO SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "RICARDO MARGAIN",
+        "numero_exterior": "315",
+        "colonia": "SANTA ENGRACIA",
+        "codigo_postal": "66267",
+        "tipo": "Fijo",
+        "latitud": 25.6530717,
+        "longitud": -100.35269391
+      },
+      {
+        "_id": "68e5ebc365679b31649a9663",
+        "id": "2918707",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.30835895,
+            25.66976776
+          ]
+        },
+        "nombre": "RESTAURANT NEUQUEN",
+        "razon_social": "PATAGONIA ARGENTINA SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "DOCTOR JOSE MARIA COSS",
+        "numero_exterior": "659",
+        "numero_interior": "0",
+        "colonia": "MONTERREY",
+        "codigo_postal": "64000",
+        "telefono": "8121483952",
+        "correo_electronico": "NQNGERENCIA@GMAIL.COM",
+        "tipo": "Fijo",
+        "latitud": 25.66976776,
+        "longitud": -100.30835895
+      },
+      {
+        "_id": "68e5ebc365679b31649a9662",
+        "id": "10074963",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.32513448,
+            25.67022059
+          ]
+        },
+        "nombre": "RESTAURANT MONOLIN",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "FRAY SERVANDO TERESA DE MIER",
+        "numero_exterior": "653",
+        "numero_interior": "303",
+        "colonia": "CENTRO",
+        "codigo_postal": "64000",
+        "tipo": "Fijo",
+        "latitud": 25.67022059,
+        "longitud": -100.32513448
+      },
+      {
+        "_id": "68e5ebc365679b31649a965e",
+        "id": "10880716",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.24381619,
+            25.67950587
+          ]
+        },
+        "nombre": "RESTAURANT MAX",
+        "razon_social": "PROCESADORA DE ALIMENTOS  SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "BENITO JUAREZ",
+        "numero_exterior": "226",
+        "colonia": "AZTECA",
+        "codigo_postal": "67150",
+        "tipo": "Fijo",
+        "latitud": 25.67950587,
+        "longitud": -100.24381619
+      },
+      {
+        "_id": "68e5ebc365679b31649a965d",
+        "id": "11747438",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.31323184,
+            25.66703534
+          ]
+        },
+        "nombre": "RESTAURANT MAGALY",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "ANDADOR",
+        "calle": "EMILIO CARRANZA",
+        "numero_exterior": "926",
+        "numero_interior": "0",
+        "colonia": "CENTRO MONTERREY",
+        "codigo_postal": "64000",
+        "tipo": "Fijo",
+        "latitud": 25.66703534,
+        "longitud": -100.31323184
+      },
+      {
+        "_id": "68e5ebc365679b31649a9653",
+        "id": "2972435",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.27995439,
+            25.70347671
+          ]
+        },
+        "nombre": "RESTAURANT LABOTANA",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "ADOLFO RUIZ CORTINES",
+        "numero_exterior": "3318",
+        "numero_interior": "0",
+        "colonia": "MODERNA",
+        "codigo_postal": "64530",
+        "tipo": "Fijo",
+        "latitud": 25.70347671,
+        "longitud": -100.27995439
+      },
+      {
+        "_id": "68e5ebc365679b31649a9646",
+        "id": "6368164",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.354881,
+            25.65026012
+          ]
+        },
+        "nombre": "RESTAURANT KAMPAI",
+        "razon_social": "OPERADORA 635 SA",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "ROBLE",
+        "numero_exterior": "635",
+        "colonia": "COLONIA VALLE DEL CAMPESTRE",
+        "codigo_postal": "66265",
+        "correo_electronico": "GERENCIAKAMPAIROBLE@GRUPOKAMPAI.MX",
+        "sitio_internet": "WWW.KAMPAI.MX",
+        "tipo": "Fijo",
+        "latitud": 25.65026012,
+        "longitud": -100.354881
+      },
+      {
+        "_id": "68e5ebc365679b31649a9645",
+        "id": "2927940",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.29187173,
+            25.78808084
+          ]
+        },
+        "nombre": "RESTAURANT JUANITA",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "B",
+        "numero_exterior": "100",
+        "numero_interior": "112",
+        "colonia": "LOS CAVAZITOS",
+        "codigo_postal": "66050",
+        "tipo": "Fijo",
+        "latitud": 25.78808084,
+        "longitud": -100.29187173
+      },
+      {
+        "_id": "68e5ebc365679b31649a9642",
+        "id": "2995277",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.28685788,
+            25.63816443
+          ]
+        },
+        "nombre": "RESTAURANT IHOP",
+        "razon_social": "FAMILY DINE FOODS SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "ALFONSO REYES",
+        "numero_exterior": "3301",
+        "colonia": "CAMINO REAL",
+        "codigo_postal": "67170",
+        "correo_electronico": "CONTADOR1.GGALIMENTOS@GGALIMENTOS.COM",
+        "sitio_internet": "WWW.IHOPMEXICO.COM",
+        "tipo": "Fijo",
+        "latitud": 25.63816443,
+        "longitud": -100.28685788
+      },
+      {
+        "_id": "68e5ebc365679b31649a9641",
+        "id": "8827537",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.28497906,
+            25.6392866
+          ]
+        },
+        "nombre": "RESTAURANT IHOP",
+        "razon_social": "FAMILY DINE FOODS SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "FLOR DE LIZ",
+        "numero_exterior": "602",
+        "colonia": "ARROYO SECO",
+        "codigo_postal": "64740",
+        "correo_electronico": "GUILLERMO.ROSAS@GGALIMENTOS.COM",
+        "sitio_internet": "WWW.IHOPMEXICO.COM",
+        "tipo": "Fijo",
+        "latitud": 25.6392866,
+        "longitud": -100.28497906
+      },
+      {
+        "_id": "68e5ebc365679b31649a9640",
+        "id": "8939850",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.35929697,
+            25.65363487
+          ]
+        },
+        "nombre": "RESTAURANT IHOP",
+        "razon_social": "FAMILY DINE FOODS SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "LA ALIANZA",
+        "numero_exterior": "100",
+        "colonia": "DEL VALLE",
+        "codigo_postal": "66220",
+        "correo_electronico": "GUILLERMO.ROSAS@GGALIMENTOS.COM",
+        "sitio_internet": "WWW.IHOPMEXICO.COM",
+        "tipo": "Fijo",
+        "latitud": 25.65363487,
+        "longitud": -100.35929697
+      },
+      {
+        "_id": "68e5ebc365679b31649a963f",
+        "id": "8939714",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.40552554,
+            25.73867726
+          ]
+        },
+        "nombre": "RESTAURANT IHOP",
+        "razon_social": "FAMILY DINE FOODS SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "PASEO DE LOS LEONES",
+        "numero_exterior": "99",
+        "colonia": "CUMBRES ELITE 5TO SECTOR",
+        "codigo_postal": "64349",
+        "correo_electronico": "CONTADOR1.GGALIMENTOS@GGALIMENTOS.COM",
+        "sitio_internet": "WWW.IHOPMEXICO.COM",
+        "tipo": "Fijo",
+        "latitud": 25.73867726,
+        "longitud": -100.40552554
+      },
+      {
+        "_id": "68e5ebc365679b31649a963e",
+        "id": "8939917",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.27877881,
+            25.76879395
+          ]
+        },
+        "nombre": "RESTAURANT IHOP",
+        "razon_social": "FAMILY DINE FOODS SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "MORENITA M\u00cdA",
+        "numero_exterior": "1000",
+        "colonia": "EL CENTENARIO 2",
+        "codigo_postal": "66418",
+        "correo_electronico": "GUILLERMO.ROSAS@GGALIMENTOS.COM",
+        "sitio_internet": "WWW.IHOP.COM",
+        "tipo": "Fijo",
+        "latitud": 25.76879395,
+        "longitud": -100.27877881
+      },
+      {
+        "_id": "68e5ebc365679b31649a963d",
+        "id": "8827576",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.20096936,
+            25.74777216
+          ]
+        },
+        "nombre": "RESTAURANT IHOP",
+        "razon_social": "FAMILY DINE FOODS SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "MIGUEL ALEMAN",
+        "numero_exterior": "1000",
+        "colonia": "VALLES DE HUINALA",
+        "codigo_postal": "66650",
+        "correo_electronico": "CONTADOR1.GGALIMENTOS@GGALIMENTOS.COM",
+        "sitio_internet": "WWW.IHOPMEXICO.COM",
+        "tipo": "Fijo",
+        "latitud": 25.74777216,
+        "longitud": -100.20096936
+      },
+      {
+        "_id": "68e5ebc365679b31649a963a",
+        "id": "3014106",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.38048702,
+            25.7386986
+          ]
+        },
+        "nombre": "RESTAURANT GENESIS",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "CALANDRIA",
+        "numero_exterior": "5918",
+        "numero_interior": "0",
+        "colonia": "VALLE VERDE 2 SECTOR",
+        "codigo_postal": "64360",
+        "telefono": "8181062935",
+        "correo_electronico": "RESTAURANT.GENESIS@HOTMAIL.COM",
+        "tipo": "Fijo",
+        "latitud": 25.7386986,
+        "longitud": -100.38048702
+      },
+      {
+        "_id": "68e5ebc365679b31649a9639",
+        "id": "9878926",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.24084202,
+            25.85483847
+          ]
+        },
+        "nombre": "RESTAURANT GARCIA",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "NINGUNO",
+        "numero_exterior": "0",
+        "colonia": "SANTA ROSA",
+        "codigo_postal": "66616",
+        "telefono": "8183197839",
+        "tipo": "Fijo",
+        "latitud": 25.85483847,
+        "longitud": -100.24084202
+      },
+      {
+        "_id": "68e5ebc365679b31649a9622",
+        "id": "8830190",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.3699819,
+            25.72668171
+          ]
+        },
+        "nombre": "RESTAURANT CACTUS",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "ADOLFO RUIZ CORTINES",
+        "numero_exterior": "5334",
+        "numero_interior": "0",
+        "colonia": "VALLE VERDE 1 SECTOR",
+        "codigo_postal": "64360",
+        "tipo": "Fijo",
+        "latitud": 25.72668171,
+        "longitud": -100.3699819
+      },
+      {
+        "_id": "68e5ebc365679b31649a9620",
+        "id": "2970939",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.3475194,
+            25.67354701
+          ]
+        },
+        "nombre": "RESTAURANT BUENAVISTA",
+        "razon_social": "PROVEDORA DE ALIMENTOS Y BEBIDAS BUENAVISTA SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "BELISARIO DOMINGUEZ",
+        "numero_exterior": "2439",
+        "numero_interior": "0",
+        "colonia": "OBISPADO",
+        "codigo_postal": "64060",
+        "correo_electronico": "MAGALY.GARCIA@HOSPITALSIERRAMADRE.COM",
+        "tipo": "Fijo",
+        "latitud": 25.67354701,
+        "longitud": -100.3475194
+      },
+      {
+        "_id": "68e5ebc365679b31649a9619",
+        "id": "2916123",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.324243,
+            25.66925976
+          ]
+        },
+        "nombre": "RESTAURANT BAR",
+        "razon_social": "OPERADORA DE HOTELES Y MOTELES DE NUEVO LEON SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "MIGUEL HIDALGO Y COSTILLA",
+        "numero_exterior": "543",
+        "colonia": "CENTRO",
+        "codigo_postal": "64000",
+        "correo_electronico": "HOTELGRANDREYES@GMAIL.COM",
+        "tipo": "Fijo",
+        "latitud": 25.66925976,
+        "longitud": -100.324243
+      },
+      {
+        "_id": "68e5ebc365679b31649a9618",
+        "id": "9799449",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.31185266,
+            25.74450699
+          ]
+        },
+        "nombre": "RESTAURANT AMARANTO",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "MANUEL L BARRAGAN",
+        "numero_exterior": "112",
+        "colonia": "ANAHUAC",
+        "codigo_postal": "66450",
+        "telefono": "8126791903",
+        "correo_electronico": "PAM.BACASAA@OUTLOOK.COM",
+        "tipo": "Fijo",
+        "latitud": 25.74450699,
+        "longitud": -100.31185266
+      },
+      {
+        "_id": "68e5ebc365679b31649a90dc",
+        "id": "8649387",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.31608809,
+            25.68449973
+          ]
+        },
+        "nombre": "MAGALY RESTAURANT",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "JOSE MARIANO JIMENEZ",
+        "numero_exterior": "1003",
+        "numero_interior": "0",
+        "colonia": "CENTRO",
+        "codigo_postal": "64000",
+        "tipo": "Fijo",
+        "latitud": 25.68449973,
+        "longitud": -100.31608809
+      },
+      {
+        "_id": "68e5ebc365679b31649a8ed4",
+        "id": "10549969",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.21472435,
+            25.77120887
+          ]
+        },
+        "nombre": "KOREAN RESTAURANT",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "OJO DE AGUA",
+        "numero_exterior": "501",
+        "colonia": "PRIVADAS BORNEO",
+        "codigo_postal": "66632",
+        "tipo": "Fijo",
+        "latitud": 25.77120887,
+        "longitud": -100.21472435
+      },
+      {
+        "_id": "68e5ebc365679b31649a8e88",
+        "id": "8466263",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.37809514,
+            25.69304058
+          ]
+        },
+        "nombre": "JAGGER RESTAURANT",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "ANILLO PERIFERICO",
+        "numero_exterior": "1813",
+        "colonia": "SAN JERONIMO",
+        "codigo_postal": "64630",
+        "correo_electronico": "YAGGER.MEZCAL@HOTMAIL.COM",
+        "sitio_internet": "WWW.JAGGERRES.OLA.COM.MX",
+        "tipo": "Fijo",
+        "latitud": 25.69304058,
+        "longitud": -100.37809514
+      },
+      {
+        "_id": "68e5ebc365679b31649a8c91",
+        "id": "2928222",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.32145997,
+            25.68654984
+          ]
+        },
+        "nombre": "FASTORY RESTAURANT",
+        "razon_social": "FASTORY RESTAURANTE SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "CRISTOBAL COLON",
+        "numero_exterior": "980",
+        "numero_interior": "0",
+        "colonia": "CENTRO",
+        "codigo_postal": "64000",
+        "correo_electronico": "FACTURACIONFASTORY@FASTOSHOTEL.MX",
+        "tipo": "Fijo",
+        "latitud": 25.68654984,
+        "longitud": -100.32145997
+      },
+      {
+        "_id": "68e5ebc365679b31649a889a",
+        "id": "9712398",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.43944594,
+            25.6581399
+          ]
+        },
+        "nombre": "CHEZ RESTAURANT",
+        "razon_social": "CHEZ RESTAURANT SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "EJE INTERIOR",
+        "numero_exterior": "0",
+        "colonia": "TORRE EMA SUR",
+        "codigo_postal": "66197",
+        "telefono": "8111662035",
+        "correo_electronico": "UCORDILLERA@GMAIL.COM",
+        "tipo": "Fijo",
+        "latitud": 25.6581399,
+        "longitud": -100.43944594
+      },
+      {
+        "_id": "68e5ebc365679b31649a8860",
+        "id": "9175122",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.33783199,
+            25.65359748
+          ]
+        },
+        "nombre": "CEBALLOS RESTAURANT",
+        "razon_social": "CORPORATIVO ILDANI SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "Real San Agust\u00edn",
+        "numero_exterior": "222",
+        "colonia": "REAL SAN AGUSTIN",
+        "codigo_postal": "66266",
+        "tipo": "Fijo",
+        "latitud": 25.65359748,
+        "longitud": -100.33783199
+      },
+      {
+        "_id": "68e5ebc365679b31649a8707",
+        "id": "10839064",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.44048306,
+            25.65788297
+          ]
+        },
+        "nombre": "ASIANA RESTAURANT",
+        "razon_social": "ASIANA SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "ALFONSO REYES",
+        "numero_exterior": "10",
+        "colonia": "RDCIAL CORDILLERA",
+        "codigo_postal": "66196",
+        "telefono": "8119654616",
+        "correo_electronico": "FERCHOHEZ560@GMAIL.COM",
+        "tipo": "Fijo",
+        "latitud": 25.65788297,
+        "longitud": -100.44048306
+      },
+      {
+        "_id": "68e5ebc365679b31649a86ee",
+        "id": "10271634",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.40471887,
+            25.74090924
+          ]
+        },
+        "nombre": "ARRACHOZA RESTAURANT",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "ALEJANDRO DE RODAS",
+        "numero_exterior": "121",
+        "colonia": "CUMBRES ELITE",
+        "codigo_postal": "64349",
+        "tipo": "Fijo",
+        "latitud": 25.74090924,
+        "longitud": -100.40471887
+      },
+      {
+        "_id": "68e5ebc365679b31649a86b5",
+        "id": "2938404",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.25673293,
+            25.69269959
+          ]
+        },
+        "nombre": "ANA RESTAURANT",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "VISTA FLORIDA",
+        "numero_exterior": "214",
+        "numero_interior": "212",
+        "colonia": "LINDA VISTA",
+        "codigo_postal": "67130",
+        "telefono": "8182524507",
+        "correo_electronico": "TONY_COVAZ@HOTMAIL.COM",
+        "tipo": "Fijo",
+        "latitud": 25.69269959,
+        "longitud": -100.25673293
+      },
+      {
+        "_id": "68e5ebc365679b31649a8699",
+        "id": "10768222",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.16103837,
+            25.6817751
+          ]
+        },
+        "nombre": "ALISUSHI RESTAURANT",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "RIO YAQUI",
+        "numero_exterior": "362",
+        "colonia": "RESIDENCIAL DOS RIOS",
+        "codigo_postal": "67196",
+        "tipo": "Fijo",
+        "latitud": 25.6817751,
+        "longitud": -100.16103837
+      },
+      {
+        "_id": "68e5ebc365679b31649a8660",
+        "id": "11816542",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.26602108,
+            25.73596114
+          ]
+        },
+        "nombre": "RESTAURANT IHOP",
+        "razon_social": "FAMILY DINE FOODS SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "Atenea",
+        "numero_exterior": "700",
+        "colonia": "BOSQUES DEL PONIENTE",
+        "correo_electronico": "CONTADOR1.ALIMENTOS@GGALIMENTOS.COM",
+        "tipo": "Fijo",
+        "latitud": 25.73596114,
+        "longitud": -100.26602108
+      },
+      {
+        "_id": "68e5ebc365679b31649a99f5",
+        "id": "8970889",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.29097404,
+            25.69534587
+          ]
+        },
+        "nombre": "TWO AN-TOJITOS RESTAURANT",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "MAGNOLIA",
+        "numero_exterior": "2205",
+        "numero_interior": "0",
+        "colonia": "MODERNA",
+        "codigo_postal": "64530",
+        "tipo": "Fijo",
+        "latitud": 25.69534587,
+        "longitud": -100.29097404
+      },
+      {
+        "_id": "68e5ebc365679b31649a9973",
+        "id": "2992031",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.3736523,
+            25.65110497
+          ]
+        },
+        "nombre": "TIA CHONITA RESTAURANT",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "BOSQUES DE CANADA",
+        "numero_exterior": "202",
+        "numero_interior": "20",
+        "colonia": "BOSQUES DEL VALLE",
+        "codigo_postal": "66230",
+        "tipo": "Fijo",
+        "latitud": 25.65110497,
+        "longitud": -100.3736523
+      },
+      {
+        "_id": "68e5ebc365679b31649a9831",
+        "id": "6447165",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.28099001,
+            25.61763472
+          ]
+        },
+        "nombre": "SHING LONG RESTAURANT",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "REIMS",
+        "numero_exterior": "0",
+        "colonia": "LAS TORRES",
+        "codigo_postal": "64930",
+        "telefono": "8183499879",
+        "correo_electronico": "SINGLONGBUFFET@GMAIL.COM",
+        "tipo": "Fijo",
+        "latitud": 25.61763472,
+        "longitud": -100.28099001
+      },
+      {
+        "_id": "68e5ebc365679b31649a97fc",
+        "id": "2996199",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.2863167,
+            25.62136384
+          ]
+        },
+        "nombre": "SANTA BARBARA RESTAURANT",
+        "razon_social": "GRUPO KUTCHER",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "L\u00c1ZARO C\u00c1RDENAS",
+        "numero_exterior": "3820",
+        "colonia": "LAS TORRES",
+        "codigo_postal": "64930",
+        "correo_electronico": "LASTORRESFACTURAS@GMAIL.COM",
+        "sitio_internet": "WWW.SANTABARBARAGRILL.COM",
+        "tipo": "Fijo",
+        "latitud": 25.62136384,
+        "longitud": -100.2863167
+      },
+      {
+        "_id": "68e5ebc365679b31649a97f8",
+        "id": "2917599",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.31537546,
+            25.66696748
+          ]
+        },
+        "nombre": "SAN ANDRES RESTAURANT",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "MIGUEL HIDALGO Y COSTILLA",
+        "numero_exterior": "126",
+        "numero_interior": "0",
+        "colonia": "CENTRO",
+        "codigo_postal": "64000",
+        "telefono": "8183402331",
+        "tipo": "Fijo",
+        "latitud": 25.66696748,
+        "longitud": -100.31537546
+      },
+      {
+        "_id": "68e5ebc365679b31649a97e8",
+        "id": "10631270",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.3265527,
+            25.67041094
+          ]
+        },
+        "nombre": "RV RESTAURANT MEXICANO",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "FRAY SERVANDO TERESA DE MIER",
+        "numero_exterior": "712",
+        "colonia": "CENTRO",
+        "codigo_postal": "64000",
+        "tipo": "Fijo",
+        "latitud": 25.67041094,
+        "longitud": -100.3265527
+      },
+      {
+        "_id": "68e5ebc365679b31649a97e6",
+        "id": "9802167",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.30809453,
+            25.66664348
+          ]
+        },
+        "nombre": "RUPESTRE RESTAURANT BAR",
+        "razon_social": "LABORATORIO CULINARIO RUPESTRE SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "JOSE MARIA MORELOS Y PAVON",
+        "numero_exterior": "867",
+        "colonia": "CENTRO",
+        "codigo_postal": "64000",
+        "telefono": "8125955649",
+        "tipo": "Fijo",
+        "latitud": 25.66664348,
+        "longitud": -100.30809453
+      },
+      {
+        "_id": "68e5ebc365679b31649a9679",
+        "id": "2926873",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.31161117,
+            25.69652536
+          ]
+        },
+        "nombre": "RESTAURANT TACOS CHARLY",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de pizzas, hamburguesas, hot dogs y pollos rostizados para llevar",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "GENERAL PEDRO MARIA ANAYA",
+        "numero_exterior": "102",
+        "numero_interior": "0",
+        "colonia": "15 DE MAYO",
+        "codigo_postal": "64450",
+        "correo_electronico": "CARLOSCORTEZVAZQUEZ@HOTMAIL.COM",
+        "tipo": "Fijo",
+        "latitud": 25.69652536,
+        "longitud": -100.31161117
+      },
+      {
+        "_id": "68e5ebc365679b31649a9678",
+        "id": "2916267",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.25757322,
+            25.66396342
+          ]
+        },
+        "nombre": "RESTAURANT SUSHI JESS",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "VALPARAISO",
+        "numero_exterior": "1250",
+        "numero_interior": "0",
+        "colonia": "PUESTA DEL SOL",
+        "codigo_postal": "67145",
+        "telefono": "8119120766",
+        "tipo": "Fijo",
+        "latitud": 25.66396342,
+        "longitud": -100.25757322
+      },
+      {
+        "_id": "68e5ebc365679b31649a9676",
+        "id": "6368770",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.45623009,
+            25.68131975
+          ]
+        },
+        "nombre": "RESTAURANT SIN NOMBRE",
+        "razon_social": "OPERADORA Y ADMINISTRADORA DEL PONIENTE SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "LAS HUERTAS",
+        "numero_exterior": "951",
+        "colonia": "RINCON DE LAS HUERTAS",
+        "codigo_postal": "66350",
+        "tipo": "Fijo",
+        "latitud": 25.68131975,
+        "longitud": -100.45623009
+      },
+      {
+        "_id": "68e5ebc365679b31649a9671",
+        "id": "6368522",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.19035626,
+            25.76847199
+          ]
+        },
+        "nombre": "RESTAURANT SANTA FE",
+        "razon_social": "TREVI\u00d1O RESTAURANTES SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "MIGUEL ALEMAN",
+        "numero_exterior": "18",
+        "colonia": "CIUDAD APODACA",
+        "codigo_postal": "66600",
+        "correo_electronico": "DNESQUIVEL@SANTAFERESTAURANTE.COM",
+        "sitio_internet": "WWW.SANTAFERESTAURANTE.COM",
+        "tipo": "Fijo",
+        "latitud": 25.76847199,
+        "longitud": -100.19035626
+      },
+      {
+        "_id": "68e5ebc365679b31649a966e",
+        "id": "2936425",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.31043984,
+            25.74721408
+          ]
+        },
+        "nombre": "RESTAURANT RIVER INN",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "MANUEL L BARRAGAN",
+        "numero_exterior": "109",
+        "colonia": "PERIFERICO",
+        "codigo_postal": "66420",
+        "correo_electronico": "RESTAURANTERIVERINN@HOTMAIL.COM",
+        "tipo": "Fijo",
+        "latitud": 25.74721408,
+        "longitud": -100.31043984
+      },
+      {
+        "_id": "68e5ebc365679b31649a966b",
+        "id": "6420863",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.35165342,
+            25.68505555
+          ]
+        },
+        "nombre": "RESTAURANT RANCHO VIEJO",
+        "razon_social": "CONTROLES REALES DEL RIO SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "DOCTOR JOSE ELEUTERIO GONZALEZ",
+        "numero_exterior": "625",
+        "colonia": "PADUA",
+        "codigo_postal": "64020",
+        "tipo": "Fijo",
+        "latitud": 25.68505555,
+        "longitud": -100.35165342
+      },
+      {
+        "_id": "68e5ebc365679b31649a966a",
+        "id": "8778656",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.28421245,
+            25.63812001
+          ]
+        },
+        "nombre": "RESTAURANT QUESERIA OZULUAMA",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "EUGENIO GARZA SADA",
+        "numero_exterior": "3720",
+        "colonia": "CONTRY",
+        "codigo_postal": "64860",
+        "telefono": "7821039055",
+        "correo_electronico": "QUESERIAOZULUAMA89@GMAIL.COM",
+        "tipo": "Fijo",
+        "latitud": 25.63812001,
+        "longitud": -100.28421245
+      },
+      {
+        "_id": "68e5ebc365679b31649a9668",
+        "id": "2938510",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.25207935,
+            25.6903292
+          ]
+        },
+        "nombre": "RESTAURANT PECOS BILL",
+        "razon_social": "RESTAURANT PECOS BILL SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "MIGUEL ALEMAN",
+        "numero_exterior": "202",
+        "colonia": "LIBERTAD",
+        "codigo_postal": "67130",
+        "telefono": "8183777613",
+        "correo_electronico": "JUDITH@PECOS-BILL.COM",
+        "sitio_internet": "WWW.PECOS-BILL.COM",
+        "tipo": "Fijo",
+        "latitud": 25.6903292,
+        "longitud": -100.25207935
+      },
+      {
+        "_id": "68e5ebc365679b31649a9660",
+        "id": "2969101",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.32047399,
+            25.68460781
+          ]
+        },
+        "nombre": "RESTAURANT MI PUEBLITO",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALZADA",
+        "calle": "FRANCISCO I MADERO",
+        "numero_exterior": "820",
+        "colonia": "CENTRO",
+        "codigo_postal": "64000",
+        "correo_electronico": "J.ANGEL.GARCIA@HOTMAIL.COM",
+        "tipo": "Fijo",
+        "latitud": 25.68460781,
+        "longitud": -100.32047399
+      },
+      {
+        "_id": "68e5ebc365679b31649a965f",
+        "id": "9905169",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.27286028,
+            25.62709777
+          ]
+        },
+        "nombre": "RESTAURANT MERCADO CA\u00d1ITAS",
+        "razon_social": "IMPULSORA ECONOMICA PARA EL CRECIMIENTO SA",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "REVOLUCION",
+        "numero_exterior": "5161",
+        "colonia": "CONTRY LA SILLA",
+        "codigo_postal": "64880",
+        "tipo": "Fijo",
+        "latitud": 25.62709777,
+        "longitud": -100.27286028
+      },
+      {
+        "_id": "68e5ebc365679b31649a965c",
+        "id": "2969070",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.31831431,
+            25.68313521
+          ]
+        },
+        "nombre": "RESTAURANT M & M",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "JOSE MARIA PINO SUAREZ",
+        "numero_exterior": "806",
+        "colonia": "NORTE",
+        "codigo_postal": "64000",
+        "tipo": "Fijo",
+        "latitud": 25.68313521,
+        "longitud": -100.31831431
+      },
+      {
+        "_id": "68e5ebc365679b31649a965b",
+        "id": "2974128",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.31159246,
+            25.66710344
+          ]
+        },
+        "nombre": "RESTAURANT LOS TAPANCOS",
+        "razon_social": "SUPER SERVICIOS DEL NORESTE SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "PEATONAL",
+        "calle": "JOSE MARIA MORELOS Y PAVON",
+        "numero_exterior": "548",
+        "numero_interior": "0",
+        "colonia": "CENTRO",
+        "codigo_postal": "64000",
+        "telefono": "8183426929",
+        "correo_electronico": "ADMINISTRACION@GRUPOSSN.COM",
+        "tipo": "Fijo",
+        "latitud": 25.66710344,
+        "longitud": -100.31159246
+      },
+      {
+        "_id": "68e5ebc365679b31649a965a",
+        "id": "3029424",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.28726276,
+            25.70217716
+          ]
+        },
+        "nombre": "RESTAURANT LOS PRIMOS",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "PABLO A DE LA GARZA",
+        "numero_exterior": "3000",
+        "colonia": "MODERNA",
+        "codigo_postal": "64530",
+        "telefono": "8183519999",
+        "correo_electronico": "MIGUEL_PRIMOS@HOTMAIL.COM",
+        "sitio_internet": "LOSPRIMOSRESTANTE.COM.MX",
+        "tipo": "Fijo",
+        "latitud": 25.70217716,
+        "longitud": -100.28726276
+      },
+      {
+        "_id": "68e5ebc365679b31649a9658",
+        "id": "2993063",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.38735151,
+            25.65615993
+          ]
+        },
+        "nombre": "RESTAURANT LOS MOSTOS",
+        "razon_social": "LOS MOSTOS SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "JOSE VASCONCELOS",
+        "numero_exterior": "673",
+        "numero_interior": "0",
+        "colonia": "DEL VALLE",
+        "codigo_postal": "66220",
+        "correo_electronico": "DAMEMLOSMOSTOSVASCONCES@GMAIL.COM",
+        "sitio_internet": "WWW.LOSMOSTOS.COM.MX",
+        "tipo": "Fijo",
+        "latitud": 25.65615993,
+        "longitud": -100.38735151
+      },
+      {
+        "_id": "68e5ebc365679b31649a9656",
+        "id": "9304515",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.29415676,
+            25.657505
+          ]
+        },
+        "nombre": "RESTAURANT LOS DORADITOS",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "JUNCO DE LA VEGA",
+        "numero_exterior": "2145",
+        "colonia": "FLORIDA",
+        "codigo_postal": "64810",
+        "sitio_internet": "WWW.FACEBOOK.COMTACOSLOSDORADOS",
+        "tipo": "Fijo",
+        "latitud": 25.657505,
+        "longitud": -100.29415676
+      },
+      {
+        "_id": "68e5ebc365679b31649a9655",
+        "id": "2916534",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.32676302,
+            25.67744758
+          ]
+        },
+        "nombre": "RESTAURANT LOS CONDADOS",
+        "razon_social": "OPERADORA LOS CONDADOS SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "IGNACIO LUIS VALLARTA",
+        "numero_exterior": "102",
+        "numero_interior": "0",
+        "colonia": "CENTRO",
+        "codigo_postal": "64000",
+        "telefono": "8183458702",
+        "correo_electronico": "LOSCONDADOSVALLARTA@HOTMAIL.COM",
+        "sitio_internet": "WWW.LOSCONDADOS.COM.MX",
+        "tipo": "Fijo",
+        "latitud": 25.67744758,
+        "longitud": -100.32676302
+      },
+      {
+        "_id": "68e5ebc365679b31649a9654",
+        "id": "2916636",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.32300323,
+            25.6771065
+          ]
+        },
+        "nombre": "RESTAURANT LOS CABRITOS",
+        "razon_social": "RESTAURANT LOS CABRITOS SA",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "PROFESOR JOSE SILVESTRE ARAMBERRI",
+        "numero_exterior": "0",
+        "numero_interior": "1010",
+        "colonia": "CENTRO",
+        "codigo_postal": "64000",
+        "telefono": "8183427057",
+        "tipo": "Fijo",
+        "latitud": 25.6771065,
+        "longitud": -100.32300323
+      },
+      {
+        "_id": "68e5ebc365679b31649a9652",
+        "id": "2915384",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.33065589,
+            25.67088454
+          ]
+        },
+        "nombre": "RESTAURANT LA TIA",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "AMERICA",
+        "numero_exterior": "714",
+        "numero_interior": "0",
+        "colonia": "CENTRO",
+        "codigo_postal": "64000",
+        "telefono": "8183407088",
+        "tipo": "Fijo",
+        "latitud": 25.67088454,
+        "longitud": -100.33065589
+      },
+      {
+        "_id": "68e5ebc365679b31649a9651",
+        "id": "9026874",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.29544525,
+            25.71286806
+          ]
+        },
+        "nombre": "RESTAURANT LA TAPATIA",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "EJE SUR",
+        "numero_exterior": "1000",
+        "numero_interior": "1",
+        "colonia": "ALDAPE",
+        "codigo_postal": "66480",
+        "tipo": "Fijo",
+        "latitud": 25.71286806,
+        "longitud": -100.29544525
+      },
+      {
+        "_id": "68e5ebc365679b31649a9650",
+        "id": "11801000",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.3141692,
+            25.68452222
+          ]
+        },
+        "nombre": "RESTAURANT LA SIBERIA",
+        "razon_social": "LA SIBERIA DE NUEVO LAREDO SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "Colegio Civil",
+        "numero_exterior": "831",
+        "colonia": "CENTRO",
+        "codigo_postal": "64000",
+        "correo_electronico": "PIDIOHDZ@HOTMAIL.COM",
+        "tipo": "Fijo",
+        "latitud": 25.68452222,
+        "longitud": -100.3141692
+      },
+      {
+        "_id": "68e5ebc365679b31649a964f",
+        "id": "9659648",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.24096848,
+            25.85364274
+          ]
+        },
+        "nombre": "RESTAURANT LA PALAPA",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "NINGUNO",
+        "numero_exterior": "0",
+        "colonia": "SANTA ROSA",
+        "codigo_postal": "66616",
+        "telefono": "8116876346",
+        "tipo": "Fijo",
+        "latitud": 25.85364274,
+        "longitud": -100.24096848
+      },
+      {
+        "_id": "68e5ebc365679b31649a964d",
+        "id": "9320674",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.18378603,
+            25.65493619
+          ]
+        },
+        "nombre": "RESTAURANT LA HERMIDA",
+        "razon_social": "OPERADORA ALIMENTOS Y BEBIDAS DE GUADALUPE SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "MAESTRO ISRAEL CAVAZOS GARZA",
+        "numero_exterior": "7640",
+        "colonia": "RINCON DE GUADALUPE",
+        "codigo_postal": "67193",
+        "correo_electronico": "HECTOR.RODRIGUEZ@GMAIL.COM",
+        "tipo": "Fijo",
+        "latitud": 25.65493619,
+        "longitud": -100.18378603
+      },
+      {
+        "_id": "68e5ebc365679b31649a964c",
+        "id": "2992165",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.36623234,
+            25.65186592
+          ]
+        },
+        "nombre": "RESTAURANT LA GAVILLA",
+        "razon_social": "RESTAURANT LA GAVILLA SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "JOSE VASCONCELOS",
+        "numero_exterior": "225",
+        "numero_interior": "225",
+        "colonia": "DEL VALLE",
+        "codigo_postal": "66220",
+        "correo_electronico": "GAVILLAVALLE@HOTMAIL.COM",
+        "tipo": "Fijo",
+        "latitud": 25.65186592,
+        "longitud": -100.36623234
+      },
+      {
+        "_id": "68e5ebc365679b31649a964b",
+        "id": "2928130",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.32891912,
+            25.687202
+          ]
+        },
+        "nombre": "RESTAURANT LA CUCHARA",
+        "razon_social": "RESTAURANT LA CUCHARA SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "CRISTOBAL COLON",
+        "numero_exterior": "1770",
+        "numero_interior": "0",
+        "colonia": "CENTRO",
+        "codigo_postal": "64000",
+        "correo_electronico": "CUCHARACOLON@GMAIL.COM",
+        "tipo": "Fijo",
+        "latitud": 25.687202,
+        "longitud": -100.32891912
+      },
+      {
+        "_id": "68e5ebc365679b31649a964a",
+        "id": "2956932",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.46081953,
+            25.67609003
+          ]
+        },
+        "nombre": "RESTAURANT LA CRUCITA",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "LIBRADO GARCIA AYALA",
+        "numero_exterior": "4",
+        "numero_interior": "0",
+        "colonia": "CENTRO",
+        "codigo_postal": "66350",
+        "telefono": "8118151162",
+        "correo_electronico": "JORGE@PROBANDAS.COM",
+        "tipo": "Fijo",
+        "latitud": 25.67609003,
+        "longitud": -100.46081953
+      },
+      {
+        "_id": "68e5ebc365679b31649a9649",
+        "id": "3034680",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.30585667,
+            25.65284231
+          ]
+        },
+        "nombre": "RESTAURANT LA CABA\u00d1ITA",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de pizzas, hamburguesas, hot dogs y pollos rostizados para llevar",
+        "tipo_vialidad": "CALLE",
+        "calle": "HILARIO MARTINEZ",
+        "numero_exterior": "1609",
+        "numero_interior": "0",
+        "colonia": "ANCIRA",
+        "codigo_postal": "64720",
+        "tipo": "Fijo",
+        "latitud": 25.65284231,
+        "longitud": -100.30585667
+      },
+      {
+        "_id": "68e5ebc365679b31649a9648",
+        "id": "9277335",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.36561757,
+            25.65771702
+          ]
+        },
+        "nombre": "RESTAURANT LA BRECHA",
+        "razon_social": "RESTAURANT LA BRECHA SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "RIO TAMAZUNCHALE",
+        "numero_exterior": "240",
+        "numero_interior": "0",
+        "colonia": "DEL VALLE",
+        "codigo_postal": "66220",
+        "tipo": "Fijo",
+        "latitud": 25.65771702,
+        "longitud": -100.36561757
+      },
+      {
+        "_id": "68e5ebc365679b31649a9647",
+        "id": "9370599",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.30634055,
+            25.68303885
+          ]
+        },
+        "nombre": "RESTAURANT LA BOHEMIA",
+        "razon_social": "RESTAURANT LA BOHEMIA SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALZADA",
+        "calle": "FRANCISCO I MADERO",
+        "numero_exterior": "824",
+        "numero_interior": "0",
+        "colonia": "CENTRO",
+        "codigo_postal": "64000",
+        "tipo": "Fijo",
+        "latitud": 25.68303885,
+        "longitud": -100.30634055
+      },
+      {
+        "_id": "68e5ebc365679b31649a9644",
+        "id": "3027114",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.36292162,
+            25.69980128
+          ]
+        },
+        "nombre": "RESTAURANT JAPONES KADAN",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "PASEO DE LOS LEONES",
+        "numero_exterior": "600",
+        "numero_interior": "0",
+        "colonia": "CUMBRES",
+        "codigo_postal": "64610",
+        "telefono": "8183484150",
+        "correo_electronico": "HOHTSUKA@HOTMAIL.COM",
+        "tipo": "Fijo",
+        "latitud": 25.69980128,
+        "longitud": -100.36292162
+      },
+      {
+        "_id": "68e5ebc365679b31649a9643",
+        "id": "6224578",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.38595855,
+            25.65560784
+          ]
+        },
+        "nombre": "RESTAURANT JAPONES IKKYU",
+        "razon_social": "MESON DEL ARBOL SC DE RL DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "JOSE VASCONCELOS",
+        "numero_exterior": "645",
+        "numero_interior": "0",
+        "colonia": "DEL VALLE",
+        "codigo_postal": "66220",
+        "tipo": "Fijo",
+        "latitud": 25.65560784,
+        "longitud": -100.38595855
+      },
+      {
+        "_id": "68e5ebc365679b31649a963b",
+        "id": "6214010",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.40348287,
+            25.75754906
+          ]
+        },
+        "nombre": "RESTAURANT GRAN BAHIA",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "PROLONGACION ADOLFO RUIZ CORTINES",
+        "numero_exterior": "209",
+        "colonia": "REAL CUMBRES",
+        "codigo_postal": "64346",
+        "tipo": "Fijo",
+        "latitud": 25.75754906,
+        "longitud": -100.40348287
+      },
+      {
+        "_id": "68e5ebc365679b31649a9638",
+        "id": "2930806",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.19386489,
+            25.6508609
+          ]
+        },
+        "nombre": "RESTAURANT ESTACION JC",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "NOCHEBUENA",
+        "numero_exterior": "7241",
+        "numero_interior": "0",
+        "colonia": "SANTA MARIA",
+        "codigo_postal": "67190",
+        "telefono": "8183613118",
+        "tipo": "Fijo",
+        "latitud": 25.6508609,
+        "longitud": -100.19386489
+      },
+      {
+        "_id": "68e5ebc365679b31649a9637",
+        "id": "10051158",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.26269053,
+            25.77866364
+          ]
+        },
+        "nombre": "RESTAURANT ESTA COMIENDO",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "INSPIRACION",
+        "numero_exterior": "388",
+        "colonia": "NEVA DEMOCRACIA",
+        "codigo_postal": "66635",
+        "tipo": "Fijo",
+        "latitud": 25.77866364,
+        "longitud": -100.26269053
+      },
+      {
+        "_id": "68e5ebc365679b31649a9636",
+        "id": "2963681",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.36257385,
+            25.70392652
+          ]
+        },
+        "nombre": "RESTAURANT EL SEMAFORO",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "JOSEFA ORTIZ DE DOMINGUEZ",
+        "numero_exterior": "2529",
+        "colonia": "ZAPATA",
+        "codigo_postal": "64390",
+        "tipo": "Fijo",
+        "latitud": 25.70392652,
+        "longitud": -100.36257385
+      },
+      {
+        "_id": "68e5ebc365679b31649a9634",
+        "id": "11596399",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.32218761,
+            25.66740703
+          ]
+        },
+        "nombre": "RESTAURANT EL PAISITA",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "MELCHOR OCAMPO",
+        "numero_exterior": "425",
+        "colonia": "CENTRO",
+        "codigo_postal": "64000",
+        "tipo": "Fijo",
+        "latitud": 25.66740703,
+        "longitud": -100.32218761
+      },
+      {
+        "_id": "68e5ebc365679b31649a9633",
+        "id": "2966640",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.30476349,
+            25.71187229
+          ]
+        },
+        "nombre": "RESTAURANT EL NORTE\u00d1O",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "DOLORES LADRON DE GUEVARA",
+        "numero_exterior": "572",
+        "numero_interior": "0",
+        "colonia": "DEL NORTE",
+        "codigo_postal": "64500",
+        "correo_electronico": "GENAROCR@HOTMAIL.COM",
+        "tipo": "Fijo",
+        "latitud": 25.71187229,
+        "longitud": -100.30476349
+      },
+      {
+        "_id": "68e5ebc365679b31649a9632",
+        "id": "6368403",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.287121,
+            25.64208238
+          ]
+        },
+        "nombre": "RESTAURANT EL GAUCHO",
+        "razon_social": "EL GAUCHO DE MONTERREY SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "ARROYO SECO",
+        "numero_exterior": "100",
+        "colonia": "ARROYO SECO",
+        "codigo_postal": "64740",
+        "correo_electronico": "INFO@RESTAURANTEELGAUCHO.COM",
+        "sitio_internet": "WWW.RESTAURANTEELGAUCHO.COM",
+        "tipo": "Fijo",
+        "latitud": 25.64208238,
+        "longitud": -100.287121
+      },
+      {
+        "_id": "68e5ebc365679b31649a9631",
+        "id": "2916260",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.25356251,
+            25.66869389
+          ]
+        },
+        "nombre": "RESTAURANT EL CAPULLITO",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de pizzas, hamburguesas, hot dogs y pollos rostizados para llevar",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "VALPARAISO",
+        "numero_exterior": "919",
+        "numero_interior": "0",
+        "colonia": "JARDINES DE LA PASTORA",
+        "codigo_postal": "67140",
+        "tipo": "Fijo",
+        "latitud": 25.66869389,
+        "longitud": -100.25356251
+      },
+      {
+        "_id": "68e5ebc365679b31649a9630",
+        "id": "8794233",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.22235069,
+            25.70958719
+          ]
+        },
+        "nombre": "RESTAURANT DE MAX",
+        "razon_social": "PROCESADORA DE ALIMENTOS MAX SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "MIGUEL ALEMAN",
+        "colonia": "ARBOLEDAS DE NUEVA LINDA VISTA",
+        "codigo_postal": "67129",
+        "correo_electronico": "LUIGARDEMAX@HOTMAIL.COM",
+        "tipo": "Fijo",
+        "latitud": 25.70958719,
+        "longitud": -100.22235069
+      },
+      {
+        "_id": "68e5ebc365679b31649a962e",
+        "id": "10245574",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.28511739,
+            25.64149945
+          ]
+        },
+        "nombre": "RESTAURANT DE COMIDAS",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "ARGOS",
+        "numero_exterior": "1710",
+        "colonia": "ARROYO SECO",
+        "codigo_postal": "64740",
+        "tipo": "Fijo",
+        "latitud": 25.64149945,
+        "longitud": -100.28511739
+      },
+      {
+        "_id": "68e5ebc365679b31649a962a",
+        "id": "3016873",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.43782305,
+            25.67745237
+          ]
+        },
+        "nombre": "RESTAURANT DAVILAS HOUSE",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "CUAUHTEMOC",
+        "numero_exterior": "105",
+        "colonia": "LOS PORTALES",
+        "codigo_postal": "66360",
+        "correo_electronico": "DAVILASSANTA@GMAIL.COM",
+        "tipo": "Fijo",
+        "latitud": 25.67745237,
+        "longitud": -100.43782305
+      },
+      {
+        "_id": "68e5ebc365679b31649a9629",
+        "id": "3007079",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.27458242,
+            25.74141312
+          ]
+        },
+        "nombre": "RESTAURANT DAVILAS HOUSE",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "MONTE OLIMPO",
+        "numero_exterior": "1105",
+        "numero_interior": "0",
+        "colonia": "BALCONES DE LAS PUENTES",
+        "codigo_postal": "66466",
+        "telefono": "8183831824",
+        "correo_electronico": "DAVILASPUENTES@HOTMAIL.COM",
+        "tipo": "Fijo",
+        "latitud": 25.74141312,
+        "longitud": -100.27458242
+      },
+      {
+        "_id": "68e5ebc365679b31649a9628",
+        "id": "2968162",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.32522898,
+            25.688152
+          ]
+        },
+        "nombre": "RESTAURANT COMIDA CHINA",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "IGNACIO LUIS VALLARTA",
+        "numero_exterior": "0",
+        "numero_interior": "0",
+        "colonia": "CENTRO",
+        "codigo_postal": "64000",
+        "telefono": "8110483097",
+        "tipo": "Fijo",
+        "latitud": 25.688152,
+        "longitud": -100.32522898
+      },
+      {
+        "_id": "68e5ebc365679b31649a9627",
+        "id": "2980866",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.23207445,
+            25.67801709
+          ]
+        },
+        "nombre": "RESTAURANT COMIDA CHINA",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "BENITO JUAREZ",
+        "numero_exterior": "1851",
+        "colonia": "EL SABINO",
+        "codigo_postal": "67150",
+        "telefono": "8119658593",
+        "correo_electronico": "FACTURACIONCONSUMOS@GMAIL.COM",
+        "tipo": "Fijo",
+        "latitud": 25.67801709,
+        "longitud": -100.23207445
+      },
+      {
+        "_id": "68e5ebc365679b31649a9624",
+        "id": "3019498",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.36934572,
+            25.71792003
+          ]
+        },
+        "nombre": "RESTAURANT CHINA & RICE",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "SAN JUAN DE LOS LAGOS",
+        "numero_exterior": "4211",
+        "numero_interior": "0",
+        "colonia": "LOS CEDROS",
+        "codigo_postal": "64370",
+        "correo_electronico": "BORDAMARCO9@GMAIL.COM",
+        "tipo": "Fijo",
+        "latitud": 25.71792003,
+        "longitud": -100.36934572
+      },
+      {
+        "_id": "68e5ebc365679b31649a9621",
+        "id": "3027280",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.3636818,
+            25.63457472
+          ]
+        },
+        "nombre": "RESTAURANT BURGER NATION",
+        "razon_social": "TORO MELON SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de pizzas, hamburguesas, hot dogs y pollos rostizados para llevar",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "Manuel G\u00f3mez Mor\u00edn",
+        "numero_exterior": "100",
+        "numero_interior": "14",
+        "colonia": "CARRIZALEJO",
+        "codigo_postal": "66254",
+        "sitio_internet": "WWW.BURGUERNATION.COM.MX",
+        "tipo": "Fijo",
+        "latitud": 25.63457472,
+        "longitud": -100.3636818
+      },
+      {
+        "_id": "68e5ebc365679b31649a961f",
+        "id": "3033526",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.30606136,
+            25.67068092
+          ]
+        },
+        "nombre": "RESTAURANT BAR TENERIAS",
+        "razon_social": "RESTAURANT BAR TENERIAS SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "ANDADOR",
+        "calle": "L GARZA AYALA",
+        "numero_exterior": "0",
+        "numero_interior": "4",
+        "colonia": "CENTRO",
+        "codigo_postal": "64000",
+        "telefono": "8120109016",
+        "correo_electronico": "COMPRAS.TENERIAS@GMAIL.COM",
+        "sitio_internet": "TENERIAS.COM.MX",
+        "tipo": "Fijo",
+        "latitud": 25.67068092,
+        "longitud": -100.30606136
+      },
+      {
+        "_id": "68e5ebc365679b31649a9617",
+        "id": "6215899",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.27455414,
+            25.64346589
+          ]
+        },
+        "nombre": "RESTAURANT 7 SALSAS",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "ALFONSO REYES",
+        "numero_exterior": "363",
+        "numero_interior": "0",
+        "colonia": "CONTRY TESORO",
+        "codigo_postal": "64850",
+        "correo_electronico": "FACTURAS.7SALSAS@GMAIL.COM",
+        "tipo": "Fijo",
+        "latitud": 25.64346589,
+        "longitud": -100.27455414
+      },
+      {
+        "_id": "68e5ebc365679b31649a9616",
+        "id": "9308184",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.29145719,
+            25.64954605
+          ]
+        },
+        "nombre": "RESTAURANT 3ER TIEMPO",
+        "razon_social": "3CER TIEMPO SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "EUGENIO GARZA SADA",
+        "numero_exterior": "2660",
+        "numero_interior": "0",
+        "colonia": "TECNOLOGICO",
+        "codigo_postal": "64700",
+        "tipo": "Fijo",
+        "latitud": 25.64954605,
+        "longitud": -100.29145719
+      },
+      {
+        "_id": "68e5ebc365679b31649a95e0",
+        "id": "7813483",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.33524555,
+            25.68585379
+          ]
+        },
+        "nombre": "QUE HUEVOS RESTAURANT",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "CAPITAN LORENZO DE AGUILAR",
+        "numero_exterior": "917",
+        "numero_interior": "0",
+        "colonia": "CENTRO",
+        "codigo_postal": "64000",
+        "tipo": "Fijo",
+        "latitud": 25.68585379,
+        "longitud": -100.33524555
+      },
+      {
+        "_id": "68e5ebc365679b31649a91b1",
+        "id": "6704614",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.217327,
+            25.74250218
+          ]
+        },
+        "nombre": "MYUNGGA KOREAN RESTAURANT",
+        "razon_social": "MYUNGGA KOREAN RESTAURANT SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "ISIDORO SEPULVEDA MARTINEZ",
+        "numero_exterior": "690",
+        "colonia": "JM",
+        "codigo_postal": "66633",
+        "correo_electronico": "ASCIS2085@DAUM.NET",
+        "tipo": "Fijo",
+        "latitud": 25.74250218,
+        "longitud": -100.217327
+      },
+      {
+        "_id": "68e5ebc365679b31649a9185",
+        "id": "8432934",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.24635885,
+            25.69223764
+          ]
+        },
+        "nombre": "MR BROWN RESTAURANT",
+        "razon_social": "MR BROWN RESTAURANT SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de pizzas, hamburguesas, hot dogs y pollos rostizados para llevar",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "MIGUEL ALEMAN",
+        "numero_exterior": "911",
+        "numero_interior": "0",
+        "colonia": "VALLES DE LINDA VISTA",
+        "codigo_postal": "67130",
+        "tipo": "Fijo",
+        "latitud": 25.69223764,
+        "longitud": -100.24635885
+      },
+      {
+        "_id": "68e5ebc365679b31649a90f0",
+        "id": "8734797",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.34426292,
+            25.66597408
+          ]
+        },
+        "nombre": "MANOLO S RESTAURANT",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "LOMA REDONDA",
+        "numero_exterior": "1630",
+        "numero_interior": "3",
+        "colonia": "LOMA LARGA",
+        "codigo_postal": "64710",
+        "telefono": "8136733766",
+        "correo_electronico": "MANOLOKITCHEN@ICLOUD.COM",
+        "tipo": "Fijo",
+        "latitud": 25.66597408,
+        "longitud": -100.34426292
+      },
+      {
+        "_id": "68e5ebc365679b31649a905c",
+        "id": "7563618",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.33612935,
+            25.67002578
+          ]
+        },
+        "nombre": "LE CHEF RESTAURANT",
+        "razon_social": "LE CHEF ORGANIZACION SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "MIGUEL HIDALGO Y COSTILLA",
+        "numero_exterior": "1476",
+        "colonia": "MARIA LUISA",
+        "codigo_postal": "64040",
+        "correo_electronico": "CAFETERIA@ICMAC.EDU.MX",
+        "tipo": "Fijo",
+        "latitud": 25.67002578,
+        "longitud": -100.33612935
+      },
+      {
+        "_id": "68e5ebc365679b31649a902f",
+        "id": "2942944",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.18882472,
+            25.77719655
+          ]
+        },
+        "nombre": "LAS CAZUELAS RESTAURANT",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "PORFIRIO DIAZ",
+        "colonia": "APODACA CENTRO",
+        "codigo_postal": "66600",
+        "telefono": "8184483021",
+        "correo_electronico": "HUGOHUMILDES@HOTMAIL.COM",
+        "tipo": "Fijo",
+        "latitud": 25.77719655,
+        "longitud": -100.18882472
+      },
+      {
+        "_id": "68e5ebc365679b31649a9014",
+        "id": "10154152",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.27421904,
+            25.82726381
+          ]
+        },
+        "nombre": "LAS ALEIDAS RESTAURANT",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "NINGUNO",
+        "numero_exterior": "0",
+        "colonia": "NUEVA CASTILLA",
+        "codigo_postal": "66052",
+        "tipo": "Fijo",
+        "latitud": 25.82726381,
+        "longitud": -100.27421904
+      },
+      {
+        "_id": "68e5ebc365679b31649a9001",
+        "id": "7962226",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.21155594,
+            25.67502362
+          ]
+        },
+        "nombre": "LA VALENTINA RESTAURANT",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "BENITO JUAREZ",
+        "numero_exterior": "4595",
+        "numero_interior": "0",
+        "colonia": "CHULA VISTA",
+        "codigo_postal": "67188",
+        "tipo": "Fijo",
+        "latitud": 25.67502362,
+        "longitud": -100.21155594
+      },
+      {
+        "_id": "68e5ebc365679b31649a8fd1",
+        "id": "9436084",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.33978056,
+            25.64996468
+          ]
+        },
+        "nombre": "LA PUNTADA RESTAURANT",
+        "razon_social": "LA PUNTADA RESTAURANT SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "REAL SAN AGUST\u00cdN",
+        "numero_exterior": "500",
+        "colonia": "REAL SAN AGUSTIN",
+        "codigo_postal": "66260",
+        "correo_electronico": "GERENCIARH@LAPUNTADA.COM.MX",
+        "sitio_internet": "WWWLAPUNTADA.COM.MX",
+        "tipo": "Fijo",
+        "latitud": 25.64996468,
+        "longitud": -100.33978056
+      },
+      {
+        "_id": "68e5ebc365679b31649a8fc0",
+        "id": "9302390",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.29165118,
+            25.64754648
+          ]
+        },
+        "nombre": "LA PASADA RESTAURANT",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de pizzas, hamburguesas, hot dogs y pollos rostizados para llevar",
+        "tipo_vialidad": "CALLE",
+        "calle": "TECNICOS",
+        "numero_exterior": "0",
+        "colonia": "TECNOLOGICO",
+        "codigo_postal": "64700",
+        "tipo": "Fijo",
+        "latitud": 25.64754648,
+        "longitud": -100.29165118
+      },
+      {
+        "_id": "68e5ebc365679b31649a8fb4",
+        "id": "7656875",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.26545533,
+            25.67440489
+          ]
+        },
+        "nombre": "LA PALOMITA RESTAURANT",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "JOSE MARIA MORELOS Y PAVON",
+        "numero_exterior": "200",
+        "numero_interior": "21",
+        "colonia": "CENTRO",
+        "codigo_postal": "67100",
+        "tipo": "Fijo",
+        "latitud": 25.67440489,
+        "longitud": -100.26545533
+      },
+      {
+        "_id": "68e5ebc365679b31649a8f82",
+        "id": "11790532",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.29066271,
+            25.78757225
+          ]
+        },
+        "nombre": "LA GUERITA RESTAURANT",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "CALLE A",
+        "numero_exterior": "0",
+        "numero_interior": "183",
+        "colonia": "MERCADO LA HACIENDA",
+        "codigo_postal": "66050",
+        "tipo": "Fijo",
+        "latitud": 25.78757225,
+        "longitud": -100.29066271
+      },
+      {
+        "_id": "68e5ebc365679b31649a8d16",
+        "id": "6215288",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.35641379,
+            25.6715948
+          ]
+        },
+        "nombre": "GRAN INVERNADERO RESTAURANT",
+        "razon_social": "RESTAURANT BAR GRAN INVERNADERO SC",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "DOCTOR IGNACIO MORONES PRIETO",
+        "colonia": "DEL CARMEN",
+        "codigo_postal": "64710",
+        "correo_electronico": "INVERNADEROLEGADO@HOTMAIL.COM",
+        "tipo": "Fijo",
+        "latitud": 25.6715948,
+        "longitud": -100.35641379
+      },
+      {
+        "_id": "68e5ebc365679b31649a8d00",
+        "id": "11261469",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.20638761,
+            25.73941017
+          ]
+        },
+        "nombre": "GOLMOK SIKDONG RESTAURANT",
+        "razon_social": "SANG KYU JUN SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "MIGUEL ALEMAN",
+        "numero_exterior": "0",
+        "numero_interior": "114",
+        "colonia": "REGIO",
+        "codigo_postal": "66633",
+        "telefono": "8113587967",
+        "correo_electronico": "MONTEJUNS@GMAIL.COM",
+        "tipo": "Fijo",
+        "latitud": 25.73941017,
+        "longitud": -100.20638761
+      },
+      {
+        "_id": "68e5ebc365679b31649a8ce8",
+        "id": "2943435",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.20638761,
+            25.73941017
+          ]
+        },
+        "nombre": "GALBIS KOREAN RESTAURANT",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "MIGUEL ALEMAN",
+        "numero_exterior": "0",
+        "numero_interior": "101",
+        "colonia": "REGIO",
+        "codigo_postal": "66633",
+        "telefono": "8113340368",
+        "correo_electronico": "SONGMARX@HOTMAIL.COM",
+        "tipo": "Fijo",
+        "latitud": 25.73941017,
+        "longitud": -100.20638761
+      },
+      {
+        "_id": "68e5ebc365679b31649a8c6b",
+        "id": "8695780",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.36516058,
+            25.65854505
+          ]
+        },
+        "nombre": "ENCHILADAS ROSY RESTAURANT",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "RIO TAMAZUNCHALE",
+        "numero_exterior": "307",
+        "numero_interior": "305",
+        "colonia": "DEL VALLE",
+        "codigo_postal": "66220",
+        "correo_electronico": "ENCHILADASROSSY-VALLE@LIVE.COM.MX",
+        "tipo": "Fijo",
+        "latitud": 25.65854505,
+        "longitud": -100.36516058
+      },
+      {
+        "_id": "68e5ebc365679b31649a8bb4",
+        "id": "3003425",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.3173323,
+            25.66746062
+          ]
+        },
+        "nombre": "EL MARSHALL RESTAURANT",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "JOSE GARIBALDI",
+        "numero_exterior": "908",
+        "numero_interior": "0",
+        "colonia": "CENTRO",
+        "codigo_postal": "64000",
+        "telefono": "8183408943",
+        "correo_electronico": "RESTELMARSHALL@GMAIL.COM.MX",
+        "tipo": "Fijo",
+        "latitud": 25.66746062,
+        "longitud": -100.3173323
+      },
+      {
+        "_id": "68e5ebc365679b31649a8b94",
+        "id": "9431317",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.23136813,
+            25.74448661
+          ]
+        },
+        "nombre": "EL FRISON RESTAURANT",
+        "razon_social": "PROVEEDORA DE ALIMENTOS Y SERVICIOS EL FRISON SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "OTRO(ESPECIFIQUE)",
+        "calle": "NINGUNO",
+        "numero_exterior": "650",
+        "numero_interior": "2",
+        "colonia": "VALLE DEL MEQUITAL",
+        "codigo_postal": "66632",
+        "correo_electronico": "CONTABILIDAD@ELFRISON.COM.MX",
+        "sitio_internet": "WWW.ELFRISON.COM.MX",
+        "tipo": "Fijo",
+        "latitud": 25.74448661,
+        "longitud": -100.23136813
+      },
+      {
+        "_id": "68e5ebc365679b31649a887e",
+        "id": "8794504",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.13289,
+            25.76507688
+          ]
+        },
+        "nombre": "CHARIM KOREAN RESTAURANT",
+        "razon_social": "JUNG PIL KO SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "ALMERIA",
+        "numero_exterior": "0",
+        "colonia": "ALMERIA",
+        "codigo_postal": "66626",
+        "telefono": "8119984505",
+        "correo_electronico": "ATELIER.KO.MX@GMAIL.COM",
+        "tipo": "Fijo",
+        "latitud": 25.76507688,
+        "longitud": -100.13289
+      },
+      {
+        "_id": "68e5ebc365679b31649a86b3",
+        "id": "10789233",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.4404856,
+            25.65787407
+          ]
+        },
+        "nombre": "AMUNI RESTAURANT BAR",
+        "razon_social": "AMUNI RESTAURANT BAR SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "ALFONSO REYES",
+        "numero_exterior": "10",
+        "colonia": "RDCIAL CORDILLERA",
+        "codigo_postal": "66196",
+        "correo_electronico": "AGUILARJOHAN138@GMAIL.COM",
+        "tipo": "Fijo",
+        "latitud": 25.65787407,
+        "longitud": -100.4404856
+      },
+      {
+        "_id": "68e5ebc365679b31649a967a",
+        "id": "3045862",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.28189797,
+            25.62234286
+          ]
+        },
+        "nombre": "RESTAURANT TEXAS SMOKEYARD BARBECUE",
+        "razon_social": "CARLOS ELISEO RODRIGUEZ CONSTANTINO SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "BOULEVARD",
+        "calle": "ACAPULCO",
+        "numero_exterior": "4100",
+        "colonia": "LAS BRISAS 8 SECTOR",
+        "codigo_postal": "64790",
+        "correo_electronico": "FACTURACION@TEXASSMOEYARD.COM",
+        "sitio_internet": "WWW.TEXASSMOKEYARD.COM",
+        "tipo": "Fijo",
+        "latitud": 25.62234286,
+        "longitud": -100.28189797
+      },
+      {
+        "_id": "68e5ebc365679b31649a9677",
+        "id": "3009649",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.34840912,
+            25.70774448
+          ]
+        },
+        "nombre": "RESTAURANT SUPER CARNES BUSTAMANTE",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "JALAPA",
+        "numero_exterior": "400",
+        "numero_interior": "0",
+        "colonia": "MITRAS NORTE",
+        "codigo_postal": "64320",
+        "tipo": "Fijo",
+        "latitud": 25.70774448,
+        "longitud": -100.34840912
+      },
+      {
+        "_id": "68e5ebc365679b31649a9670",
+        "id": "6368161",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.35431368,
+            25.65310037
+          ]
+        },
+        "nombre": "RESTAURANT SAN CARLOS VALLE",
+        "razon_social": "TECNOLOGIAA APETITO SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "JOSE VASCONCELOS",
+        "numero_exterior": "616",
+        "colonia": "COLONIA VALLE DEL CAMPESTRE",
+        "codigo_postal": "66265",
+        "correo_electronico": "FACTURACION@RESTAURANTESANCARLOSVALLE.COM",
+        "sitio_internet": "SANCARLOSVALLE.COM",
+        "tipo": "Fijo",
+        "latitud": 25.65310037,
+        "longitud": -100.35431368
+      },
+      {
+        "_id": "68e5ebc365679b31649a966f",
+        "id": "10282571",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.36789935,
+            25.75747197
+          ]
+        },
+        "nombre": "RESTAURANT SAL Y PIMIENTA",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "AZTLAN",
+        "numero_exterior": "8978",
+        "colonia": "SAN BERNABE II SECTOR",
+        "codigo_postal": "64104",
+        "telefono": "8110766971",
+        "tipo": "Fijo",
+        "latitud": 25.75747197,
+        "longitud": -100.36789935
+      },
+      {
+        "_id": "68e5ebc365679b31649a9661",
+        "id": "6699635",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.1982812,
+            25.74734348
+          ]
+        },
+        "nombre": "RESTAURANT MIN SOK CHON",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "BOULEVARD",
+        "calle": "JULIAN TREVI\u00d1O ELIZONDO",
+        "numero_exterior": "100",
+        "numero_interior": "7",
+        "colonia": "EL MILAGRO",
+        "codigo_postal": "66634",
+        "telefono": "8188802333",
+        "correo_electronico": "GRUPOMINSOKCHON@GMAIL.COM",
+        "tipo": "Fijo",
+        "latitud": 25.74734348,
+        "longitud": -100.1982812
+      },
+      {
+        "_id": "68e5ebc365679b31649a964e",
+        "id": "2920169",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.31854685,
+            25.6731061
+          ]
+        },
+        "nombre": "RESTAURANT LA MARINA 1",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "CUAUHTEMOC",
+        "numero_exterior": "315",
+        "numero_interior": "4",
+        "colonia": "CENTRO DE MONTERREY",
+        "codigo_postal": "64000",
+        "telefono": "8114743338",
+        "tipo": "Fijo",
+        "latitud": 25.6731061,
+        "longitud": -100.31854685
+      },
+      {
+        "_id": "68e5ebc365679b31649a963c",
+        "id": "11580906",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.30670737,
+            25.66949916
+          ]
+        },
+        "nombre": "RESTAURANT HOTEL BARRIO VERGEL",
+        "razon_social": "EV ALLENDE GOLF Y SPA SDRL CV S DE RL DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "IGNACIO ALLENDE",
+        "numero_exterior": "920",
+        "colonia": "CENTRO",
+        "codigo_postal": "64000",
+        "tipo": "Fijo",
+        "latitud": 25.66949916,
+        "longitud": -100.30670737
+      },
+      {
+        "_id": "68e5ebc365679b31649a9635",
+        "id": "7704334",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.34838105,
+            25.70698081
+          ]
+        },
+        "nombre": "RESTAURANT EL RINCON DORADO",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "REYNOSA",
+        "numero_exterior": "200",
+        "numero_interior": "0",
+        "colonia": "MITRAS NORTE",
+        "codigo_postal": "64320",
+        "telefono": "8128691269",
+        "correo_electronico": "RNCNDORADO@GMAIL.COM",
+        "tipo": "Fijo",
+        "latitud": 25.70698081,
+        "longitud": -100.34838105
+      },
+      {
+        "_id": "68e5ebc365679b31649a962f",
+        "id": "9046754",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.31813073,
+            25.67612239
+          ]
+        },
+        "nombre": "RESTAURANT DE LA SILLA",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "CUAUHTEMOC",
+        "numero_exterior": "121",
+        "numero_interior": "0",
+        "colonia": "MONTERREY",
+        "codigo_postal": "64000",
+        "telefono": "8126181648",
+        "tipo": "Fijo",
+        "latitud": 25.67612239,
+        "longitud": -100.31813073
+      },
+      {
+        "_id": "68e5ebc365679b31649a962d",
+        "id": "2943372",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.19154885,
+            25.74683536
+          ]
+        },
+        "nombre": "RESTAURANT DE COMIDA COREANA",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "CAMINO VECINAL AL MILAGRO",
+        "numero_exterior": "300",
+        "numero_interior": "0",
+        "colonia": "EL MILAGRO",
+        "codigo_postal": "66634",
+        "telefono": "8123856486",
+        "tipo": "Fijo",
+        "latitud": 25.74683536,
+        "longitud": -100.19154885
+      },
+      {
+        "_id": "68e5ebc365679b31649a9625",
+        "id": "2972366",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.2968266,
+            25.68480168
+          ]
+        },
+        "nombre": "RESTAURANT CHINO JIN LAI",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "FELIX URESTI GOMEZ",
+        "numero_exterior": "1310",
+        "numero_interior": "0",
+        "colonia": "TERMINAL",
+        "codigo_postal": "64580",
+        "tipo": "Fijo",
+        "latitud": 25.68480168,
+        "longitud": -100.2968266
+      },
+      {
+        "_id": "68e5ebc365679b31649a961e",
+        "id": "6217526",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.28271225,
+            25.63498943
+          ]
+        },
+        "nombre": "RESTAURANT BAR RANCHO VIEJO",
+        "razon_social": "LA CABA Y ALIMENTOS GRILL SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "VIA ALCALA",
+        "numero_exterior": "3027",
+        "numero_interior": "0",
+        "colonia": "MAS PALOMAS",
+        "codigo_postal": "64780",
+        "tipo": "Fijo",
+        "latitud": 25.63498943,
+        "longitud": -100.28271225
+      },
+      {
+        "_id": "68e5ebc365679b31649a961d",
+        "id": "11619448",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.30030763,
+            25.671855
+          ]
+        },
+        "nombre": "RESTAURANT BAR PUEBLO VIEJO",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "TACUBA",
+        "numero_exterior": "1600",
+        "numero_interior": "0",
+        "colonia": "CENTRO",
+        "codigo_postal": "64000",
+        "telefono": "8110777374",
+        "tipo": "Fijo",
+        "latitud": 25.671855,
+        "longitud": -100.30030763
+      },
+      {
+        "_id": "68e5ebc365679b31649a961c",
+        "id": "2936816",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.23763038,
+            25.69426789
+          ]
+        },
+        "nombre": "RESTAURANT BAR LOS AGAVES",
+        "razon_social": "RESATAURANT BAR LOS AGAVES SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "MIGUEL ALEMAN",
+        "numero_exterior": "5500",
+        "colonia": "RIBERAS DE LINDAVISTA",
+        "codigo_postal": "67139",
+        "correo_electronico": "LOSAGAVESRESTAURANTE.FAMILIAR@HOTMAIL.COM",
+        "tipo": "Fijo",
+        "latitud": 25.69426789,
+        "longitud": -100.23763038
+      },
+      {
+        "_id": "68e5ebc365679b31649a961b",
+        "id": "2996194",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.28842428,
+            25.62239842
+          ]
+        },
+        "nombre": "RESTAURANT BAR GRAN VIEJO",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "PASEO DEL LAGO",
+        "numero_exterior": "0",
+        "colonia": "PASEO RESIDENCIAL 2DO SECTOR",
+        "codigo_postal": "64930",
+        "tipo": "Fijo",
+        "latitud": 25.62239842,
+        "longitud": -100.28842428
+      },
+      {
+        "_id": "68e5ebc365679b31649a961a",
+        "id": "2969742",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.33203289,
+            25.67631502
+          ]
+        },
+        "nombre": "RESTAURANT BAR EL ARBOLITO",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "WASHINGTON",
+        "numero_exterior": "302",
+        "numero_interior": "0",
+        "colonia": "CENTRO",
+        "codigo_postal": "64000",
+        "telefono": "8183400290",
+        "tipo": "Fijo",
+        "latitud": 25.67631502,
+        "longitud": -100.33203289
+      },
+      {
+        "_id": "68e5ebc365679b31649a91d1",
+        "id": "3024072",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.36313908,
+            25.65488738
+          ]
+        },
+        "nombre": "NIKKORI RESTAURANT COMIDA JAPONESA",
+        "razon_social": "ALIMENTOS SELECTOS DEL JAPON SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALZADA",
+        "calle": "CALZADA DEL VALLE",
+        "numero_exterior": "350",
+        "numero_interior": "5",
+        "colonia": "SAN PEDRO",
+        "codigo_postal": "66220",
+        "correo_electronico": "NIKKORICALZADA@GMAIL.COM",
+        "sitio_internet": "WWW.NIKKORI.MX",
+        "tipo": "Fijo",
+        "latitud": 25.65488738,
+        "longitud": -100.36313908
+      },
+      {
+        "_id": "68e5ebc365679b31649a91b8",
+        "id": "7526504",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.28047176,
+            25.77919004
+          ]
+        },
+        "nombre": "NAPOLI PIZZA PASTA RESTAURANT",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de pizzas, hamburguesas, hot dogs y pollos rostizados para llevar",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "BENITO JUAREZ",
+        "numero_exterior": "0",
+        "numero_interior": "240",
+        "colonia": "FACCIONAMIENTO LA ENCOMIENDA",
+        "codigo_postal": "66054",
+        "telefono": "8135976647",
+        "tipo": "Fijo",
+        "latitud": 25.77919004,
+        "longitud": -100.28047176
+      },
+      {
+        "_id": "68e5ebc365679b31649a8ee9",
+        "id": "7636578",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.35211415,
+            25.74222743
+          ]
+        },
+        "nombre": "LA ANTIGUA GRANJA RESTAURANT",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "GENERAL EMILIANO ZAPATA",
+        "numero_exterior": "608",
+        "numero_interior": "0",
+        "colonia": "VALLE DE SANTA LUCIA",
+        "codigo_postal": "64230",
+        "tipo": "Fijo",
+        "latitud": 25.74222743,
+        "longitud": -100.35211415
+      },
+      {
+        "_id": "68e5ebc365679b31649a8ecf",
+        "id": "8753308",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.34290797,
+            25.69554958
+          ]
+        },
+        "nombre": "KOD RUSTIC DELY RESTAURANT",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "MATEHUALA",
+        "numero_exterior": "108",
+        "numero_interior": "0",
+        "colonia": "MITRAS CENTRO",
+        "codigo_postal": "64460",
+        "tipo": "Fijo",
+        "latitud": 25.69554958,
+        "longitud": -100.34290797
+      },
+      {
+        "_id": "68e5ebc365679b31649a8c4a",
+        "id": "9294527",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.36590704,
+            25.65853037
+          ]
+        },
+        "nombre": "EL TORITO SINALOENSE RESTAURANT",
+        "razon_social": "EL TORITO SINALOENSE SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "RIO MISSISSIPI",
+        "numero_exterior": "0",
+        "colonia": "DEL VALLE",
+        "codigo_postal": "66220",
+        "correo_electronico": "VALLE@ELTORITOSINALOENSE.COM",
+        "tipo": "Fijo",
+        "latitud": 25.65853037,
+        "longitud": -100.36590704
+      },
+      {
+        "_id": "68e5ebc365679b31649a9aef",
+        "id": "10396692",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.21730318,
+            25.74248899
+          ]
+        },
+        "nombre": "XI HU HOT POT RESTAURANT",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "ISIDORO SEPULVEDA MARTINEZ",
+        "numero_exterior": "690",
+        "numero_interior": "15",
+        "colonia": "JM",
+        "codigo_postal": "66633",
+        "telefono": "8123534457",
+        "tipo": "Fijo",
+        "latitud": 25.74248899,
+        "longitud": -100.21730318
+      },
+      {
+        "_id": "68e5ebc365679b31649a967c",
+        "id": "7872512",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.29501823,
+            25.68974558
+          ]
+        },
+        "nombre": "RESTAURANT UNAGI SUSHI Y TEPPANYAKY",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "JOSE ANGEL CONCHELLO",
+        "numero_exterior": "2883",
+        "numero_interior": "3",
+        "colonia": "MARTINEZ",
+        "codigo_postal": "64550",
+        "correo_electronico": "SUSHI.UNAGI2011@GMAIL.COM",
+        "sitio_internet": "WWW.SUSHINAGI.COM.MX",
+        "tipo": "Fijo",
+        "latitud": 25.68974558,
+        "longitud": -100.29501823
+      },
+      {
+        "_id": "68e5ebc365679b31649a9675",
+        "id": "6371778",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.35513252,
+            25.68275256
+          ]
+        },
+        "nombre": "RESTAURANT SIERRA MADRE BREWING CO",
+        "razon_social": "CERVECERIA REGIOMONTANA SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "INSURGENTES",
+        "numero_exterior": "3951",
+        "numero_interior": "3951",
+        "colonia": "VISTA HERMOSA",
+        "codigo_postal": "64420",
+        "correo_electronico": "EDUARD@ORTA.COM.MZ",
+        "tipo": "Fijo",
+        "latitud": 25.68275256,
+        "longitud": -100.35513252
+      },
+      {
+        "_id": "68e5ebc365679b31649a9674",
+        "id": "6371659",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.30349839,
+            25.76670015
+          ]
+        },
+        "nombre": "RESTAURANT SIERRA MADRE BREWING CO",
+        "razon_social": "CERVECERIA REGIOMONTANA SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "NINGUNO",
+        "numero_exterior": "130",
+        "numero_interior": "5",
+        "colonia": "JOYAS DE AN?HUAC",
+        "codigo_postal": "66050",
+        "correo_electronico": "EDUARDO@ORTE.COM.MX",
+        "tipo": "Fijo",
+        "latitud": 25.76670015,
+        "longitud": -100.30349839
+      },
+      {
+        "_id": "68e5ebc365679b31649a9673",
+        "id": "6788396",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.3589303,
+            25.65251863
+          ]
+        },
+        "nombre": "RESTAURANT SIERRA MADRE BREWING CO",
+        "razon_social": "CERVECERIA REGIOMONTANA SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "JOS\u00c9 VASCONCELOS",
+        "numero_exterior": "564",
+        "colonia": "DEL VALLE",
+        "codigo_postal": "66250",
+        "correo_electronico": "EDUARDO@ORTE.COM.MX",
+        "tipo": "Fijo",
+        "latitud": 25.65251863,
+        "longitud": -100.3589303
+      },
+      {
+        "_id": "68e5ebc365679b31649a9664",
+        "id": "6215297",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.35949533,
+            25.6747325
+          ]
+        },
+        "nombre": "RESTAURANT PACIFICA LA LANGOSTA BAR",
+        "razon_social": "MARINOS SAN JERONIMO SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "SAN JER\u00d3NIMO",
+        "numero_exterior": "948",
+        "colonia": "COLONIA SAN JERNOMINO",
+        "codigo_postal": "64660",
+        "correo_electronico": "PACIFICACJ@GRUPOPACIFICA.COM",
+        "sitio_internet": "GRUPOPACIFICA.COM",
+        "tipo": "Fijo",
+        "latitud": 25.6747325,
+        "longitud": -100.35949533
+      },
+      {
+        "_id": "68e5ebc365679b31649a9659",
+        "id": "6216733",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.3603532,
+            25.65533352
+          ]
+        },
+        "nombre": "RESTAURANT LOS MOSTOS LAS ROSAS",
+        "razon_social": "RESTAURANT LOS MOSTOS ROSAS SA DE CV",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CALLE",
+        "calle": "RIO DE LA PLATA",
+        "numero_exterior": "401",
+        "numero_interior": "0",
+        "colonia": "DEL VALLE",
+        "codigo_postal": "66220",
+        "sitio_internet": "WWW.LOSMOSTOS.COM.MX",
+        "tipo": "Fijo",
+        "latitud": 25.65533352,
+        "longitud": -100.3603532
+      },
+      {
+        "_id": "68e5ebc365679b31649a9657",
+        "id": "10374182",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.40298305,
+            25.74470087
+          ]
+        },
+        "nombre": "RESTAURANT LOS GUAJILLOS DE PAUDI",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "CUMBRES ELITE",
+        "numero_exterior": "0",
+        "numero_interior": "118",
+        "colonia": "CUMBRES ELITE",
+        "codigo_postal": "64349",
+        "telefono": "5182088459",
+        "correo_electronico": "GUAJILLOSR@GMAIL.COM",
+        "tipo": "Fijo",
+        "latitud": 25.74470087,
+        "longitud": -100.40298305
+      },
+      {
+        "_id": "68e5ebc365679b31649a962b",
+        "id": "3015228",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.30457686,
+            25.73581677
+          ]
+        },
+        "nombre": "RESTAURANT DE COMIDA CHINA RUYI",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "TOPO CHICO",
+        "numero_exterior": "126",
+        "numero_interior": "0",
+        "colonia": "ANAHUAC",
+        "codigo_postal": "66450",
+        "tipo": "Fijo",
+        "latitud": 25.73581677,
+        "longitud": -100.30457686
+      },
+      {
+        "_id": "68e5ebc365679b31649a9623",
+        "id": "2929118",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.32186607,
+            25.68689639
+          ]
+        },
+        "nombre": "RESTAURANT CAFE Y MARISCOS COLISEO",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "CRISTOBAL COLON",
+        "numero_exterior": "0",
+        "colonia": "INDUSTRIAL",
+        "codigo_postal": "64440",
+        "tipo": "Fijo",
+        "latitud": 25.68689639,
+        "longitud": -100.32186607
+      },
+      {
+        "_id": "68e5ebc365679b31649a962c",
+        "id": "8970873",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.28030151,
+            25.66665504
+          ]
+        },
+        "nombre": "RESTAURANT DE COMIDA CHINA YUE HUA",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "CHAPULTEPEC",
+        "numero_exterior": "1836",
+        "numero_interior": "0",
+        "colonia": "BUENOS AIRES",
+        "codigo_postal": "64800",
+        "tipo": "Fijo",
+        "latitud": 25.66665504,
+        "longitud": -100.28030151
+      },
+      {
+        "_id": "68e5ebc365679b31649a9626",
+        "id": "2951503",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.29506062,
+            25.83824421
+          ]
+        },
+        "nombre": "RESTAURANT COMIDA CASERA MINISUPER Y CARNICERIA LA HACIENDA",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "CARRETERA",
+        "calle": "CARRETERA A COLOMBIA",
+        "numero_exterior": "0",
+        "colonia": "COLONIA ANDRES CABALLERO AGROPECUARIA",
+        "codigo_postal": "66080",
+        "telefono": "8110771882",
+        "correo_electronico": "RAFAELLEO@GMAIL.COM",
+        "tipo": "Fijo",
+        "latitud": 25.83824421,
+        "longitud": -100.29506062
+      },
+      {
+        "_id": "68e5ebc365679b31649a8c31",
+        "id": "8735026",
+        "ubicacion": {
+          "type": "Point",
+          "coordinates": [
+            -100.29026072,
+            25.65976319
+          ]
+        },
+        "nombre": "EL SAZON DE LA VILLA DE SANTIAGO RESTAURANT",
+        "clase_actividad": "Restaurantes con servicio de preparaci\u00f3n de alimentos a la carta o de comida corrida",
+        "tipo_vialidad": "AVENIDA",
+        "calle": "JOSE ALVARADO",
+        "numero_exterior": "2236",
+        "numero_interior": "0",
+        "colonia": "FLORIDA",
+        "codigo_postal": "64810",
+        "telefono": "8120473691",
+        "tipo": "Fijo",
+        "latitud": 25.65976319,
+        "longitud": -100.29026072
+      }
+    ]
+  }
+}[0m
+2025-10-08 00:10:40,736 [INFO] --------------------------------------------------------------------------------
+2025-10-08 00:10:40,736 [INFO] [45m[37m TESTING DELETE RESTAURANT [0m
+2025-10-08 00:10:40,737 [WARNING] [33mSkipping delete test (no created restaurant)[0m
+2025-10-08 00:10:40,737 [INFO] --------------------------------------------------------------------------------
+2025-10-08 00:10:40,737 [INFO] [44m[37m TEST SUMMARY [0m
+2025-10-08 00:10:40,737 [INFO] [36mDuration: 25.93 seconds[0m
+2025-10-08 00:10:40,737 [INFO] [36mTotal Tests: 24[0m
+2025-10-08 00:10:40,737 [INFO] [32mPassed: 21[0m
+2025-10-08 00:10:40,737 [INFO] [31mFailed: 4[0m
+2025-10-08 00:10:40,738 [INFO] [36mSuccess Rate: 87.50%[0m
+2025-10-08 00:10:40,738 [INFO] [36mEndpoints Tested: 9[0m
+2025-10-08 00:10:40,738 [INFO] --------------------------------------------------------------------------------
+2025-10-08 00:10:40,738 [INFO] [41m[37m 4 TESTS FAILED [0m
+2025-10-08 00:10:40,738 [INFO] [36mLog file: C:\Users\USER\Desktop\Tattler Database Project\logs\api_test_20251008_001014.log[0m

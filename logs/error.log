@@ -1,0 +1,17 @@
+[31m2025-10-08 00:04:52 ERROR: Error fetching restaurant: Restaurant with ID invalidid12345 not found [39m
+[31m2025-10-08 00:04:52 ERROR: Error: Restaurant with ID invalidid12345 not found [39m
+[31m2025-10-08 00:04:52 ERROR: ApiError: Restaurant with ID invalidid12345 not found[39m
+[31m    at ApiError.notFound (C:\Users\USER\Desktop\Tattler Database Project\utils\apiError.js:13:12)[39m
+[31m    at getRestaurantById (C:\Users\USER\Desktop\Tattler Database Project\controllers\restaurant.controller.js:68:24)[39m
+[31m    at process.processTicksAndRejections (node:internal/process/task_queues:95:5) [39m
+[31m2025-10-08 00:10:27 ERROR: Error fetching restaurants: Attempted to check out a connection from closed connection pool [39m
+[31m2025-10-08 00:10:27 ERROR: Error: Attempted to check out a connection from closed connection pool [39m
+[31m2025-10-08 00:10:27 ERROR: MongoPoolClosedError: Attempted to check out a connection from closed connection pool[39m
+[31m    at C:\Users\USER\Desktop\Tattler Database Project\node_modules\mongodb\lib\cmap\connection_pool.js:366:40[39m
+[31m    at process.processTicksAndRejections (node:internal/process/task_queues:95:5) [39m
+[31m2025-10-08 00:10:36 ERROR: Error fetching restaurant: Restaurant with ID invalidid12345 not found [39m
+[31m2025-10-08 00:10:36 ERROR: Error: Restaurant with ID invalidid12345 not found [39m
+[31m2025-10-08 00:10:36 ERROR: ApiError: Restaurant with ID invalidid12345 not found[39m
+[31m    at ApiError.notFound (C:\Users\USER\Desktop\Tattler Database Project\utils\apiError.js:13:12)[39m
+[31m    at getRestaurantById (C:\Users\USER\Desktop\Tattler Database Project\controllers\restaurant.controller.js:68:24)[39m
+[31m    at process.processTicksAndRejections (node:internal/process/task_queues:95:5) [39m

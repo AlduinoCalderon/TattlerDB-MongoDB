@@ -1,0 +1,182 @@
+[32m2025-10-07 23:59:06 INFO: Server running on port 3001 in development mode [39m
+[32m2025-10-08 00:00:15 INFO: Server running on port 3000 in development mode [39m
+[32m2025-10-08 00:01:40 INFO: Server running on port 3001 in development mode [39m
+[32m2025-10-08 00:04:19 INFO: Server running on port 3001 in development mode [39m
+[34m2025-10-08 00:04:37 DEBUG: GET /api/ [IP: ::1] [39m
+[32m2025-10-08 00:04:37 HTTP: GET /api/ 200 173 - 2.193 ms {} [39m
+[34m2025-10-08 00:04:37 DEBUG: GET /api/health [IP: ::1] [39m
+[32m2025-10-08 00:04:40 INFO: Connected to MongoDB database: tattler [39m
+[32m2025-10-08 00:04:40 INFO: MongoDB connection closed [39m
+[32m2025-10-08 00:04:40 INFO: Health check performed [39m
+[32m2025-10-08 00:04:40 HTTP: GET /api/health 200 354 - 2397.918 ms {} [39m
+[34m2025-10-08 00:04:40 DEBUG: GET /api/health/ping [IP: ::1] [39m
+[32m2025-10-08 00:04:40 HTTP: GET /api/health/ping 200 18 - 0.562 ms {} [39m
+[34m2025-10-08 00:04:40 DEBUG: GET /api/restaurants [IP: ::1] [39m
+[32m2025-10-08 00:04:42 INFO: Connected to MongoDB database: tattler [39m
+[32m2025-10-08 00:04:43 INFO: MongoDB connection closed [39m
+[32m2025-10-08 00:04:43 INFO: Retrieved 20 restaurants (page 1) [39m
+[32m2025-10-08 00:04:43 HTTP: GET /api/restaurants 200 11442 - 3172.595 ms {} [39m
+[34m2025-10-08 00:04:43 DEBUG: GET /api/restaurants?page=1&limit=5 [IP: ::1] [39m
+[32m2025-10-08 00:04:44 INFO: Connected to MongoDB database: tattler [39m
+[32m2025-10-08 00:04:46 INFO: MongoDB connection closed [39m
+[32m2025-10-08 00:04:46 INFO: Retrieved 5 restaurants (page 1) [39m
+[32m2025-10-08 00:04:46 HTTP: GET /api/restaurants?page=1&limit=5 200 3033 - 2638.911 ms {} [39m
+[34m2025-10-08 00:04:46 DEBUG: GET /api/restaurants?page=2&limit=10 [IP: ::1] [39m
+[32m2025-10-08 00:04:47 INFO: Connected to MongoDB database: tattler [39m
+[32m2025-10-08 00:04:48 INFO: MongoDB connection closed [39m
+[32m2025-10-08 00:04:48 INFO: Retrieved 10 restaurants (page 2) [39m
+[32m2025-10-08 00:04:48 HTTP: GET /api/restaurants?page=2&limit=10 200 5789 - 2588.017 ms {} [39m
+[34m2025-10-08 00:04:48 DEBUG: GET /api/restaurants/11689462 [IP: ::1] [39m
+[32m2025-10-08 00:04:50 INFO: Connected to MongoDB database: tattler [39m
+[32m2025-10-08 00:04:50 INFO: MongoDB connection closed [39m
+[32m2025-10-08 00:04:50 INFO: Retrieved restaurant with ID: 11689462 [39m
+[32m2025-10-08 00:04:50 HTTP: GET /api/restaurants/11689462 200 499 - 1887.373 ms {} [39m
+[34m2025-10-08 00:04:50 DEBUG: GET /api/restaurants/invalidid12345 [IP: ::1] [39m
+[32m2025-10-08 00:04:52 INFO: Connected to MongoDB database: tattler [39m
+[32m2025-10-08 00:04:52 INFO: MongoDB connection closed [39m
+[31m2025-10-08 00:04:52 ERROR: Error fetching restaurant: Restaurant with ID invalidid12345 not found [39m
+[31m2025-10-08 00:04:52 ERROR: Error: Restaurant with ID invalidid12345 not found [39m
+[31m2025-10-08 00:04:52 ERROR: ApiError: Restaurant with ID invalidid12345 not found[39m
+[31m    at ApiError.notFound (C:\Users\USER\Desktop\Tattler Database Project\utils\apiError.js:13:12)[39m
+[31m    at getRestaurantById (C:\Users\USER\Desktop\Tattler Database Project\controllers\restaurant.controller.js:68:24)[39m
+[31m    at process.processTicksAndRejections (node:internal/process/task_queues:95:5) [39m
+[32m2025-10-08 00:04:52 HTTP: GET /api/restaurants/invalidid12345 404 459 - 2146.905 ms {} [39m
+[34m2025-10-08 00:04:52 DEBUG: POST /api/restaurants [IP: ::1] [39m
+[32m2025-10-08 00:04:52 HTTP: POST /api/restaurants 400 237 - 1.947 ms {"nombre":"Test Restaurant 1759903492","clase_actividad":"Restaurante de prueba automatizada","tipo_vialidad":"CALLE","calle":"Test Street","numero_exterior":"123","colonia":"Test Colony","codigo_postal":"12345","ubicacion":{"type":"Point","coordinates":[-99.1332,19.4326]},"telefono":"555-123-4567","correo_electronico":"test@example.com","sitio_internet":"https://testrestaurant.example.com","tipo":"Fijo"} [39m
+[34m2025-10-08 00:04:52 DEBUG: GET /api/restaurants/search/location?longitude=-99.1332&latitude=19.4326&distance=50000 [IP: ::1] [39m
+[32m2025-10-08 00:04:54 INFO: Connected to MongoDB database: tattler [39m
+[32m2025-10-08 00:04:55 INFO: MongoDB connection closed [39m
+[32m2025-10-08 00:04:55 INFO: Found 0 restaurants near [-99.1332,19.4326] within 50000m [39m
+[32m2025-10-08 00:04:55 HTTP: GET /api/restaurants/search/location?longitude=-99.1332&latitude=19.4326&distance=50000 200 52 - 2202.461 ms {} [39m
+[34m2025-10-08 00:04:55 DEBUG: GET /api/restaurants/search/text?q=Restaurant [IP: ::1] [39m
+[32m2025-10-08 00:04:56 INFO: Connected to MongoDB database: tattler [39m
+[32m2025-10-08 00:04:57 INFO: MongoDB connection closed [39m
+[32m2025-10-08 00:04:57 INFO: Found 157 restaurants matching text search: "Restaurant" [39m
+[32m2025-10-08 00:04:57 HTTP: GET /api/restaurants/search/text?q=Restaurant 200 81853 - 2660.592 ms {} [39m
+[32m2025-10-08 00:10:06 INFO: Server running on port 3001 in development mode [39m
+[34m2025-10-08 00:10:14 DEBUG: GET /api/ [IP: ::1] [39m
+[32m2025-10-08 00:10:14 HTTP: GET /api/ 200 173 - 2.453 ms {} [39m
+[34m2025-10-08 00:10:14 DEBUG: GET /api/health [IP: ::1] [39m
+[32m2025-10-08 00:10:24 HTTP: GET /api/health - - - - ms {} [39m
+[34m2025-10-08 00:10:24 DEBUG: GET /api/health/ping [IP: ::1] [39m
+[32m2025-10-08 00:10:24 HTTP: GET /api/health/ping 200 18 - 0.846 ms {} [39m
+[34m2025-10-08 00:10:24 DEBUG: GET /api/restaurants [IP: ::1] [39m
+[32m2025-10-08 00:10:26 INFO: Connected to MongoDB database: tattler [39m
+[32m2025-10-08 00:10:26 INFO: Connected to MongoDB database: tattler [39m
+[32m2025-10-08 00:10:27 INFO: MongoDB connection closed [39m
+[32m2025-10-08 00:10:27 INFO: Health check performed [39m
+[31m2025-10-08 00:10:27 ERROR: Error fetching restaurants: Attempted to check out a connection from closed connection pool [39m
+[31m2025-10-08 00:10:27 ERROR: Error: Attempted to check out a connection from closed connection pool [39m
+[31m2025-10-08 00:10:27 ERROR: MongoPoolClosedError: Attempted to check out a connection from closed connection pool[39m
+[31m    at C:\Users\USER\Desktop\Tattler Database Project\node_modules\mongodb\lib\cmap\connection_pool.js:366:40[39m
+[31m    at process.processTicksAndRejections (node:internal/process/task_queues:95:5) [39m
+[32m2025-10-08 00:10:27 HTTP: GET /api/restaurants 500 402 - 2937.965 ms {} [39m
+[34m2025-10-08 00:10:27 DEBUG: GET /api/restaurants?page=1&limit=5 [IP: ::1] [39m
+[32m2025-10-08 00:10:29 INFO: Connected to MongoDB database: tattler [39m
+[32m2025-10-08 00:10:30 INFO: MongoDB connection closed [39m
+[32m2025-10-08 00:10:30 INFO: Retrieved 5 restaurants (page 1) [39m
+[32m2025-10-08 00:10:30 HTTP: GET /api/restaurants?page=1&limit=5 200 3033 - 2822.005 ms {} [39m
+[34m2025-10-08 00:10:30 DEBUG: GET /api/restaurants?page=2&limit=10 [IP: ::1] [39m
+[32m2025-10-08 00:10:32 INFO: Connected to MongoDB database: tattler [39m
+[32m2025-10-08 00:10:33 INFO: MongoDB connection closed [39m
+[32m2025-10-08 00:10:33 INFO: Retrieved 10 restaurants (page 2) [39m
+[32m2025-10-08 00:10:33 HTTP: GET /api/restaurants?page=2&limit=10 200 5789 - 3006.856 ms {} [39m
+[34m2025-10-08 00:10:33 DEBUG: GET /api/restaurants/11689462 [IP: ::1] [39m
+[32m2025-10-08 00:10:35 INFO: Connected to MongoDB database: tattler [39m
+[32m2025-10-08 00:10:35 INFO: MongoDB connection closed [39m
+[32m2025-10-08 00:10:35 INFO: Retrieved restaurant with ID: 11689462 [39m
+[32m2025-10-08 00:10:35 HTTP: GET /api/restaurants/11689462 200 499 - 1666.468 ms {} [39m
+[34m2025-10-08 00:10:35 DEBUG: GET /api/restaurants/invalidid12345 [IP: ::1] [39m
+[32m2025-10-08 00:10:36 INFO: Connected to MongoDB database: tattler [39m
+[32m2025-10-08 00:10:36 INFO: MongoDB connection closed [39m
+[31m2025-10-08 00:10:36 ERROR: Error fetching restaurant: Restaurant with ID invalidid12345 not found [39m
+[31m2025-10-08 00:10:36 ERROR: Error: Restaurant with ID invalidid12345 not found [39m
+[31m2025-10-08 00:10:36 ERROR: ApiError: Restaurant with ID invalidid12345 not found[39m
+[31m    at ApiError.notFound (C:\Users\USER\Desktop\Tattler Database Project\utils\apiError.js:13:12)[39m
+[31m    at getRestaurantById (C:\Users\USER\Desktop\Tattler Database Project\controllers\restaurant.controller.js:68:24)[39m
+[31m    at process.processTicksAndRejections (node:internal/process/task_queues:95:5) [39m
+[32m2025-10-08 00:10:37 HTTP: GET /api/restaurants/invalidid12345 404 459 - 1675.271 ms {} [39m
+[34m2025-10-08 00:10:37 DEBUG: POST /api/restaurants [IP: ::1] [39m
+[32m2025-10-08 00:10:37 HTTP: POST /api/restaurants 400 237 - 2.377 ms {"id":"test_1759903837","nombre":"Test Restaurant 1759903837","clase_actividad":"Restaurante de prueba automatizada","tipo_vialidad":"CALLE","calle":"Test Street","numero_exterior":"123","colonia":"Test Colony","codigo_postal":"12345","ubicacion":{"type":"Point","coordinates":[-99.1332,19.4326]},"telefono":"555-123-4567","correo_electronico":"test@example.com","sitio_internet":"https://testrestaurant.example.com","tipo":"Fijo"} [39m
+[34m2025-10-08 00:10:37 DEBUG: GET /api/restaurants/search/location?longitude=-99.1332&latitude=19.4326&distance=50000 [IP: ::1] [39m
+[32m2025-10-08 00:10:38 INFO: Connected to MongoDB database: tattler [39m
+[32m2025-10-08 00:10:38 INFO: MongoDB connection closed [39m
+[32m2025-10-08 00:10:38 INFO: Found 0 restaurants near [-99.1332,19.4326] within 50000m [39m
+[32m2025-10-08 00:10:38 HTTP: GET /api/restaurants/search/location?longitude=-99.1332&latitude=19.4326&distance=50000 200 52 - 1632.730 ms {} [39m
+[34m2025-10-08 00:10:38 DEBUG: GET /api/restaurants/search/text?q=Restaurant [IP: ::1] [39m
+[32m2025-10-08 00:10:40 INFO: Connected to MongoDB database: tattler [39m
+[32m2025-10-08 00:10:40 INFO: MongoDB connection closed [39m
+[32m2025-10-08 00:10:40 INFO: Found 157 restaurants matching text search: "Restaurant" [39m
+[32m2025-10-08 00:10:40 HTTP: GET /api/restaurants/search/text?q=Restaurant 200 81853 - 2060.657 ms {} [39m
+[32m2025-10-08 00:12:50 INFO: Server running on port 3001 in development mode [39m
+[32m2025-10-08 00:12:52 INFO: Server running on port 3001 in development mode [39m
+[32m2025-10-08 00:13:03 INFO: Server running on port 3001 in development mode [39m
+[32m2025-10-08 00:13:04 INFO: Server running on port 3001 in development mode [39m
+[32m2025-10-08 11:37:26 INFO: Server running on port 3001 in development mode [39m
+[32m2025-10-08 11:37:44 INFO: Server running on port 3001 in development mode [39m
+[32m2025-10-08 11:37:46 INFO: Server running on port 3001 in development mode [39m
+[32m2025-10-08 11:37:53 INFO: Server running on port 3001 in development mode [39m
+[32m2025-10-08 11:39:00 INFO: Server running on port 3001 in development mode [39m
+[34m2025-10-08 11:39:28 DEBUG: GET /api/ [IP: ::1] [39m
+[32m2025-10-08 11:39:28 HTTP: GET /api/ 200 173 - 6.450 ms {} [39m
+[34m2025-10-08 11:39:28 DEBUG: GET /api/health [IP: ::1] [39m
+[32m2025-10-08 11:39:30 INFO: Connected to MongoDB database: tattler [39m
+[32m2025-10-08 11:39:30 INFO: MongoDB connection closed [39m
+[32m2025-10-08 11:39:30 INFO: Health check performed [39m
+[32m2025-10-08 11:39:30 HTTP: GET /api/health 200 353 - 2012.640 ms {} [39m
+[34m2025-10-08 11:39:30 DEBUG: GET /api/health/ping [IP: ::1] [39m
+[32m2025-10-08 11:39:30 HTTP: GET /api/health/ping 200 18 - 0.576 ms {} [39m
+[34m2025-10-08 11:39:30 DEBUG: GET /api/restaurants [IP: ::1] [39m
+[32m2025-10-08 11:39:34 INFO: Connected to MongoDB database: tattler [39m
+[32m2025-10-08 11:39:36 INFO: MongoDB connection closed [39m
+[32m2025-10-08 11:39:36 INFO: Retrieved 20 restaurants (page 1) [39m
+[32m2025-10-08 11:39:36 HTTP: GET /api/restaurants 200 11442 - 5077.563 ms {} [39m
+[34m2025-10-08 11:39:36 DEBUG: GET /api/restaurants?page=1&limit=5 [IP: ::1] [39m
+[32m2025-10-08 11:39:37 INFO: Connected to MongoDB database: tattler [39m
+[32m2025-10-08 11:39:38 INFO: MongoDB connection closed [39m
+[32m2025-10-08 11:39:38 INFO: Retrieved 5 restaurants (page 1) [39m
+[32m2025-10-08 11:39:38 HTTP: GET /api/restaurants?page=1&limit=5 200 3033 - 2589.873 ms {} [39m
+[34m2025-10-08 11:39:38 DEBUG: GET /api/restaurants?page=2&limit=10 [IP: ::1] [39m
+[32m2025-10-08 11:39:40 INFO: Connected to MongoDB database: tattler [39m
+[32m2025-10-08 11:39:41 INFO: MongoDB connection closed [39m
+[32m2025-10-08 11:39:41 INFO: Retrieved 10 restaurants (page 2) [39m
+[32m2025-10-08 11:39:41 HTTP: GET /api/restaurants?page=2&limit=10 200 5789 - 2681.010 ms {} [39m
+[34m2025-10-08 11:39:41 DEBUG: GET /api/restaurants/11689462 [IP: ::1] [39m
+[32m2025-10-08 11:39:42 INFO: Connected to MongoDB database: tattler [39m
+[32m2025-10-08 11:39:42 INFO: MongoDB connection closed [39m
+[32m2025-10-08 11:39:42 INFO: Retrieved restaurant with ID: 11689462 [39m
+[32m2025-10-08 11:39:42 HTTP: GET /api/restaurants/11689462 200 499 - 1558.372 ms {} [39m
+[34m2025-10-08 12:28:48 DEBUG: POST /api/health [IP: ::1] [39m
+[32m2025-10-08 12:28:48 HTTP: POST /api/health 404 150 - 8.042 ms {} [39m
+[34m2025-10-08 12:28:54 DEBUG: GET /api/health [IP: ::1] [39m
+[32m2025-10-08 12:28:56 INFO: Connected to MongoDB database: tattler [39m
+[32m2025-10-08 12:28:56 INFO: MongoDB connection closed [39m
+[32m2025-10-08 12:28:56 INFO: Health check performed [39m
+[32m2025-10-08 12:28:56 HTTP: GET /api/health 200 355 - 1909.415 ms {} [39m
+[34m2025-10-08 12:31:12 DEBUG: GET /api/ [IP: ::1] [39m
+[32m2025-10-08 12:31:12 HTTP: GET /api/ 200 173 - 0.978 ms {} [39m
+[32m2025-10-08 12:48:13 HTTP: GET / 404 139 - 0.630 ms {} [39m
+[32m2025-10-08 12:48:15 HTTP: GET /favicon.ico 404 150 - 0.461 ms {} [39m
+[32m2025-10-08 12:49:03 INFO: Server running on port 3001 in development mode [39m
+[32m2025-10-08 12:50:24 HTTP: GET /docs 200 658 - 3.079 ms {} [39m
+[32m2025-10-08 12:50:24 HTTP: GET /docs/openapi.json 200 658 - 0.624 ms {} [39m
+[32m2025-10-08 12:50:24 HTTP: GET /docs/openapi.json 304 - - 0.707 ms {} [39m
+[32m2025-10-08 13:01:18 HTTP: GET /docs 304 - - 0.602 ms {} [39m
+[32m2025-10-08 13:01:18 HTTP: GET /docs/openapi.json 304 - - 0.729 ms {} [39m
+[32m2025-10-08 13:01:18 HTTP: GET /docs/openapi.json 304 - - 0.550 ms {} [39m
+[32m2025-10-08 13:01:19 HTTP: GET /docs 304 - - 0.639 ms {} [39m
+[32m2025-10-08 13:01:19 HTTP: GET /docs/openapi.json 304 - - 0.333 ms {} [39m
+[32m2025-10-08 13:01:19 HTTP: GET /docs/openapi.json 304 - - 0.351 ms {} [39m
+[32m2025-10-08 13:05:08 INFO: Server running on port 3001 in development mode [39m
+[32m2025-10-08 13:05:47 HTTP: GET /docs 200 29875 - 2.174 ms {} [39m
+[32m2025-10-09 20:02:36 INFO: Server running on port 3001 in development mode [39m
+[34m2025-10-09 20:04:01 DEBUG: GET /api/restaurants/68e864db51bf55ea9a899621 [IP: ::1] [39m
+[32m2025-10-09 20:04:03 INFO: Connected to MongoDB database: tattler [39m
+[32m2025-10-09 20:04:03 INFO: MongoDB connection closed [39m
+[32m2025-10-09 20:04:03 INFO: Retrieved restaurant with ID: 68e864db51bf55ea9a899621 [39m
+[32m2025-10-09 20:04:03 HTTP: GET /api/restaurants/68e864db51bf55ea9a899621 200 175 - 2193.801 ms {} [39m
+[34m2025-10-09 20:04:11 DEBUG: DELETE /api/restaurants/68e864db51bf55ea9a899621 [IP: ::1] [39m
+[32m2025-10-09 20:04:13 INFO: Connected to MongoDB database: tattler [39m
+[32m2025-10-09 20:04:13 INFO: MongoDB connection closed [39m
+[32m2025-10-09 20:04:13 INFO: Deleted restaurant with ID: 68e864db51bf55ea9a899621 [39m
+[32m2025-10-09 20:04:13 HTTP: DELETE /api/restaurants/68e864db51bf55ea9a899621 200 153 - 2144.718 ms {} [39m

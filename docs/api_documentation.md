@@ -199,15 +199,11 @@ POST /restaurants
 {
   "name": "Nuevo Restaurante",
   "address": "456 Center St",
-  "ubicacion": {
-    "type": "Point",
-    "coordinates": [-99.1567, 19.4123]
-  },
   "categoria": "Italiana",
   "rating": 4.0
 }
 ```
-
+![alt text](./images/POST.png)
 **Response**:
 
 ```json
