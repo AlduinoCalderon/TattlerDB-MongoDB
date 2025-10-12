@@ -7,7 +7,8 @@
     "contact": { "name": "Tattler Support", "email": "support@tattler.mx" }
   },
   "servers": [
-    { "url": "http://localhost:3001/api", "description": "Local" }
+    { "url": "https://tattlerdb-mongodb.onrender.com/api", "description": "Production (Render)" },
+    { "url": "http://localhost:3001/api", "description": "Local development" }
   ],
   "tags": [
     { "name": "restaurants", "description": "Restaurant operations" },
