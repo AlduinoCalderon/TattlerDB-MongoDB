@@ -1,3 +1,4 @@
+// Script for importing local INEGI CSV data into MongoDB
 require('dotenv').config();
 const fs = require('fs');
 const csv = require('csv-parser');
@@ -5,10 +6,10 @@ const { MongoClient } = require('mongodb');
 const path = require('path');
 
 const uri = process.env.MONGODB_URI;
-const dbName = 'tattler';  // Database name for Atlas
-const collectionName = 'restaurants_inegi';
+const dbName = 'tattler'; // MongoDB Atlas database name
+const collectionName = 'restaurants_inegi'; // Collection for local INEGI data
 
-async function importCSVToMongo() {
+async function importInegiLocalCSV() {
   const client = new MongoClient(uri);
   const restaurants = [];
 
@@ -19,12 +20,12 @@ async function importCSVToMongo() {
     const db = client.db(dbName);
     const collection = db.collection(collectionName);
 
-    // Read CSV and transform data
+    // Read the INEGI CSV and transform each row into a restaurant object
     await new Promise((resolve, reject) => {
       fs.createReadStream(path.join(__dirname, '../data/INEGI_DENUE_07102025.csv'), { encoding: 'latin1' })
         .pipe(csv())
         .on('data', (row) => {
-          // Base object with required fields
+          // Create base object with required fields
           const restaurant = {
             id: row['ID'],
             ubicacion: {
@@ -33,7 +34,7 @@ async function importCSVToMongo() {
             }
           };
 
-          // Add optional fields only if they have values
+          // Map optional fields from CSV to MongoDB document
           const fieldsMap = {
             'Nombre de la Unidad Económica': 'nombre',
             'Razón social': 'razon_social',
@@ -50,14 +51,14 @@ async function importCSVToMongo() {
             'Tipo de establecimiento': 'tipo'
           };
 
-          // Add each field only if it has a value
+          // Add each optional field only if it has a value
           Object.entries(fieldsMap).forEach(([csvKey, mongoKey]) => {
             if (row[csvKey] && row[csvKey].trim() !== '') {
               restaurant[mongoKey] = row[csvKey].trim();
             }
           });
 
-          // Add coordinates only if they're valid numbers
+          // Add coordinates only if they are valid numbers
           const lat = parseFloat(row['Latitud']);
           const lng = parseFloat(row['Longitud']);
           if (!isNaN(lat) && !isNaN(lng)) {
@@ -71,19 +72,19 @@ async function importCSVToMongo() {
         .on('error', reject);
     });
 
-    // Create backup directory if it doesn't exist
+    // Create backup directory if it does not exist
     if (!fs.existsSync(path.join(__dirname, '../backup'))) {
       fs.mkdirSync(path.join(__dirname, '../backup'));
     }
 
-    // Save as backup file
+    // Save a backup of the imported data
     const backupPath = path.join(__dirname, '../backup/restaurants_backup.json');
     fs.writeFileSync(backupPath, JSON.stringify(restaurants, null, 2));
     console.log(`Backup file created at ${backupPath}`);
 
-    // Insert into MongoDB
+    // Insert documents into MongoDB
     if (restaurants.length > 0) {
-      // Drop existing collection if exists
+      // Drop the existing collection if it exists
       try {
         await collection.drop();
         console.log('Existing collection dropped');
@@ -91,11 +92,11 @@ async function importCSVToMongo() {
         console.log('Collection does not exist yet');
       }
 
-      // Insert documents
+      // Insert all restaurant documents
       const result = await collection.insertMany(restaurants);
       console.log(`${result.insertedCount} restaurants imported successfully`);
 
-      // Create indexes
+      // Create indexes for geospatial and text search
       console.log('Creating indexes...');
       await collection.createIndex({ ubicacion: "2dsphere" });
       await collection.createIndex({ nombre: "text" });
@@ -111,4 +112,5 @@ async function importCSVToMongo() {
   }
 }
 
-importCSVToMongo().catch(console.error);
+// Run the import for local INEGI data
+importInegiLocalCSV().catch(console.error);

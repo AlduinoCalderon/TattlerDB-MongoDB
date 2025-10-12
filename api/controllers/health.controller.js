@@ -1,6 +1,6 @@
 const path = require('path');
-const database = require(path.join(__dirname, '../utils/database'));
-const { logger } = require(path.join(__dirname, '../utils/logger'));
+const database = require(path.join(__dirname, '../utils/database.js'));
+const { logger } = require(path.join(__dirname, '../utils/logger.js'));
 const os = require('os');
 
 /**

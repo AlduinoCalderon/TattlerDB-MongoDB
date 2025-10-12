@@ -1,7 +1,8 @@
 const express = require('express');
 const restaurantRoutes = require('./restaurant.routes');
+const reviewRoutes = require('./review.routes');
 const healthRoutes = require('./health.routes');
-const { logger } = require('../../utils/logger');
+const { logger } = require('../utils/logger.js');
 
 const router = express.Router();
 
@@ -13,6 +14,7 @@ router.use((req, res, next) => {
 
 // Mount routes
 router.use('/restaurants', restaurantRoutes);
+router.use('/reviews', reviewRoutes);
 router.use('/health', healthRoutes);
 
 // API information endpoint

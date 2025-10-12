@@ -60,33 +60,21 @@ npm run import:data
     ```
     The API will be available at `http://localhost:3001` (or the port configured in your `.env` file).
 
+
 ## API Documentation
 
-This project uses **Scalar** for interactive API documentation.
+This project uses **Scalar** for interactive API documentation, generated from the OpenAPI specification in [`docs/openapi.json`](./docs/openapi.json).
 
-[**Scalar**](https://github.com/scalar/scalar) is a beautiful, open-source tool that generates API documentation from OpenAPI specifications with an interface similar to Postman directly within the documentation.
+- **OpenAPI spec:** [`docs/openapi.json`](./docs/openapi.json) (canonical contract for all endpoints)
+- **Scalar UI:**
+  - Local: [http://localhost:3001/docs](http://localhost:3001/docs) (auto-served with API)
+  - Standalone: `npm run docs` → [http://localhost:3000](http://localhost:3000)
+- **Postman:** Import the OpenAPI spec directly for testing.
 
-### Viewing the API Documentation
+#### Updating or Validating the API Spec
+If you change controllers or routes, update `docs/openapi.json` to match. You can validate the spec with [Swagger Editor](https://editor.swagger.io/) or [Spectral](https://github.com/stoplightio/spectral).
 
-#### Local Development:
-
-1. **Start the API server:**
-   ```bash
-   npm run dev
-   ```
-   The documentation will be available at `http://localhost:3001/docs`
-
-2. **Alternative - standalone documentation server:**
-   ```bash
-   npm run docs
-   ```
-   This runs a separate documentation server at `http://localhost:3000`
-
-#### Production Deployment:
-
-When deployed to Render, the documentation is automatically integrated into the API server and available at `/docs`. No additional configuration needed!
-
-### API Endpoints
+### API Endpoints (Summary)
 
 #### Health Checks
 
@@ -95,30 +83,44 @@ When deployed to Render, the documentation is automatically integrated into the 
 | `GET`  | `/api/health` | Checks the API server status |
 | `GET`  | `/api/health/ping` | Simple ping-pong health check |
 
+
 #### Restaurants
 
-| Method | Endpoint                             | Description                                                              | Parameters / Body                                                                                             |
-| :----- | :----------------------------------- | :----------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------ |
-| `GET`  | `/api/restaurants`                   | Get a paginated list of all restaurants.                                 | **Query:** `page` (number), `limit` (number)                                                                  |
-| `POST` | `/api/restaurants`                   | Create a new restaurant.                                                 | **Body:** JSON object with restaurant data.                                                                   |
-| `GET`  | `/api/restaurants/:id`               | Get a single restaurant by its `id`.                                     | **Param:** `id` (string)                                                                                      |
-| `PUT`  | `/api/restaurants/:id`               | Update an existing restaurant by its `id`.                               | **Param:** `id` (string), **Body:** JSON object with fields to update.                                        |
-| `DELETE`| `/api/restaurants/:id`              | Delete a restaurant by its `id`.                                         | **Param:** `id` (string)                                                                                      |
-| `GET`  | `/api/restaurants/search/location`   | Find restaurants near a specific geographic point.                       | **Query:** `longitude` (number), `latitude` (number), `distance` (number, in meters)                          |
-| `GET`  | `/api/restaurants/search/text`       | Perform a text search on restaurant fields (like name and description).  | **Query:** `q` (string)                                                                                       |
+All restaurant resources are stored in the `restaurants_google` collection and are identified by `data_id` (Google's unique place identifier). The API provides CRUD and search endpoints:
+
+| Method   | Endpoint                                 | Description                                                        |
+|----------|------------------------------------------|--------------------------------------------------------------------|
+| `GET`    | `/api/restaurants`                       | List restaurants (paginated)                                       |
+| `POST`   | `/api/restaurants`                       | Create or upsert a restaurant (by `data_id`)                       |
+| `GET`    | `/api/restaurants/:data_id`              | Get a restaurant by `data_id`                                      |
+| `PUT`    | `/api/restaurants/:data_id`              | Update a restaurant by `data_id` (partial updates allowed)         |
+| `DELETE` | `/api/restaurants/:data_id`              | Soft-delete a restaurant (sets `deleted: true`)                    |
+| `GET`    | `/api/restaurants/search/location`       | Find restaurants near a location (GeoJSON point, meters radius)    |
+| `GET`    | `/api/restaurants/search/text`           | Text search for restaurants (by name, etc.)                        |
+
+#### Reviews
+
+Reviews are stored in the `reviews_google` collection and are identified by `review_id` (Google review ID) and reference `data_id` (parent place).
+
+| Method   | Endpoint                                 | Description                                                        |
+|----------|------------------------------------------|--------------------------------------------------------------------|
+| `GET`    | `/api/reviews`                           | List reviews (paginated)                                           |
+| `POST`   | `/api/reviews`                           | Create or upsert a review (must include `review_id` and `data_id`) |
+| `GET`    | `/api/reviews/:review_id`                | Get a review by `review_id` (or fallback to internal `_id`)        |
+| `PUT`    | `/api/reviews/:review_id`                | Update a review by `review_id`                                     |
+| `DELETE` | `/api/reviews/:review_id`                | Soft-delete a review (sets `deleted: true`)                        |
+| `GET`    | `/api/reviews/data/:data_id`             | Get all reviews for a place by `data_id`                           |
 
 ## Repository Structure
 
 ```
 TattlerDB-MongoDB/
 │
-├── data/                   # Sample data and CSV files
-│   ├── restaurants.csv     # Sample restaurant data
-│   └── categories.csv      # Restaurant categories
+
 │
 ├── scripts/                # Utility scripts
-│   ├── import.js           # CSV import script
-│   ├── backup.js           # Database backup script
+│   ├── import.js           # serpApi import script
+│   ├── download.js           # Database backup script
 │   └── restore.js          # Database restore script
 │
 ├── db/                     # Database configuration
@@ -139,60 +141,19 @@ TattlerDB-MongoDB/
 └── README.md               # Repository documentation
 ```
 
-## Database Structure
 
-### Collections
+## OpenAPI Specification (Canonical API Contract)
 
-- **restaurants**: Main collection for restaurant information
-  - name: Restaurant name
-  - location: GeoJSON point with restaurant coordinates
-  - address: Full address details
-  - categories: Array of category IDs
-  - rating: Average user rating
-  - priceRange: Price category (1-4)
+The canonical API contract is always [`docs/openapi.json`](./docs/openapi.json). This file is the source of truth for all endpoints, request/response schemas, and is used by Scalar and Postman for documentation and testing.
 
-- **reviews**: User reviews and ratings
-  - restaurantId: Reference to restaurant
-  - userId: Reference to user (future implementation)
-  - rating: Numeric rating (1-5)
-  - comment: Text review
-  - date: Review timestamp
+If you add or change endpoints, update this file and validate it with an OpenAPI linter or Swagger Editor.
 
-- **categories**: Restaurant categories
-  - name: Category name
-  - description: Category description
 
-### Indexes
+## Example: Using the OpenAPI Spec in Postman
 
-- Restaurants: name (text index), location (2dsphere), categories
-- Reviews: restaurantId, rating
-- Categories: name
-
-## Usage Examples
-
-### Finding Restaurants Near a Location
-
-```javascript
-db.restaurants.find({
-  location: {
-    $near: {
-      $geometry: {
-        type: "Point",
-        coordinates: [-99.1332, 19.4326] // Mexico City coordinates
-      },
-      $maxDistance: 5000 // 5km radius
-    }
-  }
-})
-```
-
-### Getting Restaurant Reviews
-
-```javascript
-db.reviews.find({
-  restaurantId: ObjectId("restaurantIdHere")
-})
-```
+1. Open Postman and click "Import".
+2. Select the `docs/openapi.json` file.
+3. Postman will generate a collection with all endpoints and schemas for easy testing.
 
 ## Contributing
 
@@ -202,12 +163,8 @@ db.reviews.find({
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## Versioning
 
-We follow the XXX Versioning Guidelines (X.X.X):
-- First X (Major Version): Significant changes that may not be backward compatible
-- Second X (New Features): Addition of new functionalities
-- Third X (Revisions): Minor bug fixes or corrections
+## Versioning
 
 Current version: 0.1.0
 

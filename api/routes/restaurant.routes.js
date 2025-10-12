@@ -1,5 +1,5 @@
 const express = require('express');
-const restaurantController = require('../../controllers/restaurant.controller');
+const restaurantController = require('../controllers/restaurant.controller.js');
 const { body, param, query, validationResult } = require('express-validator');
 
 const router = express.Router();
@@ -47,10 +47,9 @@ router.get('/search/text',
 );
 
 // GET /api/restaurants/:id - Get restaurant by ID
-router.get('/:id', 
-  [
-    param('id').notEmpty().withMessage('Restaurant ID is required')
-  ],
+// GET /api/restaurants/:data_id - Get restaurant by data_id
+router.get('/:data_id', 
+  [ param('data_id').notEmpty().withMessage('data_id is required') ],
   validate,
   restaurantController.getRestaurantById
 );
@@ -71,10 +70,10 @@ router.post('/',
   restaurantController.createRestaurant
 );
 
-// PUT /api/restaurants/:id - Update a restaurant
-router.put('/:id',
+// PUT /api/restaurants/:data_id - Update a restaurant
+router.put('/:data_id',
   [
-    param('id').notEmpty().withMessage('Restaurant ID is required'),
+    param('data_id').notEmpty().withMessage('data_id is required'),
     body('nombre').optional().isString(),
     body('razon_social').optional().isString(),
     body('tipo_vialidad').optional().isString(),
@@ -87,11 +86,9 @@ router.put('/:id',
   restaurantController.updateRestaurant
 );
 
-// DELETE /api/restaurants/:id - Delete a restaurant
-router.delete('/:id',
-  [
-    param('id').notEmpty().withMessage('Restaurant ID is required')
-  ],
+// DELETE /api/restaurants/:data_id - Soft-delete a restaurant
+router.delete('/:data_id',
+  [ param('data_id').notEmpty().withMessage('data_id is required') ],
   validate,
   restaurantController.deleteRestaurant
 );
