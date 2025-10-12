@@ -72,13 +72,13 @@
 
 | Requirement ID | Requirement Description | Associated User Stories | Priority | Status |
 |----------------|-------------------------|-------------------------|----------|--------|
-| REQ-01 | MongoDB database setup | US1 | High | Not Started |
-| REQ-02 | Data import from CSV | US2 | High | Not Started |
-| REQ-03 | Database indexing strategy | US3 | Medium | Not Started |
-| REQ-04 | Ratings and comments schema | US4 | Medium | Not Started |
-| REQ-05 | Backup and restoration procedures | US5 | High | Not Started |
-| REQ-06 | Geospatial query support | US6 | Low | Not Started |
-| REQ-07 | Database documentation | US1, US3, US5 | Medium | Not Started |
+| REQ-01 | MongoDB database setup | US1 | High | Done |
+| REQ-02 | Data import from CSV | US2 | High | Done |
+| REQ-03 | Database indexing strategy | US3 | Medium | Done |
+| REQ-04 | Ratings and comments schema | US4 | Medium | Done |
+| REQ-05 | Backup and restoration procedures | US5 | High | Done |
+| REQ-06 | Geospatial query support | US6 | Low | In Progress |
+| REQ-07 | Database documentation | US1, US3, US5 | Medium | Done |
 | REQ-08 | Performance optimization | US3, US6 | Low | Not Started |
 
 ## Prioritized Requirements Table
@@ -109,15 +109,15 @@ A requirement is considered "Done" when:
 ## Sprint Planning
 
 ### Sprint 1 (October 7, 2025)
-- REQ-01: MongoDB database setup (4 hours)
-- REQ-07: Database documentation (initial) (3 hours)
-- REQ-02: Data import from CSV (8 hours)
+- REQ-01: MongoDB database setup **[Done]**
+- REQ-07: Database documentation **[Done]**
+- REQ-02: Data import from CSV **[Done]**
 **Total Hours: 15**
 
 ### Sprint 2 (October 8-14, 2025)
-- REQ-03: Database indexing strategy (5 hours)
-- REQ-04: Ratings and comments schema (6 hours)
-- REQ-05: Backup and restoration procedures (4 hours)
+- REQ-03: Database indexing strategy (5 hours) **[Done]**
+- REQ-04: Ratings and comments schema (6 hours) **[Done]**
+- REQ-05: Backup and restoration procedures (4 hours) **[Done]**
 **Total Hours: 15**
 
 ### Sprint 3 (October 15-21, 2025)

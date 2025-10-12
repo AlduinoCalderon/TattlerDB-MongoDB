@@ -3,43 +3,43 @@ const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 
-// Script para inicializar y ejecutar Scalar
+// Script to initialize and run Scalar
 
 console.log('\n🚀 Inicializando Documentación de API con Scalar 📚\n');
 
-// Verificar si ya tenemos @scalar/cli
+// Check if @scalar/cli is already installed
 try {
-  console.log('⏳ Verificando dependencias...');
+  console.log('⏳ Checking dependencies...');
   execSync('npx @scalar/cli --version', { stdio: 'ignore' });
-  console.log('✅ @scalar/cli ya está instalado.');
+  console.log('✅ @scalar/cli is already installed.');
 } catch (error) {
-  console.log('⏳ Instalando @scalar/cli...');
+  console.log('⏳ Installing @scalar/cli...');
   execSync('npm install --no-save @scalar/cli', { stdio: 'inherit' });
-  console.log('✅ @scalar/cli instalado correctamente.');
+  console.log('✅ @scalar/cli installed successfully.');
 }
 
-// Verificar que tenemos los archivos necesarios
+// Check that the required files exist
 const openApiPath = path.join(__dirname, '..', 'docs', 'openapi.json');
 const scalarConfigPath = path.join(__dirname, '..', 'scalar.json');
 
 if (!fs.existsSync(openApiPath)) {
-  console.error('❌ Error: No se encontró el archivo openapi.json en la carpeta docs.');
+  console.error('❌ Error: openapi.json file not found in the docs folder.');
   process.exit(1);
 }
 
 if (!fs.existsSync(scalarConfigPath)) {
-  console.error('❌ Error: No se encontró el archivo scalar.json en la raíz del proyecto.');
+  console.error('❌ Error: scalar.json file not found in the project root.');
   process.exit(1);
 }
 
-// Todo está listo, ejecutamos Scalar
-console.log('\n🌐 Iniciando el servidor de documentación...');
-console.log('\n📝 La documentación estará disponible en http://localhost:3000\n');
+// Everything is ready, start Scalar
+console.log('\n🌐 Starting the documentation server...');
+console.log('\n📝 Documentation will be available at http://localhost:3000\n');
 
 try {
-  // Iniciar el servidor de Scalar con el comando correcto y especificando el archivo OpenAPI
+  // Start the Scalar server with the correct command and specify the OpenAPI file
   execSync(`npx @scalar/cli document serve "./docs/openapi.json"`, { stdio: 'inherit' });
 } catch (error) {
-  console.error(`\n❌ Error al iniciar Scalar: ${error.message}`);
+  console.error(`\n❌ Error starting Scalar: ${error.message}`);
   process.exit(1);
 }

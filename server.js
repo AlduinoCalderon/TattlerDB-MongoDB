@@ -5,7 +5,7 @@ const helmet = require('helmet');
 const morgan = require('morgan');
 const path = require('path');
 const { apiReference } = require('@scalar/express-api-reference');
-const { logger } = require('./utils/logger');
+const { logger } = require('./api/utils/logger');
 const routes = require('./api/routes');
 
 // Create Express app
