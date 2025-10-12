@@ -2,742 +2,188 @@
   "openapi": "3.0.3",
   "info": {
     "title": "TattlerDB API",
-    "description": "API para acceder y gestionar el directorio de restaurantes Tattler. Esta API proporciona endpoints para buscar restaurantes por ubicación, texto, administrar datos de restaurantes y verificar el estado del sistema.",
+    "description": "TattlerDB REST API — restaurants and Google reviews",
     "version": "1.0.0",
-    "contact": {
-      "name": "Tattler Support",
-      "email": "support@tattler.mx"
-    },
-    "x-logo": {
-      "url": "https://via.placeholder.com/200x50?text=TattlerDB"
-    }
+    "contact": { "name": "Tattler Support", "email": "support@tattler.mx" }
   },
   "servers": [
-   
-    {
-      "url": "https://tattlerdb-mongodb.onrender.com/api",
-      "description": "Production server on Render"
-    },
-    {
-      "url": "http://localhost:3001/api",
-      "description": "Local development server"
-    }
+    { "url": "http://localhost:3001/api", "description": "Local" }
   ],
   "tags": [
-    {
-      "name": "restaurants",
-      "description": "Restaurants operations"
-    },
-    {
-      "name": "health",
-      "description": "API health monitoring"
-    }
+    { "name": "restaurants", "description": "Restaurant operations" },
+    { "name": "reviews", "description": "Google reviews operations" }
   ],
   "paths": {
-    "/": {
-      "get": {
-        "tags": ["info"],
-        "summary": "API information",
-        "description": "Returns basic information about the API",
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiInfo"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/health": {
-      "get": {
-        "tags": ["health"],
-        "summary": "Health status check",
-        "description": "Returns the health status of the API and database connection",
-        "responses": {
-          "200": {
-            "description": "Health check successful",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HealthResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/health/ping": {
-      "get": {
-        "tags": ["health"],
-        "summary": "Simple ping check",
-        "description": "Simple endpoint to check if API is responsive",
-        "responses": {
-          "200": {
-            "description": "Ping successful",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PingResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/restaurants": {
       "get": {
         "tags": ["restaurants"],
-        "summary": "Get all restaurants",
-        "description": "Returns a paginated list of restaurants",
+        "summary": "List restaurants",
         "parameters": [
-          {
-            "in": "query",
-            "name": "page",
-            "schema": {
-              "type": "integer",
-              "default": 1,
-              "minimum": 1
-            },
-            "description": "Page number for pagination"
-          },
-          {
-            "in": "query",
-            "name": "limit",
-            "schema": {
-              "type": "integer",
-              "default": 20,
-              "minimum": 1,
-              "maximum": 100
-            },
-            "description": "Number of items per page"
-          }
+          { "in": "query", "name": "page", "schema": { "type": "integer", "default": 1 } },
+          { "in": "query", "name": "limit", "schema": { "type": "integer", "default": 20 } }
         ],
-        "responses": {
-          "200": {
-            "description": "List of restaurants",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RestaurantList"
-                }
-              }
-            }
-          }
-        }
+        "responses": { "200": { "description": "List of restaurants", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/RestaurantList" } } } } }
       },
       "post": {
         "tags": ["restaurants"],
-        "summary": "Create new restaurant",
-        "description": "Creates a new restaurant entry",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/RestaurantCreate"
-              }
-            }
-          }
-        },
-        "responses": {
-          "201": {
-            "description": "Restaurant created",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RestaurantResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Invalid input",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
-        }
+        "summary": "Create or upsert a restaurant (by data_id)",
+        "requestBody": { "required": true, "content": { "application/json": { "schema": { "$ref": "#/components/schemas/RestaurantCreate" } } } },
+        "responses": { "201": { "description": "Created/Updated", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/RestaurantResponse" } } } } }
       }
     },
-    "/restaurants/{id}": {
+
+    "/restaurants/{data_id}": {
       "get": {
         "tags": ["restaurants"],
-        "summary": "Get restaurant by ID",
-        "description": "Returns a single restaurant by its ID",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "description": "Unique restaurant ID"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Restaurant found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RestaurantResponse"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Restaurant not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
-        }
+        "summary": "Get restaurant by data_id",
+        "parameters": [ { "in": "path", "name": "data_id", "required": true, "schema": { "type": "string" } } ],
+        "responses": { "200": { "description": "Restaurant found", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/RestaurantResponse" } } } }, "404": { "description": "Not found", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ErrorResponse" } } } } }
       },
       "put": {
         "tags": ["restaurants"],
-        "summary": "Update restaurant",
-        "description": "Updates an existing restaurant",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "description": "Unique restaurant ID"
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/RestaurantUpdate"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Restaurant updated",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RestaurantResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Invalid input",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Restaurant not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
-        }
+        "summary": "Update restaurant (partial)",
+        "parameters": [ { "in": "path", "name": "data_id", "required": true, "schema": { "type": "string" } } ],
+        "requestBody": { "required": true, "content": { "application/json": { "schema": { "$ref": "#/components/schemas/RestaurantUpdate" } } } },
+        "responses": { "200": { "description": "Updated","content": { "application/json": { "schema": { "$ref": "#/components/schemas/RestaurantResponse" } } } }, "404": { "description": "Not found", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ErrorResponse" } } } } }
       },
       "delete": {
         "tags": ["restaurants"],
-        "summary": "Delete restaurant",
-        "description": "Deletes a restaurant",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "description": "Unique restaurant ID"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Restaurant deleted",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/DeleteResponse"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Restaurant not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
-        }
+        "summary": "Soft-delete restaurant",
+        "parameters": [ { "in": "path", "name": "data_id", "required": true, "schema": { "type": "string" } } ],
+        "responses": { "200": { "description": "Deleted", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/DeleteResponse" } } } }, "404": { "description": "Not found", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ErrorResponse" } } } } }
       }
     },
+
     "/restaurants/search/location": {
       "get": {
         "tags": ["restaurants"],
         "summary": "Search restaurants by location",
-        "description": "Find restaurants near a specific geographic point using GeoJSON coordinates. El resultado incluye la distancia en metros desde el punto especificado a cada restaurante.",
         "parameters": [
-          {
-            "in": "query",
-            "name": "longitude",
-            "required": true,
-            "schema": {
-              "type": "number"
-            },
-            "description": "Longitude coordinate"
-          },
-          {
-            "in": "query",
-            "name": "latitude",
-            "required": true,
-            "schema": {
-              "type": "number"
-            },
-            "description": "Latitude coordinate"
-          },
-          {
-            "in": "query",
-            "name": "distance",
-            "schema": {
-              "type": "integer",
-              "default": 1000
-            },
-            "description": "Search radius in meters"
-          }
+          { "in": "query", "name": "longitude", "required": true, "schema": { "type": "number" } },
+          { "in": "query", "name": "latitude", "required": true, "schema": { "type": "number" } },
+          { "in": "query", "name": "distance", "schema": { "type": "integer", "default": 1000 } }
         ],
-        "responses": {
-          "200": {
-            "description": "Restaurants found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/LocationSearchResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Invalid parameters",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
-        }
+        "responses": { "200": { "description": "Search results", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/LocationSearchResponse" } } } } }
       }
     },
+
     "/restaurants/search/text": {
       "get": {
         "tags": ["restaurants"],
-        "summary": "Search restaurants by text",
-        "description": "Search restaurants by text query",
-        "parameters": [
-          {
-            "in": "query",
-            "name": "q",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "minLength": 1
-            },
-            "description": "Search query"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Restaurants found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/TextSearchResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Invalid parameters",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
-        }
+        "summary": "Text search for restaurants",
+        "parameters": [ { "in": "query", "name": "q", "required": true, "schema": { "type": "string" } } ],
+        "responses": { "200": { "description": "Search results", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/TextSearchResponse" } } } } }
+      }
+    },
+
+    "/reviews": {
+      "get": {
+        "tags": ["reviews"],
+        "summary": "List reviews",
+        "parameters": [ { "in": "query", "name": "page", "schema": { "type": "integer", "default": 1 } }, { "in": "query", "name": "limit", "schema": { "type": "integer", "default": 20 } } ],
+        "responses": { "200": { "description": "List of reviews", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ReviewList" } } } } }
+      },
+      "post": {
+        "tags": ["reviews"],
+        "summary": "Create or upsert review",
+        "requestBody": { "required": true, "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ReviewCreate" } } } },
+        "responses": { "201": { "description": "Created/Upserted", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ReviewResponse" } } } } }
+      }
+    },
+
+    "/reviews/{review_id}": {
+      "get": {
+        "tags": ["reviews"],
+        "summary": "Get review by review_id or _id",
+        "parameters": [ { "in": "path", "name": "review_id", "required": true, "schema": { "type": "string" } } ],
+        "responses": { "200": { "description": "Review", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ReviewResponse" } } } }, "404": { "description": "Not found", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ErrorResponse" } } } } }
+      },
+      "put": {
+        "tags": ["reviews"],
+        "summary": "Update review by review_id",
+        "parameters": [ { "in": "path", "name": "review_id", "required": true, "schema": { "type": "string" } } ],
+        "requestBody": { "required": true, "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ReviewUpdate" } } } },
+        "responses": { "200": { "description": "Updated", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ReviewResponse" } } } } }
+      },
+      "delete": {
+        "tags": ["reviews"],
+        "summary": "Soft-delete review",
+        "parameters": [ { "in": "path", "name": "review_id", "required": true, "schema": { "type": "string" } } ],
+        "responses": { "200": { "description": "Deleted", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/DeleteResponse" } } } } }
+      }
+    },
+
+    "/reviews/data/{data_id}": {
+      "get": {
+        "tags": ["reviews"],
+        "summary": "Get reviews for a restaurant (by data_id)",
+        "parameters": [ { "in": "path", "name": "data_id", "required": true, "schema": { "type": "string" } } ],
+        "responses": { "200": { "description": "List of reviews for the place", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ReviewList" } } } } }
       }
     }
   },
+
   "components": {
     "schemas": {
-      "ApiInfo": {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean",
-            "example": true
-          },
-          "name": {
-            "type": "string",
-            "example": "Tattler API"
-          },
-          "version": {
-            "type": "string",
-            "example": "1.0.0"
-          },
-          "endpoints": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "example": ["/health", "/restaurants"]
-          }
-        }
-      },
-      "HealthResponse": {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean",
-            "example": true
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "status": {
-                "type": "string",
-                "example": "healthy"
-              },
-              "uptime": {
-                "type": "number",
-                "example": 12345
-              },
-              "timestamp": {
-                "type": "string",
-                "format": "date-time"
-              },
-              "database": {
-                "type": "object",
-                "properties": {
-                  "status": {
-                    "type": "string",
-                    "example": "connected"
-                  },
-                  "uptime": {
-                    "type": "number",
-                    "example": 12345
-                  },
-                  "version": {
-                    "type": "string",
-                    "example": "6.0.0"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "PingResponse": {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean",
-            "example": true
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "message": {
-                "type": "string",
-                "example": "pong"
-              },
-              "timestamp": {
-                "type": "string",
-                "format": "date-time"
-              }
-            }
-          }
-        }
-      },
       "Restaurant": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "string",
-            "example": "1234"
-          },
-          "nombre": {
-            "type": "string",
-            "example": "La Buena Mesa"
-          },
-          "direccion": {
-            "type": "string",
-            "example": "123 Main St"
-          },
-          "categoria": {
-            "type": "string",
-            "example": "Mexicana"
-          },
-          "calificacion": {
-            "type": "number",
-            "format": "float",
-            "example": 4.5
-          }
+          "data_id": { "type": "string" },
+          "google_place_id": { "type": "string" },
+          "nombre": { "type": "string" },
+          "address": { "type": "string" },
+          "phone": { "type": "string" },
+          "rating": { "type": "number" },
+          "reviews": { "type": "integer" },
+          "types": { "type": "array", "items": { "type": "string" } },
+          "thumbnail": { "type": "string" },
+          "ubicacion": { "type": "object", "properties": { "type": { "type": "string" }, "coordinates": { "type": "array", "items": { "type": "number" } } } },
+          "deleted": { "type": "boolean" },
+          "created_at": { "type": "string", "format": "date-time" },
+          "updated_at": { "type": "string", "format": "date-time" }
         }
       },
-      "RestaurantCreate": {
-  "type": "object",
-  "required": ["name"],
-        "properties": {
-          "name": {
-            "type": "string",
-            "example": "Nuevo Restaurante"
-          },
-          "address": {
-            "type": "string",
-            "example": "456 Center St"
-          },
-          "categoria": {
-            "type": "string",
-            "example": "Italiana"
-          },
-          "rating": {
-            "type": "number",
-            "format": "float",
-            "example": 4.0
-          }
-        }
-      },
-      "RestaurantUpdate": {
+
+      "RestaurantCreate": { "type": "object", "properties": { "data_id": { "type": "string" }, "google_place_id": { "type": "string" }, "nombre": { "type": "string" }, "address": { "type": "string" }, "phone": { "type": "string" }, "ubicacion": { "type": "object" } } },
+
+      "RestaurantUpdate": { "type": "object", "properties": { "nombre": { "type": "string" }, "address": { "type": "string" }, "phone": { "type": "string" }, "rating": { "type": "number" }, "ubicacion": { "type": "object" } } },
+
+      "RestaurantResponse": { "type": "object", "properties": { "success": { "type": "boolean" }, "data": { "$ref": "#/components/schemas/Restaurant" } } },
+
+      "RestaurantList": { "type": "object", "properties": { "success": { "type": "boolean" }, "data": { "type": "object", "properties": { "restaurants": { "type": "array", "items": { "$ref": "#/components/schemas/Restaurant" } }, "pagination": { "type": "object" } } } } },
+
+      "LocationSearchResponse": { "type": "object", "properties": { "success": { "type": "boolean" }, "data": { "type": "object" } } },
+
+      "TextSearchResponse": { "type": "object", "properties": { "success": { "type": "boolean" }, "data": { "type": "object" } } },
+
+      "Review": {
         "type": "object",
         "properties": {
-          "name": {
-            "type": "string",
-            "example": "Restaurante Actualizado"
-          },
-          "address": {
-            "type": "string"
-          },
-          "categoria": {
-            "type": "string"
-          },
-          "rating": {
-            "type": "number",
-            "format": "float"
-          }
+          "_id": { "type": "string" },
+          "review_id": { "type": "string" },
+          "data_id": { "type": "string" },
+          "google_place_id": { "type": "string" },
+          "author": { "type": "string" },
+          "rating": { "type": "number" },
+          "text": { "type": "string" },
+          "date": { "type": "string", "format": "date-time" },
+          "images": { "type": "array", "items": { "type": "string" } },
+          "raw_google_review": { "type": "object" },
+          "normalized_at": { "type": "string", "format": "date-time" }
         }
       },
-      "RestaurantResponse": {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean",
-            "example": true
-          },
-          "data": {
-            "$ref": "#/components/schemas/Restaurant"
-          }
-        }
-      },
-      "RestaurantList": {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean",
-            "example": true
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "restaurants": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/Restaurant"
-                }
-              },
-              "pagination": {
-                "type": "object",
-                "properties": {
-                  "page": {
-                    "type": "integer",
-                    "example": 1
-                  },
-                  "limit": {
-                    "type": "integer",
-                    "example": 20
-                  },
-                  "totalPages": {
-                    "type": "integer",
-                    "example": 10
-                  },
-                  "totalCount": {
-                    "type": "integer",
-                    "example": 198
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "LocationSearchResponse": {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean",
-            "example": true
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "count": {
-                "type": "integer",
-                "example": 5
-              },
-              "restaurants": {
-                "type": "array",
-                "items": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/Restaurant"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "distance": {
-                          "type": "number",
-                          "format": "float",
-                          "example": 450.2
-                        }
-                      }
-                    }
-                  ]
-                }
-              }
-            }
-          }
-        }
-      },
-      "TextSearchResponse": {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean",
-            "example": true
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "count": {
-                "type": "integer",
-                "example": 3
-              },
-              "restaurants": {
-                "type": "array",
-                "items": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/Restaurant"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "score": {
-                          "type": "number",
-                          "format": "float",
-                          "example": 0.95
-                        }
-                      }
-                    }
-                  ]
-                }
-              }
-            }
-          }
-        }
-      },
-      "DeleteResponse": {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean",
-            "example": true
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "message": {
-                "type": "string",
-                "example": "Restaurant with ID 1234 successfully deleted"
-              },
-              "deletedCount": {
-                "type": "integer",
-                "example": 1
-              }
-            }
-          }
-        }
-      },
-      "ErrorResponse": {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean",
-            "example": false
-          },
-          "error": {
-            "type": "object",
-            "properties": {
-              "message": {
-                "type": "string",
-                "example": "Error description"
-              },
-              "stack": {
-                "type": "string",
-                "description": "Present only in development mode"
-              }
-            }
-          }
-        }
-      }
+
+      "ReviewCreate": { "type": "object", "required": ["review_id", "data_id"], "properties": { "review_id": { "type": "string" }, "data_id": { "type": "string" }, "google_place_id": { "type": "string" }, "author": { "type": "string" }, "rating": { "type": "number" }, "text": { "type": "string" }, "images": { "type": "array", "items": { "type": "string" } }, "raw_google_review": { "type": "object" } } },
+
+      "ReviewUpdate": { "type": "object", "properties": { "author": { "type": "string" }, "rating": { "type": "number" }, "text": { "type": "string" } } },
+
+      "ReviewResponse": { "type": "object", "properties": { "success": { "type": "boolean" }, "data": { "$ref": "#/components/schemas/Review" } } },
+
+      "ReviewList": { "type": "object", "properties": { "success": { "type": "boolean" }, "data": { "type": "object", "properties": { "docs": { "type": "array", "items": { "$ref": "#/components/schemas/Review" } }, "pagination": { "type": "object" } } } } },
+
+      "DeleteResponse": { "type": "object", "properties": { "success": { "type": "boolean" }, "data": { "type": "object" } } },
+
+      "ErrorResponse": { "type": "object", "properties": { "success": { "type": "boolean" }, "error": { "type": "object" } } }
     }
   }
 }
