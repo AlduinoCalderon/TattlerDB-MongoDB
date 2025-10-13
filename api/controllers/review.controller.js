@@ -32,12 +32,13 @@ const reviewController = {
 
   async getById(req, res, next) {
     try {
-      const { id } = req.params;
+      const { review_id } = req.params;
+      console.log('DEBUG review_id param:', review_id);
       const doc = await database.withConnection(async (db) => {
         const coll = db.collection(COLLECTION);
-        // Try to find by review_id first, fallback to _id
-        let d = await coll.findOne({ review_id: id });
-        if (!d) d = await coll.findOne({ _id: ObjectId.isValid(id) ? new ObjectId(id) : id });
+        const allIds = await coll.distinct('review_id');
+        console.log('DEBUG all review_ids in collection:', allIds);
+        let d = await coll.findOne({ review_id });
         return d;
       });
       if (!doc) throw ApiError.notFound('Review not found');
