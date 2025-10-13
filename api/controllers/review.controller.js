@@ -13,11 +13,13 @@ const reviewController = {
       const limit = parseInt(req.query.limit) || 20;
       const skip = (page - 1) * limit;
 
+      // Exclude logically deleted reviews
       const result = await database.withConnection(async (db) => {
         const coll = db.collection(COLLECTION);
+        const filter = { deleted: { $ne: true } };
         const [docs, total] = await Promise.all([
-          coll.find({}).skip(skip).limit(limit).toArray(),
-          coll.countDocuments()
+          coll.find(filter).skip(skip).limit(limit).toArray(),
+          coll.countDocuments(filter)
         ]);
         return { docs, pagination: { total, page, limit, pages: Math.ceil(total / limit) } };
       });
@@ -34,11 +36,10 @@ const reviewController = {
     try {
       const { review_id } = req.params;
       console.log('DEBUG review_id param:', review_id);
+      // Exclude logically deleted reviews
       const doc = await database.withConnection(async (db) => {
         const coll = db.collection(COLLECTION);
-        const allIds = await coll.distinct('review_id');
-        console.log('DEBUG all review_ids in collection:', allIds);
-        let d = await coll.findOne({ review_id });
+        let d = await coll.findOne({ review_id, deleted: { $ne: true } });
         return d;
       });
       if (!doc) throw ApiError.notFound('Review not found');
@@ -56,8 +57,10 @@ const reviewController = {
       const updates = req.body || {};
       const updated = await database.withConnection(async (db) => {
         const coll = db.collection(COLLECTION);
-        const existing = await coll.findOne({ review_id });
+        // Only update if not deleted
+        const existing = await coll.findOne({ review_id, deleted: { $ne: true } });
         if (!existing) throw ApiError.notFound('Review not found');
+        updates.modified_at = new Date();
         await coll.updateOne({ review_id }, { $set: updates });
         return await coll.findOne({ review_id });
       });
@@ -69,29 +72,15 @@ const reviewController = {
   },
 
   // Soft-delete a review by review_id
-  async deleteReview(req, res, next) {
-    try {
-      const { review_id } = req.params;
-      const result = await database.withConnection(async (db) => {
-        const coll = db.collection(COLLECTION);
-        const existing = await coll.findOne({ review_id });
-        if (!existing) throw ApiError.notFound('Review not found');
-        await coll.updateOne({ review_id }, { $set: { deleted: true, deleted_at: new Date() } });
-        return { review_id };
-      });
-      res.status(200).json({ success: true, data: { message: 'Soft deleted', review_id: result.review_id } });
-    } catch (err) {
-      logger.error(`Error deleting review: ${err.message}`);
-      next(err);
-    }
-  },
+ 
 
   async getByDataId(req, res, next) {
     try {
       const { data_id } = req.params;
+      // Exclude logically deleted reviews
       const docs = await database.withConnection(async (db) => {
         const coll = db.collection(COLLECTION);
-        return await coll.find({ data_id }).toArray();
+        return await coll.find({ data_id, deleted: { $ne: true } }).toArray();
       });
       res.status(200).json({ success: true, data: docs });
     } catch (err) {
@@ -106,9 +95,17 @@ const reviewController = {
       if (!payload || !payload.review_id || !payload.data_id) {
         throw ApiError.badRequest('review_id and data_id are required');
       }
+      // On create, ensure deleted is not set
+      payload.deleted = false;
+      payload.deleted_at = null;
+      payload.modified_at = new Date();
       const inserted = await database.withConnection(async (db) => {
         const coll = db.collection(COLLECTION);
-        const result = await coll.updateOne({ review_id: payload.review_id, data_id: payload.data_id }, { $set: payload }, { upsert: true });
+        const result = await coll.updateOne(
+          { review_id: payload.review_id, data_id: payload.data_id },
+          { $set: payload },
+          { upsert: true }
+        );
         if (result.upsertedId) payload._id = result.upsertedId;
         return payload;
       });
@@ -119,14 +116,24 @@ const reviewController = {
     }
   },
 
+  // Soft-delete a review by review_id (sets deleted, deleted_at, modified_at)
   async deleteReview(req, res, next) {
     try {
-      const { id } = req.params;
+      const { review_id } = req.params;
       const result = await database.withConnection(async (db) => {
-        const coll = db.collection(COLLECTION);
-        return await coll.deleteOne({ _id: ObjectId.isValid(id) ? new ObjectId(id) : id });
+        const coll = db.collection(COLLECTION);  
+        // Only delete if not already deleted
+        const existing = await coll.findOne({ review_id, deleted: { $ne: true } });
+        if (!existing) throw ApiError.notFound('Review not found');
+        const now = new Date();
+        await coll.updateOne(
+          { review_id },
+          { $set: { deleted: true, deleted_at: now, modified_at: now } }
+        );
+        return { review_id };
       });
-      res.status(200).json({ success: true, data: { deletedCount: result.deletedCount } });
+      res.status(200).json({ success: true, data: { message: 'Soft deleted', review_id: result.review_id } });  
+      return next();
     } catch (err) {
       logger.error(`Error deleting review: ${err.message}`);
       next(err);

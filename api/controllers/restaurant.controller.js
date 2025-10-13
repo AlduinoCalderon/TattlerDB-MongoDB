@@ -20,17 +20,17 @@ const restaurantController = {
       const limit = parseInt(req.query.limit) || 20;
       const skip = (page - 1) * limit;
 
+      // Exclude logically deleted restaurants
       const result = await database.withConnection(async (db) => {
         const collection = db.collection(COLLECTION);
-        
+        const filter = { deleted: { $ne: true } };
         const [restaurants, totalCount] = await Promise.all([
-          collection.find({})
+          collection.find(filter)
             .skip(skip)
             .limit(limit)
             .toArray(),
-          collection.countDocuments()
+          collection.countDocuments(filter)
         ]);
-
         return {
           restaurants,
           pagination: {
@@ -61,15 +61,14 @@ const restaurantController = {
     try {
       const { data_id } = req.params;
 
+      // Exclude logically deleted restaurants
       const restaurant = await database.withConnection(async (db) => {
         const collection = db.collection(COLLECTION);
         return await collection.findOne({ data_id, deleted: { $ne: true } });
       });
-
       if (!restaurant) {
         throw ApiError.notFound(`Restaurant with data_id ${data_id} not found`);
       }
-
       logger.info(`Retrieved restaurant with data_id: ${data_id}`);
       res.status(200).json({ success: true, data: restaurant });
     } catch (error) {
@@ -102,13 +101,16 @@ const restaurantController = {
         };
       }
 
+      // On create, ensure deleted is not set
+      restaurantData.deleted = false;
+      restaurantData.deleted_at = null;
+      restaurantData.modified_at = new Date();
       const result = await database.withConnection(async (db) => {
         const collection = db.collection(COLLECTION);
         // Upsert by data_id to avoid duplicates
         await collection.updateOne({ data_id: restaurantData.data_id }, { $set: restaurantData }, { upsert: true });
         return await collection.findOne({ data_id: restaurantData.data_id });
       });
-
       logger.info(`Created/updated restaurant with data_id: ${result.data_id}`);
       res.status(201).json({ success: true, data: result });
     } catch (error) {
@@ -142,14 +144,13 @@ const restaurantController = {
 
       const result = await database.withConnection(async (db) => {
         const collection = db.collection(COLLECTION);
-        // Check if restaurant exists
-        const restaurant = await collection.findOne({ data_id });
+        // Only update if not deleted
+        const restaurant = await collection.findOne({ data_id, deleted: { $ne: true } });
         if (!restaurant) throw ApiError.notFound(`Restaurant with data_id ${data_id} not found`);
-
+        updates.modified_at = new Date();
         await collection.updateOne({ data_id }, { $set: updates });
         return await collection.findOne({ data_id });
       });
-      
       logger.info(`Updated restaurant with data_id: ${data_id}`);
       res.status(200).json({
         success: true,
@@ -170,12 +171,16 @@ const restaurantController = {
       const { data_id } = req.params;
       const result = await database.withConnection(async (db) => {
         const collection = db.collection(COLLECTION);
+        // just delete 
         const restaurant = await collection.findOne({ data_id });
         if (!restaurant) throw ApiError.notFound(`Restaurant with data_id ${data_id} not found`);
-        await collection.updateOne({ data_id }, { $set: { deleted: true, deleted_at: new Date() } });
+        const now = new Date();
+        await collection.updateOne(
+          { data_id },
+          { $set: { deleted: true, deleted_at: now, modified_at: now } }
+        );
         return { data_id };
       });
-
       logger.info(`Soft-deleted restaurant with data_id: ${data_id}`);
       res.status(200).json({ success: true, data: { message: 'Soft deleted', data_id: result.data_id } });
     } catch (error) {
