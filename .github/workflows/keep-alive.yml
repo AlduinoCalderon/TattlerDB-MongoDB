@@ -13,18 +13,25 @@ jobs:
     steps:
     - name: Ping API Health Endpoint
       run: |
-        echo "🏥 Checking API health..."
+        echo "🏥 Checking Restaurants API health..."
         response=$(curl -s -o /dev/null -w "%{http_code}" https://tattlerdb-mongodb.onrender.com/api/health)
         
         if [ $response -eq 200 ]; then
-          echo "✅ API is healthy (HTTP $response)"
+          echo "✅ Restaurants API is healthy (HTTP $response)"
         else
           echo "⚠️  API responded with HTTP $response"
         fi
-        
+
+        echo "🔍 Checking Orders API health endpoint..."
+        response_orders=$(curl -s -o /dev/null -w "%{http_code}" https://meli-order-backend.onrender.com/api/health)
         echo "📊 Full response:"
-        curl -s https://tattlerdb-mongodb.onrender.com/api/health | jq '.' || echo "Response is not valid JSON"
+        curl -s https://meli-order-backend.onrender.com/api/health | jq '.' || echo "Response is not valid JSON"
         
+        if [ $response_orders -eq 200 ]; then
+          echo "✅ Orders API is healthy (HTTP $response_orders)"
+        else
+          echo "⚠️  Orders API responded with HTTP $response_orders"
+        fi      
     - name: Ping API Root Endpoint
       run: |
         echo "🏠 Checking API root endpoint..."
